@@ -34,6 +34,25 @@ interface ProductDetailPageProps {
     [key: string]: unknown;
 }
 
+function resolveProductImageUrl(
+    imagePath?: string | null,
+    imageUrl?: string | null,
+): string | null {
+    const raw = imageUrl || imagePath;
+    if (!raw) return null;
+    if (
+        raw.startsWith('http://') ||
+        raw.startsWith('https://') ||
+        raw.startsWith('/')
+    ) {
+        return raw;
+    }
+    if (raw.startsWith('storage/')) {
+        return `/${raw}`;
+    }
+    return `/storage/${raw}`;
+}
+
 export default function ProductDetail() {
     const {
         auth,
@@ -62,6 +81,11 @@ export default function ProductDetail() {
         product.stock <= 5 &&
         product.stock_status === 'low_stock';
     const maxQuantity = Math.max(1, Math.min(product.stock, 10));
+
+    const heroImageSrc = resolveProductImageUrl(
+        product.image_path,
+        product.image_url,
+    );
 
     const handleDecreaseQuantity = () => {
         setQuantity((prev) => Math.max(1, prev - 1));
@@ -313,9 +337,9 @@ export default function ProductDetail() {
                         {/* Dominant Product Image Stage */}
                         <div className="group relative overflow-hidden rounded-3xl border border-[#262626] bg-[#141414] shadow-2xl transition-all hover:border-[#383838]">
                             <div className="relative flex aspect-square w-full items-center justify-center overflow-hidden bg-[#1A1A1A] p-6 sm:aspect-[4/3] sm:p-10">
-                                {product.image_path && !imageError ? (
+                                {heroImageSrc && !imageError ? (
                                     <img
-                                        src={product.image_path}
+                                        src={heroImageSrc}
                                         alt={`Foto produk ${product.name}`}
                                         onError={() => setImageError(true)}
                                         className={`h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105 ${
@@ -723,10 +747,15 @@ export default function ProductDetail() {
                                         >
                                             {/* Thumbnail Stage */}
                                             <div className="relative aspect-square w-full overflow-hidden bg-[#1A1A1A]">
-                                                {rel.image_path &&
-                                                !isRelImageFailed ? (
+                                                {resolveProductImageUrl(
+                                                    rel.image_path,
+                                                    rel.image_url,
+                                                ) && !isRelImageFailed ? (
                                                     <img
-                                                        src={rel.image_path}
+                                                        src={resolveProductImageUrl(
+                                                            rel.image_path,
+                                                            rel.image_url,
+                                                        )!}
                                                         alt={rel.name}
                                                         onError={() =>
                                                             setFailedRelatedImages(

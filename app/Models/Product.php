@@ -23,6 +23,7 @@ use Illuminate\Support\Carbon;
  * @property string $slug
  * @property string $description
  * @property string|null $image_path
+ * @property-read string|null $image_url
  * @property ProductSourceType $source_type
  * @property int $base_price
  * @property int $cooperative_margin
@@ -249,5 +250,41 @@ class Product extends Model
             'low_stock' => 'Sisa '.$this->stock,
             default => 'Tersedia',
         };
+    }
+
+    /**
+     * Get the publicly accessible image URL.
+     */
+    public function getImageUrlAttribute(): ?string
+    {
+        return self::resolveImageUrl($this->image_path);
+    }
+
+    /**
+     * Resolve an image path into a publicly accessible storage URL or direct link.
+     */
+    public static function resolveImageUrl(?string $path): ?string
+    {
+        if (empty($path)) {
+            return null;
+        }
+
+        // Preserve external absolute URLs (e.g., http:// or https://)
+        if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://')) {
+            return $path;
+        }
+
+        // Preserve absolute public paths (e.g., /images/products/...)
+        if (str_starts_with($path, '/')) {
+            return $path;
+        }
+
+        // Normalize paths already starting with storage/
+        if (str_starts_with($path, 'storage/')) {
+            return '/'.$path;
+        }
+
+        // Render storage-backed paths (e.g., submissions/...) through Laravel's public storage URL
+        return '/storage/'.$path;
     }
 }

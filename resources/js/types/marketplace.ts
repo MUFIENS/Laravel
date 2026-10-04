@@ -12,6 +12,7 @@ export interface MarketplaceProduct {
     slug: string;
     description: string;
     image_path: string | null;
+    image_url?: string | null;
     source_type: 'cooperative' | 'student';
     selling_price: number;
     stock: number;

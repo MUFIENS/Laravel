@@ -319,4 +319,88 @@ class MarketplaceTest extends TestCase
             ->where('filters.search', 'KataKunciYangTidakAda')
         );
     }
+
+    /**
+     * Test 11: Product with storage-backed image_path resolves to public storage URL.
+     */
+    public function test_product_with_storage_image_path_renders_correct_storage_url(): void
+    {
+        $product = Product::factory()->create([
+            'category_id' => $this->categoryJajanan->id,
+            'name' => 'Kue Sus Fla Vanila',
+            'image_path' => 'submissions/example.jpg',
+            'status' => ProductStatus::Active,
+        ]);
+
+        // Model accessor check
+        $this->assertSame('/storage/submissions/example.jpg', $product->image_url);
+
+        // Marketplace homepage ('welcome')
+        $responseHome = $this->get(route('home'));
+        $responseHome->assertOk();
+        $responseHome->assertInertia(fn (Assert $page) => $page
+            ->has('products.data', 1)
+            ->where('products.data.0.name', 'Kue Sus Fla Vanila')
+            ->where('products.data.0.image_path', '/storage/submissions/example.jpg')
+            ->where('products.data.0.image_url', '/storage/submissions/example.jpg')
+        );
+
+        // Discovery marketplace ('explore')
+        $responseExplore = $this->get(route('explore'));
+        $responseExplore->assertOk();
+        $responseExplore->assertInertia(fn (Assert $page) => $page
+            ->has('products.data', 1)
+            ->where('products.data.0.name', 'Kue Sus Fla Vanila')
+            ->where('products.data.0.image_path', '/storage/submissions/example.jpg')
+            ->where('products.data.0.image_url', '/storage/submissions/example.jpg')
+        );
+
+        // Product detail page
+        $responseDetail = $this->get(route('products.show', $product));
+        $responseDetail->assertOk();
+        $responseDetail->assertInertia(fn (Assert $page) => $page
+            ->where('product.name', 'Kue Sus Fla Vanila')
+            ->where('product.image_path', '/storage/submissions/example.jpg')
+            ->where('product.image_url', '/storage/submissions/example.jpg')
+        );
+    }
+
+    /**
+     * Test 12: External URLs and absolute paths are preserved without prepending storage.
+     */
+    public function test_external_and_absolute_image_paths_are_preserved(): void
+    {
+        $externalProduct = Product::factory()->create([
+            'category_id' => $this->categoryJajanan->id,
+            'name' => 'Brownies Kukus Premium',
+            'image_path' => 'https://images.unsplash.com/photo-example.jpg',
+            'status' => ProductStatus::Active,
+        ]);
+
+        $localProduct = Product::factory()->create([
+            'category_id' => $this->categoryAtk->id,
+            'name' => 'Pulpen Gel KOPDIG',
+            'image_path' => '/images/products/pulpen-gel.jpg',
+            'status' => ProductStatus::Active,
+        ]);
+
+        $this->assertSame('https://images.unsplash.com/photo-example.jpg', $externalProduct->image_url);
+        $this->assertSame('/images/products/pulpen-gel.jpg', $localProduct->image_url);
+
+        $response = $this->get(route('home'));
+        $response->assertOk();
+        $response->assertInertia(fn (Assert $page) => $page
+            ->has('products.data', 2)
+            ->where('products.data', function ($items) {
+                $collection = collect($items);
+                $ext = $collection->firstWhere('name', 'Brownies Kukus Premium');
+                $loc = $collection->firstWhere('name', 'Pulpen Gel KOPDIG');
+
+                return $ext['image_path'] === 'https://images.unsplash.com/photo-example.jpg'
+                    && $ext['image_url'] === 'https://images.unsplash.com/photo-example.jpg'
+                    && $loc['image_path'] === '/images/products/pulpen-gel.jpg'
+                    && $loc['image_url'] === '/images/products/pulpen-gel.jpg';
+            })
+        );
+    }
 }

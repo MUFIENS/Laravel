@@ -12,6 +12,8 @@ export interface ProductCardData {
     price: number;
     originalPrice?: number;
     imageUrl?: string | null;
+    image_url?: string | null;
+    image_path?: string | null;
     badge?: string;
     stock?: number;
     stockStatus?: 'in_stock' | 'low_stock' | 'out_of_stock';
@@ -40,6 +42,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     const isOutOfStock =
         product.stock === 0 || product.stockStatus === 'out_of_stock';
 
+    const imageSrc = (() => {
+        const raw = product.imageUrl || product.image_url || product.image_path;
+        if (!raw) return null;
+        if (
+            raw.startsWith('http://') ||
+            raw.startsWith('https://') ||
+            raw.startsWith('/')
+        ) {
+            return raw;
+        }
+        if (raw.startsWith('storage/')) {
+            return `/${raw}`;
+        }
+        return `/storage/${raw}`;
+    })();
+
     return (
         <article
             className={`group flex flex-col justify-between overflow-hidden rounded-[20px] border border-border bg-surface transition-all duration-200 select-none hover:border-primary/30 hover:shadow-xs active:scale-[0.99] ${
@@ -51,9 +69,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 className="relative flex aspect-square w-full cursor-pointer items-center justify-center overflow-hidden bg-[#FAF9F5] p-3"
                 onClick={() => onClick?.(product)}
             >
-                {product.imageUrl && !imageError ? (
+                {imageSrc && !imageError ? (
                     <img
-                        src={product.imageUrl}
+                        src={imageSrc}
                         alt={`Foto produk ${product.name}`}
                         onError={() => setImageError(true)}
                         className={`h-full w-full object-contain transition-transform duration-300 group-hover:scale-105 ${

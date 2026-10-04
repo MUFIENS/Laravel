@@ -45,6 +45,7 @@ export interface ProductItem {
     slug: string;
     description: string | null;
     image_path: string | null;
+    image_url?: string | null;
     source_type: 'cooperative' | 'student';
     selling_price: number;
     stock: number;
@@ -994,9 +995,15 @@ export default function Explore({
                         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                             {/* Product Visual Container */}
                             <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-[#1C1C1C]">
-                                {previewProduct.image_path ? (
+                                {resolveProductImageUrl(
+                                    previewProduct.image_path,
+                                    previewProduct.image_url,
+                                ) ? (
                                     <img
-                                        src={previewProduct.image_path}
+                                        src={resolveProductImageUrl(
+                                            previewProduct.image_path,
+                                            previewProduct.image_url,
+                                        )!}
                                         alt={previewProduct.name}
                                         className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                                     />
@@ -1203,6 +1210,25 @@ export default function Explore({
 // -------------------------------------------------------------
 // PRODUCT CARD COMPONENT (KOPDIG Commercial Craftsmanship)
 // -------------------------------------------------------------
+function resolveProductImageUrl(
+    imagePath?: string | null,
+    imageUrl?: string | null,
+): string | null {
+    const raw = imageUrl || imagePath;
+    if (!raw) return null;
+    if (
+        raw.startsWith('http://') ||
+        raw.startsWith('https://') ||
+        raw.startsWith('/')
+    ) {
+        return raw;
+    }
+    if (raw.startsWith('storage/')) {
+        return `/${raw}`;
+    }
+    return `/storage/${raw}`;
+}
+
 interface ProductCardItemProps {
     product: ProductItem;
     onAddToCart: (
@@ -1228,6 +1254,10 @@ function ProductCardItem({
     const isLowStock = product.stock_status === 'low_stock';
 
     const productDetailHref = `/products/${product.slug || product.id}`;
+    const imageSrc = resolveProductImageUrl(
+        product.image_path,
+        product.image_url,
+    );
 
     return (
         <article className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[#262626] bg-[#141414] transition-all duration-300 hover:border-[#E34A27]/40 hover:shadow-xl hover:shadow-black/60">
@@ -1238,9 +1268,9 @@ function ProductCardItem({
             >
                 {/* 1. Square Image Container */}
                 <div className="relative aspect-square w-full overflow-hidden bg-[#1A1A1A]">
-                    {product.image_path && !imageFailed ? (
+                    {imageSrc && !imageFailed ? (
                         <img
-                            src={product.image_path}
+                            src={imageSrc}
                             alt={product.name}
                             onError={() => setImageFailed(true)}
                             loading="lazy"
