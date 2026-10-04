@@ -1,0 +1,148 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@700,600,500,400&f[]=general-sans@600,500,400&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-heading:
+        'Satoshi', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --font-sans:
+        'General Sans', 'Satoshi', ui-sans-serif, system-ui, -apple-system,
+        sans-serif;
+
+    /* KOPDIG Radius Scale (docs/design.md §7) */
+    --radius-3xl: 1.5rem; /* 24px: Large sheets & cards */
+    --radius-card: 1.25rem; /* 20px: Product cards */
+    --radius-2xl: 1rem; /* 16px: Inputs & field groups */
+    --radius-button: 0.875rem; /* 14px: Primary buttons */
+    --radius-control: 0.75rem; /* 12px: Small controls */
+    --radius-pill: 9999px; /* Chips, tags, bottom nav dock */
+
+    /* Core KOPDIG Named Color Tokens (docs/design.md §4) */
+    --color-canvas: #f7f6f1;
+    --color-surface: #ffffff;
+    --color-primary: #183c32;
+    --color-primary-hover: #245746;
+    --color-primary-soft: #e7efeb;
+    --color-accent: #d5a84c;
+    --color-ink: #171a18;
+    --color-muted: #707770;
+    --color-border: #e4e4dc;
+    --color-success: #2e795a;
+    --color-warning: #a97122;
+    --color-danger: #b34b4b;
+    --color-info: #416b83;
+
+    /* Semantic Mappings for shadcn/ui integration */
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+}
+
+:root {
+    /* KOPDIG Light Mode (Default Canvas) */
+    --background: #f7f6f1;
+    --foreground: #171a18;
+    --card: #ffffff;
+    --card-foreground: #171a18;
+    --popover: #ffffff;
+    --popover-foreground: #171a18;
+    --primary: #183c32;
+    --primary-foreground: #ffffff;
+    --secondary: #e7efeb;
+    --secondary-foreground: #183c32;
+    --muted: #e7efeb;
+    --muted-foreground: #707770;
+    --accent: #d5a84c;
+    --accent-foreground: #171a18;
+    --destructive: #b34b4b;
+    --destructive-foreground: #ffffff;
+    --border: #e4e4dc;
+    --input: #e4e4dc;
+    --ring: #183c32;
+    --radius: 0.875rem; /* 14px */
+}
+
+.dark {
+    /* KOPDIG Dark Mode adaptation */
+    --background: #111413;
+    --foreground: #f7f6f1;
+    --card: #181d1b;
+    --card-foreground: #f7f6f1;
+    --popover: #181d1b;
+    --popover-foreground: #f7f6f1;
+    --primary: #2e795a;
+    --primary-foreground: #ffffff;
+    --secondary: #242d2a;
+    --secondary-foreground: #e7efeb;
+    --muted: #242d2a;
+    --muted-foreground: #9ea5a0;
+    --accent: #d5a84c;
+    --accent-foreground: #171a18;
+    --destructive: #b34b4b;
+    --destructive-foreground: #ffffff;
+    --border: #2c3531;
+    --input: #2c3531;
+    --ring: #2e795a;
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background font-sans text-foreground;
+        font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--font-heading);
+        letter-spacing: -0.015em;
+    }
+}
+
+@keyframes authFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-reveal {
+    animation: authFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .auth-reveal {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
