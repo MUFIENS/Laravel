@@ -84,21 +84,33 @@ class PickupCredentialService
      * Parse scanned input from the cooperative interface.
      * Handles both raw token string and JSON QR payload.
      *
-     * @return array{order_number: string|null, credential: string}
+     * @return array{order_number: string|null, credential: string, error?: string, message?: string}
      */
     public function parseScannedInput(string $input): array
     {
         $input = trim($input);
 
         // Attempt JSON decode
-        if (str_starts_with($input, '{') && str_ends_with($input, '}')) {
+        if (str_starts_with($input, '{') || str_ends_with($input, '}')) {
             try {
                 $decoded = json_decode($input, true, 512, JSON_THROW_ON_ERROR);
-                if (is_array($decoded) && ! empty($decoded['credential'])) {
-                    return [
-                        'order_number' => isset($decoded['order_number']) ? (string) $decoded['order_number'] : null,
-                        'credential' => (string) $decoded['credential'],
-                    ];
+                if (is_array($decoded)) {
+                    // Check if a Payment QR was scanned instead of Pickup QR
+                    if (isset($decoded['t']) || (isset($decoded['v']) && ! isset($decoded['credential']))) {
+                        return [
+                            'order_number' => isset($decoded['o']) ? (string) $decoded['o'] : null,
+                            'credential' => '',
+                            'error' => 'payment_qr_detected',
+                            'message' => 'QR yang dipindai adalah QR Pembayaran Kasir, bukan QR Pengambilan Pesanan.',
+                        ];
+                    }
+
+                    if (! empty($decoded['credential'])) {
+                        return [
+                            'order_number' => isset($decoded['order_number']) ? (string) $decoded['order_number'] : null,
+                            'credential' => (string) $decoded['credential'],
+                        ];
+                    }
                 }
             } catch (JsonException) {
                 // Fall back to treating as raw string

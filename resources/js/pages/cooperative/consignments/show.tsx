@@ -140,14 +140,17 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                 <div className="flex items-center justify-between">
                     <Link
                         href="/cooperative/consignments"
-                        className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] px-3.5 py-2 text-xs font-semibold text-[var(--color-ink)] shadow-xs transition-colors hover:bg-[var(--color-surface-subtle)]"
+                        className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-[#262626] bg-[#161616] px-3.5 py-2 text-xs font-semibold text-[#F5F2EB] shadow-xs transition-colors hover:bg-[#202020]"
                     >
-                        <ArrowLeft className="size-4" aria-hidden="true" />
+                        <ArrowLeft
+                            className="size-4 text-[#737373]"
+                            aria-hidden="true"
+                        />
                         <span>Kembali ke Daftar Titipan</span>
                     </Link>
 
                     <div className="flex items-center gap-2">
-                        <span className="text-xs text-[var(--color-ink-muted)]">
+                        <span className="text-xs text-[#737373]">
                             Status Pengajuan:
                         </span>
                         <StatusBadge variant={badge.variant}>
@@ -159,40 +162,48 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                 {/* Flash Messages (Feedback banner) */}
                 {flash?.success && (
                     <div
-                        className="flex items-start gap-3 rounded-2xl border border-emerald-200 bg-emerald-50/80 p-4 text-xs text-emerald-900 shadow-xs"
+                        className="flex items-start gap-3 rounded-2xl border border-emerald-500/20 bg-emerald-950/40 p-4 text-xs text-emerald-400 shadow-xs"
                         role="alert"
                     >
                         <CheckCircle2
-                            className="mt-0.5 size-5 shrink-0 text-emerald-600"
+                            className="mt-0.5 size-5 shrink-0 text-emerald-400"
                             aria-hidden="true"
                         />
                         <div>
-                            <p className="font-bold">Aksi Berhasil</p>
-                            <p className="mt-0.5">{flash.success}</p>
+                            <p className="font-bold text-emerald-300">
+                                Aksi Berhasil
+                            </p>
+                            <p className="mt-0.5 text-emerald-400/90">
+                                {flash.success}
+                            </p>
                         </div>
                     </div>
                 )}
                 {flash?.error && (
                     <div
-                        className="flex items-start gap-3 rounded-2xl border border-rose-200 bg-rose-50/80 p-4 text-xs text-rose-900 shadow-xs"
+                        className="flex items-start gap-3 rounded-2xl border border-rose-500/20 bg-rose-950/40 p-4 text-xs text-rose-400 shadow-xs"
                         role="alert"
                     >
                         <AlertTriangle
-                            className="mt-0.5 size-5 shrink-0 text-rose-600"
+                            className="mt-0.5 size-5 shrink-0 text-rose-400"
                             aria-hidden="true"
                         />
                         <div>
-                            <p className="font-bold">Terjadi Kesalahan</p>
-                            <p className="mt-0.5">{flash.error}</p>
+                            <p className="font-bold text-rose-300">
+                                Terjadi Kesalahan
+                            </p>
+                            <p className="mt-0.5 text-rose-400/90">
+                                {flash.error}
+                            </p>
                         </div>
                     </div>
                 )}
 
                 {/* Mandatory Product Ownership Display (docs & rule compliance) */}
-                <div className="rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] p-5 shadow-xs">
-                    <div className="flex items-center gap-2 text-xs font-bold tracking-wider text-[var(--color-ink-muted)] uppercase">
+                <div className="rounded-2xl border border-[#262626] bg-[#121212] p-5 shadow-xs">
+                    <div className="flex items-center gap-2 text-xs font-bold tracking-wider text-[#737373] uppercase">
                         <ShieldCheck
-                            className="size-4 text-[var(--color-primary)]"
+                            className="size-4 text-[#E34A27]"
                             aria-hidden="true"
                         />
                         <span>
@@ -201,13 +212,13 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                     </div>
 
                     <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                        <div className="rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-surface-subtle)]/60 p-3.5">
-                            <span className="text-[10px] font-bold tracking-wider text-[var(--color-ink-muted)] uppercase">
+                        <div className="rounded-xl border border-[#262626] bg-[#161616] p-3.5">
+                            <span className="text-[10px] font-bold tracking-wider text-[#737373] uppercase">
                                 1. Pemilik Sah Produk
                             </span>
-                            <div className="font-display mt-1 flex items-center gap-2 text-sm font-bold text-[var(--color-ink)]">
+                            <div className="font-display mt-1 flex items-center gap-2 text-sm font-bold text-[#F5F2EB]">
                                 <User
-                                    className="size-4 text-[var(--color-primary)]"
+                                    className="size-4 text-[#E34A27]"
                                     aria-hidden="true"
                                 />
                                 <span className="truncate">
@@ -215,44 +226,44 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                         'Siswa Pengusul'}
                                 </span>
                             </div>
-                            <p className="mt-1 text-[11px] text-[var(--color-ink-muted)]">
+                            <p className="mt-1 text-[11px] text-[#737373]">
                                 Tetap menjadi pemilik sah aset (
-                                <code className="font-mono text-[10px]">
+                                <code className="font-mono text-[10px] text-[#F5F2EB]">
                                     products.owner_id
                                 </code>
                                 ).
                             </p>
                         </div>
 
-                        <div className="rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-surface-subtle)]/60 p-3.5">
-                            <span className="text-[10px] font-bold tracking-wider text-[var(--color-ink-muted)] uppercase">
+                        <div className="rounded-xl border border-[#262626] bg-[#161616] p-3.5">
+                            <span className="text-[10px] font-bold tracking-wider text-[#737373] uppercase">
                                 2. Operator & Kurator
                             </span>
-                            <div className="font-display mt-1 flex items-center gap-2 text-sm font-bold text-[var(--color-ink)]">
+                            <div className="font-display mt-1 flex items-center gap-2 text-sm font-bold text-[#F5F2EB]">
                                 <Store
-                                    className="size-4 text-[var(--color-primary)]"
+                                    className="size-4 text-[#E34A27]"
                                     aria-hidden="true"
                                 />
                                 <span>Koperasi Siswa (KOPDIG)</span>
                             </div>
-                            <p className="mt-1 text-[11px] text-[var(--color-ink-muted)]">
+                            <p className="mt-1 text-[11px] text-[#737373]">
                                 Kurasi mutu, penetapan margin koperasi, dan
                                 etalase fisik.
                             </p>
                         </div>
 
-                        <div className="rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-surface-subtle)]/60 p-3.5">
-                            <span className="text-[10px] font-bold tracking-wider text-[var(--color-ink-muted)] uppercase">
+                        <div className="rounded-xl border border-[#262626] bg-[#161616] p-3.5">
+                            <span className="text-[10px] font-bold tracking-wider text-[#737373] uppercase">
                                 3. Klasifikasi Sumber
                             </span>
-                            <div className="font-display mt-1 flex items-center gap-2 text-sm font-bold text-[var(--color-primary)]">
+                            <div className="font-display mt-1 flex items-center gap-2 text-sm font-bold text-[#E34A27]">
                                 <Tag
-                                    className="size-4 text-[var(--color-primary)]"
+                                    className="size-4 text-[#E34A27]"
                                     aria-hidden="true"
                                 />
                                 <span>Karya Titipan Siswa</span>
                             </div>
-                            <p className="mt-1 text-[11px] text-[var(--color-ink-muted)]">
+                            <p className="mt-1 text-[11px] text-[#737373]">
                                 Model konsinyasi resmi sekolah berbasis bagi
                                 hasil.
                             </p>
@@ -265,22 +276,22 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                     {/* Left 2 Cols: Submission & Product Inspection Details */}
                     <div className="space-y-6 lg:col-span-2">
                         {/* Student Author Card (Privacy-Compliant: No email or sensitive data) */}
-                        <div className="rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] p-5 shadow-xs">
+                        <div className="rounded-2xl border border-[#262626] bg-[#121212] p-5 shadow-xs">
                             <div className="flex items-center gap-3">
-                                <div className="flex size-11 items-center justify-center rounded-xl bg-[var(--color-primary-soft)] text-[var(--color-primary)]">
+                                <div className="flex size-11 items-center justify-center rounded-xl bg-[#E34A27]/15 text-[#E34A27]">
                                     <UserCheck
                                         className="size-5"
                                         aria-hidden="true"
                                     />
                                 </div>
                                 <div className="min-w-0 flex-1">
-                                    <span className="text-[10px] font-bold tracking-wider text-[var(--color-ink-muted)] uppercase">
+                                    <span className="text-[10px] font-bold tracking-wider text-[#737373] uppercase">
                                         Data Siswa Pengusul
                                     </span>
-                                    <h3 className="font-display truncate text-sm font-bold text-[var(--color-ink)]">
+                                    <h3 className="font-display truncate text-sm font-bold text-[#F5F2EB]">
                                         {submission.student?.name}
                                     </h3>
-                                    <p className="text-xs text-[var(--color-ink-muted)]">
+                                    <p className="text-xs text-[#737373]">
                                         {submission.student?.student_identifier
                                             ? `NIS / No. Pelajar: ${submission.student.student_identifier}`
                                             : 'Siswa Terdaftar KOPDIG'}
@@ -293,11 +304,11 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                         </div>
 
                         {/* Product Detail & Spec Card */}
-                        <div className="rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] p-5 shadow-xs sm:p-6">
-                            <div className="flex flex-col gap-4 border-b border-[var(--color-border-subtle)] pb-4 sm:flex-row sm:items-start sm:justify-between">
+                        <div className="rounded-2xl border border-[#262626] bg-[#121212] p-5 shadow-xs sm:p-6">
+                            <div className="flex flex-col gap-4 border-b border-[#262626] pb-4 sm:flex-row sm:items-start sm:justify-between">
                                 <div className="flex gap-4">
                                     {/* Image with fallback */}
-                                    <div className="size-20 shrink-0 overflow-hidden rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-surface-subtle)]">
+                                    <div className="size-20 shrink-0 overflow-hidden rounded-xl border border-[#262626] bg-[#181818]">
                                         {submission.image_path ? (
                                             <img
                                                 src={submission.image_path}
@@ -308,26 +319,10 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                                     (
                                                         e.currentTarget as HTMLElement
                                                     ).style.display = 'none';
-                                                    if (
-                                                        e.currentTarget
-                                                            .parentElement
-                                                    ) {
-                                                        const placeholder =
-                                                            document.createElement(
-                                                                'div',
-                                                            );
-                                                        placeholder.className =
-                                                            'size-full flex items-center justify-center text-[var(--color-ink-muted)]';
-                                                        placeholder.innerHTML =
-                                                            '<svg class="size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>';
-                                                        e.currentTarget.parentElement.appendChild(
-                                                            placeholder,
-                                                        );
-                                                    }
                                                 }}
                                             />
                                         ) : (
-                                            <div className="flex size-full items-center justify-center text-[var(--color-ink-muted)]">
+                                            <div className="flex size-full items-center justify-center text-[#737373]">
                                                 <Package
                                                     className="size-8"
                                                     aria-hidden="true"
@@ -338,18 +333,18 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
 
                                     <div>
                                         <div className="flex items-center gap-2">
-                                            <span className="rounded-lg bg-[var(--color-surface-subtle)] px-2 py-0.5 text-[10px] font-bold tracking-wide text-[var(--color-ink-muted)] uppercase">
+                                            <span className="rounded-lg border border-[#262626] bg-[#161616] px-2 py-0.5 text-[10px] font-bold tracking-wide text-[#A3A3A3] uppercase">
                                                 {submission.category?.name ??
                                                     'Umum'}
                                             </span>
-                                            <span className="text-[10px] text-[var(--color-ink-muted)]">
+                                            <span className="text-[10px] text-[#737373]">
                                                 ID #{submission.id}
                                             </span>
                                         </div>
-                                        <h2 className="font-display mt-1 text-lg font-bold text-[var(--color-ink)]">
+                                        <h2 className="font-display mt-1 text-lg font-bold text-[#F5F2EB]">
                                             {submission.name}
                                         </h2>
-                                        <p className="mt-0.5 text-xs text-[var(--color-ink-muted)]">
+                                        <p className="mt-0.5 text-xs text-[#737373]">
                                             Kategori:{' '}
                                             {submission.category?.name ??
                                                 'Umum'}
@@ -366,30 +361,30 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
 
                             {/* Base Economics Breakdown */}
                             <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                                <div className="rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-surface-subtle)]/70 p-3.5">
-                                    <span className="text-[10px] font-bold tracking-wider text-[var(--color-ink-muted)] uppercase">
+                                <div className="rounded-xl border border-[#262626] bg-[#161616] p-3.5">
+                                    <span className="text-[10px] font-bold tracking-wider text-[#737373] uppercase">
                                         Harga Pokok / Modal Siswa
                                     </span>
-                                    <div className="mt-1 font-mono">
+                                    <div className="mt-1 font-mono text-[#A3A3A3]">
                                         <PriceDisplay
                                             amount={submission.base_price}
                                             size="md"
                                         />
                                     </div>
-                                    <p className="mt-1 text-[11px] text-[var(--color-ink-muted)]">
+                                    <p className="mt-1 text-[11px] text-[#737373]">
                                         Nominal yang diserahkan utuh kepada
                                         siswa penyetor per unit terjual.
                                     </p>
                                 </div>
 
-                                <div className="rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-surface-subtle)]/70 p-3.5">
-                                    <span className="text-[10px] font-bold tracking-wider text-[var(--color-ink-muted)] uppercase">
+                                <div className="rounded-xl border border-[#262626] bg-[#161616] p-3.5">
+                                    <span className="text-[10px] font-bold tracking-wider text-[#737373] uppercase">
                                         Rencana Unit Stok Awal
                                     </span>
-                                    <div className="font-display mt-1 text-lg font-bold text-[var(--color-ink)]">
+                                    <div className="font-display mt-1 text-lg font-bold text-[#F5F2EB]">
                                         {submission.proposed_stock} unit
                                     </div>
-                                    <p className="mt-1 text-[11px] text-[var(--color-ink-muted)]">
+                                    <p className="mt-1 text-[11px] text-[#737373]">
                                         Akan langsung dicatat sebagai mutasi
                                         restock saat disetujui.
                                     </p>
@@ -398,10 +393,10 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
 
                             {/* Description and composition */}
                             <div className="mt-5">
-                                <h4 className="text-xs font-bold text-[var(--color-ink)]">
+                                <h4 className="text-xs font-bold text-[#F5F2EB]">
                                     Deskripsi & Spesifikasi Produk
                                 </h4>
-                                <div className="mt-1.5 rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-surface-subtle)]/30 p-3.5 text-xs leading-relaxed whitespace-pre-line text-[var(--color-ink)]">
+                                <div className="mt-1.5 rounded-xl border border-[#262626] bg-[#161616] p-3.5 text-xs leading-relaxed whitespace-pre-line text-[#A3A3A3]">
                                     {submission.description ||
                                         'Tidak ada deskripsi tambahan dari siswa.'}
                                 </div>
@@ -410,10 +405,10 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
 
                         {/* Finalized Approved Details Display if already approved */}
                         {submission.status === 'approved' && (
-                            <div className="rounded-2xl border border-emerald-200 bg-emerald-50/50 p-5 shadow-xs">
-                                <div className="flex items-center gap-2 text-emerald-800">
+                            <div className="rounded-2xl border border-emerald-500/20 bg-emerald-950/20 p-5 shadow-xs">
+                                <div className="flex items-center gap-2 text-emerald-400">
                                     <CheckCircle2
-                                        className="size-5 text-emerald-600"
+                                        className="size-5 text-emerald-400"
                                         aria-hidden="true"
                                     />
                                     <h3 className="font-display text-sm font-bold">
@@ -421,7 +416,7 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                         ke Katalog
                                     </h3>
                                 </div>
-                                <p className="mt-1 text-xs leading-relaxed text-emerald-900">
+                                <p className="mt-1 text-xs leading-relaxed text-emerald-400/90">
                                     Produk ini resmi terdaftar di marketplace
                                     KOPDIG dengan status aktif. Mutasi
                                     inventaris awal telah dicatat otomatis pada
@@ -429,22 +424,22 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                 </p>
 
                                 <div className="mt-4 grid grid-cols-2 gap-3 text-xs sm:grid-cols-4">
-                                    <div className="rounded-xl border border-emerald-100 bg-white p-3">
-                                        <span className="text-[10px] text-[var(--color-ink-muted)]">
+                                    <div className="rounded-xl border border-[#262626] bg-[#121212] p-3">
+                                        <span className="text-[10px] text-[#737373]">
                                             Modal Siswa
                                         </span>
-                                        <div className="mt-0.5 font-bold text-[var(--color-ink)]">
+                                        <div className="mt-0.5 font-bold text-[#F5F2EB]">
                                             <PriceDisplay
                                                 amount={submission.base_price}
                                                 size="sm"
                                             />
                                         </div>
                                     </div>
-                                    <div className="rounded-xl border border-emerald-100 bg-white p-3">
-                                        <span className="text-[10px] text-[var(--color-ink-muted)]">
+                                    <div className="rounded-xl border border-[#262626] bg-[#121212] p-3">
+                                        <span className="text-[10px] text-[#737373]">
                                             Margin Koperasi
                                         </span>
-                                        <div className="mt-0.5 font-bold text-[var(--color-primary)]">
+                                        <div className="mt-0.5 font-bold text-[#E34A27]">
                                             <PriceDisplay
                                                 amount={
                                                     submission.cooperative_margin ??
@@ -454,11 +449,11 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                             />
                                         </div>
                                     </div>
-                                    <div className="rounded-xl border border-emerald-100 bg-white p-3">
-                                        <span className="text-[10px] text-[var(--color-ink-muted)]">
+                                    <div className="rounded-xl border border-[#262626] bg-[#121212] p-3">
+                                        <span className="text-[10px] text-[#737373]">
                                             Harga Jual Resmi
                                         </span>
-                                        <div className="mt-0.5 font-bold text-emerald-700">
+                                        <div className="mt-0.5 font-bold text-emerald-400">
                                             <PriceDisplay
                                                 amount={
                                                     submission.proposed_selling_price ??
@@ -470,20 +465,20 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                             />
                                         </div>
                                     </div>
-                                    <div className="rounded-xl border border-emerald-100 bg-white p-3">
-                                        <span className="text-[10px] text-[var(--color-ink-muted)]">
+                                    <div className="rounded-xl border border-[#262626] bg-[#121212] p-3">
+                                        <span className="text-[10px] text-[#737373]">
                                             Stok Masuk
                                         </span>
-                                        <div className="mt-0.5 font-bold text-[var(--color-ink)]">
+                                        <div className="mt-0.5 font-bold text-[#F5F2EB]">
                                             {submission.proposed_stock} unit
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="mt-4 flex flex-col gap-2 border-t border-emerald-200/60 pt-3 text-[11px] text-emerald-900 sm:flex-row sm:items-center sm:justify-between">
+                                <div className="mt-4 flex flex-col gap-2 border-t border-emerald-500/20 pt-3 text-[11px] text-emerald-400/90 sm:flex-row sm:items-center sm:justify-between">
                                     <div>
                                         Ditinjau oleh:{' '}
-                                        <span className="font-semibold">
+                                        <span className="font-semibold text-[#F5F2EB]">
                                             {submission.reviewer?.name ??
                                                 'Operator Koperasi'}
                                         </span>
@@ -493,7 +488,7 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                     {submission.product?.slug && (
                                         <Link
                                             href={`/products/${submission.product.slug}`}
-                                            className="inline-flex min-h-[44px] items-center gap-1.5 font-semibold text-[var(--color-primary)] hover:underline"
+                                            className="inline-flex min-h-[44px] items-center gap-1.5 font-semibold text-[#E34A27] hover:underline"
                                         >
                                             <span>
                                                 Lihat di Katalog Marketplace
@@ -510,35 +505,35 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
 
                         {/* Finalized Rejected Details Display if already rejected */}
                         {submission.status === 'rejected' && (
-                            <div className="rounded-2xl border border-rose-200 bg-rose-50/60 p-5 shadow-xs">
-                                <div className="flex items-center gap-2 text-rose-800">
+                            <div className="rounded-2xl border border-rose-500/20 bg-rose-950/20 p-5 shadow-xs">
+                                <div className="flex items-center gap-2 text-rose-400">
                                     <XCircle
-                                        className="size-5 text-rose-600"
+                                        className="size-5 text-rose-400"
                                         aria-hidden="true"
                                     />
                                     <h3 className="font-display text-sm font-bold">
                                         Pengajuan Telah Ditolak
                                     </h3>
                                 </div>
-                                <p className="mt-1 text-xs text-rose-900">
+                                <p className="mt-1 text-xs text-rose-400/90">
                                     Pengajuan ini ditolak dan tidak diterbitkan
                                     ke katalog. Catatan feedback telah
                                     dikirimkan ke siswa untuk bahan perbaikan.
                                 </p>
 
-                                <div className="mt-3 rounded-xl border border-rose-200 bg-white p-3.5 text-xs text-rose-950">
-                                    <span className="block text-[10px] font-bold tracking-wider text-rose-800 uppercase">
+                                <div className="mt-3 rounded-xl border border-rose-500/20 bg-[#121212] p-3.5 text-xs text-rose-300">
+                                    <span className="block text-[10px] font-bold tracking-wider text-rose-400 uppercase">
                                         Alasan / Catatan Evaluasi:
                                     </span>
-                                    <p className="mt-1 leading-relaxed whitespace-pre-line">
+                                    <p className="mt-1 leading-relaxed whitespace-pre-line text-[#F5F2EB]">
                                         {submission.rejection_reason ||
                                             'Tidak ada catatan spesifik.'}
                                     </p>
                                 </div>
 
-                                <div className="mt-3 text-[11px] text-rose-900">
+                                <div className="mt-3 text-[11px] text-rose-400/90">
                                     Ditinjau oleh:{' '}
-                                    <span className="font-semibold">
+                                    <span className="font-semibold text-[#F5F2EB]">
                                         {submission.reviewer?.name ??
                                             'Operator Koperasi'}
                                     </span>
@@ -552,16 +547,16 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                     {/* Right 1 Col: Operational Action Panel (Approve with Margin / Reject) */}
                     <div className="space-y-6">
                         {!isReviewed ? (
-                            <div className="rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] p-5 shadow-xs">
+                            <div className="rounded-2xl border border-[#262626] bg-[#121212] p-5 shadow-xs">
                                 {/* Action Navigation Tabs */}
-                                <div className="grid grid-cols-2 gap-1 rounded-xl bg-[var(--color-surface-subtle)] p-1 text-xs font-semibold">
+                                <div className="grid grid-cols-2 gap-1 rounded-xl border border-[#262626] bg-[#161616] p-1 text-xs font-semibold">
                                     <button
                                         type="button"
                                         onClick={() => setActionTab('approve')}
                                         className={`inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-lg transition-all ${
                                             actionTab === 'approve'
-                                                ? 'bg-white text-[var(--color-primary)] shadow-xs'
-                                                : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
+                                                ? 'border border-emerald-500/30 bg-[#1E1E1E] text-emerald-400 shadow-xs'
+                                                : 'text-[#737373] hover:text-[#F5F2EB]'
                                         }`}
                                     >
                                         <CheckCircle2
@@ -575,8 +570,8 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                         onClick={() => setActionTab('reject')}
                                         className={`inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-lg transition-all ${
                                             actionTab === 'reject'
-                                                ? 'bg-white text-rose-700 shadow-xs'
-                                                : 'text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]'
+                                                ? 'border border-rose-500/30 bg-[#1E1E1E] text-rose-400 shadow-xs'
+                                                : 'text-[#737373] hover:text-[#F5F2EB]'
                                         }`}
                                     >
                                         <XCircle
@@ -592,14 +587,14 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                     <div className="mt-5 space-y-4">
                                         <div>
                                             <div className="flex items-center gap-1.5">
-                                                <h3 className="font-display text-sm font-bold text-[var(--color-ink)]">
+                                                <h3 className="font-display text-sm font-bold text-[#F5F2EB]">
                                                     Tetapkan Margin Koperasi
                                                 </h3>
-                                                <span className="rounded-full bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold text-emerald-800">
+                                                <span className="rounded-full border border-emerald-500/20 bg-emerald-950/40 px-1.5 py-0.5 text-[10px] font-bold text-emerald-400">
                                                     Wajib
                                                 </span>
                                             </div>
-                                            <p className="mt-1 text-xs leading-relaxed text-[var(--color-ink-muted)]">
+                                            <p className="mt-1 text-xs leading-relaxed text-[#737373]">
                                                 Tentukan margin tetap (Rupiah)
                                                 yang ditambahkan ke harga modal
                                                 siswa untuk operasional
@@ -615,12 +610,12 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                             <div>
                                                 <label
                                                     htmlFor="cooperative_margin"
-                                                    className="block text-xs font-semibold text-[var(--color-ink)]"
+                                                    className="block text-xs font-semibold text-[#F5F2EB]"
                                                 >
                                                     Margin Koperasi (Rp)
                                                 </label>
                                                 <div className="relative mt-1">
-                                                    <span className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-xs font-semibold text-[var(--color-ink-muted)]">
+                                                    <span className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-xs font-semibold text-[#737373]">
                                                         Rp
                                                     </span>
                                                     <input
@@ -636,12 +631,12 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                                             )
                                                         }
                                                         placeholder="Contoh: 1000"
-                                                        className="min-h-[44px] w-full rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-surface-subtle)]/60 pr-3 pl-9 font-mono text-xs font-medium text-[var(--color-ink)] placeholder:text-[var(--color-ink-muted)] focus:border-[var(--color-primary)] focus:bg-[var(--color-surface)] focus:ring-1 focus:ring-[var(--color-primary)] focus:outline-hidden"
+                                                        className="min-h-[44px] w-full rounded-xl border border-[#262626] bg-[#161616] pr-3 pl-9 font-mono text-xs font-medium text-[#F5F2EB] placeholder:text-[#525252] focus:border-[#E34A27] focus:bg-[#1A1A1A] focus:ring-1 focus:ring-[#E34A27] focus:outline-hidden"
                                                     />
                                                 </div>
                                                 {approveForm.errors
                                                     .cooperative_margin && (
-                                                    <p className="mt-1 text-xs text-rose-600">
+                                                    <p className="mt-1 text-xs text-rose-400">
                                                         {
                                                             approveForm.errors
                                                                 .cooperative_margin
@@ -669,8 +664,8 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                                             className={`min-h-[44px] rounded-lg px-2.5 py-1 text-[11px] font-semibold transition-colors ${
                                                                 marginInput ===
                                                                 preset
-                                                                    ? 'bg-[var(--color-primary)] text-white'
-                                                                    : 'border border-[var(--color-border-subtle)] bg-[var(--color-surface-subtle)] text-[var(--color-ink)] hover:bg-[var(--color-surface)]'
+                                                                    ? 'bg-[#E34A27] text-white shadow-xs'
+                                                                    : 'border border-[#262626] bg-[#161616] text-[#A3A3A3] hover:bg-[#202020] hover:text-[#F5F2EB]'
                                                             }`}
                                                         >
                                                             +Rp{' '}
@@ -686,16 +681,16 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                             </div>
 
                                             {/* Formula Visualization Box */}
-                                            <div className="rounded-xl border border-[var(--color-primary)]/20 bg-[var(--color-primary-soft)]/60 p-3.5 text-xs">
-                                                <span className="text-[10px] font-bold tracking-wider text-[var(--color-primary)] uppercase">
+                                            <div className="rounded-xl border border-[#E34A27]/25 bg-[#E34A27]/10 p-3.5 text-xs">
+                                                <span className="text-[10px] font-bold tracking-wider text-[#E34A27] uppercase">
                                                     Kalkulasi Harga Jual KOPDIG
                                                 </span>
                                                 <div className="mt-2 space-y-1.5">
-                                                    <div className="flex items-center justify-between text-[var(--color-ink-muted)]">
+                                                    <div className="flex items-center justify-between text-[#A3A3A3]">
                                                         <span>
                                                             Harga Dasar Siswa:
                                                         </span>
-                                                        <span className="font-mono">
+                                                        <span className="font-mono text-[#F5F2EB]">
                                                             <PriceDisplay
                                                                 amount={
                                                                     submission.base_price
@@ -704,11 +699,11 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                                             />
                                                         </span>
                                                     </div>
-                                                    <div className="flex items-center justify-between text-[var(--color-ink-muted)]">
+                                                    <div className="flex items-center justify-between text-[#A3A3A3]">
                                                         <span>
                                                             Margin Koperasi (+):
                                                         </span>
-                                                        <span className="font-mono font-semibold text-[var(--color-primary)]">
+                                                        <span className="font-mono font-semibold text-[#E34A27]">
                                                             <PriceDisplay
                                                                 amount={
                                                                     parsedMargin
@@ -717,7 +712,7 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                                             />
                                                         </span>
                                                     </div>
-                                                    <div className="flex items-center justify-between border-t border-[var(--color-primary)]/20 pt-2 text-sm font-bold text-[var(--color-primary)]">
+                                                    <div className="flex items-center justify-between border-t border-[#E34A27]/20 pt-2 text-sm font-bold text-[#E34A27]">
                                                         <span>
                                                             Harga Jual Katalog:
                                                         </span>
@@ -734,10 +729,10 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                             </div>
 
                                             {/* Pre-Approval Preview Card (Required by specification) */}
-                                            <div className="space-y-1.5 rounded-xl border border-[var(--color-border-subtle)] bg-[var(--color-surface-subtle)] p-3 text-[11px]">
-                                                <div className="flex items-center gap-1.5 font-bold text-[var(--color-ink)]">
+                                            <div className="space-y-1.5 rounded-xl border border-[#262626] bg-[#161616] p-3 text-[11px]">
+                                                <div className="flex items-center gap-1.5 font-bold text-[#F5F2EB]">
                                                     <Info
-                                                        className="size-3.5 text-[var(--color-primary)]"
+                                                        className="size-3.5 text-[#E34A27]"
                                                         aria-hidden="true"
                                                     />
                                                     <span>
@@ -745,14 +740,17 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                                         Produk:
                                                     </span>
                                                 </div>
-                                                <div className="space-y-1 text-[var(--color-ink-muted)]">
+                                                <div className="space-y-1 text-[#A3A3A3]">
                                                     <p>
-                                                        • <strong>Nama:</strong>{' '}
+                                                        •{' '}
+                                                        <strong className="text-[#F5F2EB]">
+                                                            Nama:
+                                                        </strong>{' '}
                                                         {submission.name}
                                                     </p>
                                                     <p>
                                                         •{' '}
-                                                        <strong>
+                                                        <strong className="text-[#F5F2EB]">
                                                             Pemilik Aset:
                                                         </strong>{' '}
                                                         {
@@ -763,7 +761,7 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                                     </p>
                                                     <p>
                                                         •{' '}
-                                                        <strong>
+                                                        <strong className="text-[#F5F2EB]">
                                                             Harga Jual:
                                                         </strong>{' '}
                                                         Rp{' '}
@@ -773,7 +771,7 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                                     </p>
                                                     <p>
                                                         •{' '}
-                                                        <strong>
+                                                        <strong className="text-[#F5F2EB]">
                                                             Stok Awal:
                                                         </strong>{' '}
                                                         {
@@ -783,7 +781,9 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                                     </p>
                                                     <p>
                                                         •{' '}
-                                                        <strong>Status:</strong>{' '}
+                                                        <strong className="text-[#F5F2EB]">
+                                                            Status:
+                                                        </strong>{' '}
                                                         Aktif di Etalase KOPDIG
                                                     </p>
                                                 </div>
@@ -795,7 +795,7 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                                 disabled={
                                                     approveForm.processing
                                                 }
-                                                className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-primary)] px-4 py-3 text-xs font-semibold text-white shadow-xs transition-all hover:bg-[var(--color-primary-hover)] active:scale-[0.98] disabled:opacity-50"
+                                                className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl bg-[#E34A27] px-4 py-3 text-xs font-semibold text-white shadow-xs transition-all hover:bg-[#D03E1C] active:scale-[0.98] disabled:opacity-50"
                                             >
                                                 <Check
                                                     className="size-4"
@@ -816,14 +816,14 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                     <div className="mt-5 space-y-4">
                                         <div>
                                             <div className="flex items-center gap-1.5">
-                                                <h3 className="font-display text-sm font-bold text-rose-900">
+                                                <h3 className="font-display text-sm font-bold text-rose-400">
                                                     Tolak Pengajuan Titipan
                                                 </h3>
-                                                <span className="rounded-full bg-rose-100 px-1.5 py-0.5 text-[10px] font-bold text-rose-800">
+                                                <span className="rounded-full border border-rose-500/20 bg-rose-950/40 px-1.5 py-0.5 text-[10px] font-bold text-rose-400">
                                                     Wajib Alasan
                                                 </span>
                                             </div>
-                                            <p className="mt-1 text-xs leading-relaxed text-[var(--color-ink-muted)]">
+                                            <p className="mt-1 text-xs leading-relaxed text-[#737373]">
                                                 Sampaikan umpan balik yang
                                                 konstruktif dan jelas agar siswa
                                                 memahami alasan penolakan dan
@@ -839,15 +839,15 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                                 <div className="flex items-center justify-between">
                                                     <label
                                                         htmlFor="rejection_reason"
-                                                        className="block text-xs font-semibold text-[var(--color-ink)]"
+                                                        className="block text-xs font-semibold text-[#F5F2EB]"
                                                     >
                                                         Catatan / Alasan
                                                         Penolakan{' '}
-                                                        <span className="text-rose-600">
+                                                        <span className="text-rose-400">
                                                             *
                                                         </span>
                                                     </label>
-                                                    <span className="text-[10px] text-[var(--color-ink-muted)]">
+                                                    <span className="text-[10px] text-[#737373]">
                                                         Min. 5 karakter
                                                     </span>
                                                 </div>
@@ -867,11 +867,11 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                                         )
                                                     }
                                                     placeholder="Jelaskan alasan penolakan secara spesifik, misalnya kemasan belum kedap udara atau informasi kadaluwarsa belum tertera..."
-                                                    className="mt-1 w-full rounded-xl border border-rose-200 bg-rose-50/30 p-3 text-xs text-[var(--color-ink)] placeholder:text-[var(--color-ink-muted)] focus:border-rose-400 focus:bg-[var(--color-surface)] focus:ring-1 focus:ring-rose-400 focus:outline-hidden"
+                                                    className="mt-1 w-full rounded-xl border border-rose-500/20 bg-rose-950/20 p-3 text-xs text-[#F5F2EB] placeholder:text-[#737373] focus:border-rose-500 focus:bg-[#161616] focus:ring-1 focus:ring-rose-500 focus:outline-hidden"
                                                 />
                                                 {rejectForm.errors
                                                     .rejection_reason && (
-                                                    <p className="mt-1 text-xs text-rose-600">
+                                                    <p className="mt-1 text-xs text-rose-400">
                                                         {
                                                             rejectForm.errors
                                                                 .rejection_reason
@@ -882,7 +882,7 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
 
                                             {/* Actionable Feedback Suggestion Chips */}
                                             <div>
-                                                <span className="block text-[10px] font-semibold tracking-wide text-[var(--color-ink-muted)] uppercase">
+                                                <span className="block text-[10px] font-semibold tracking-wide text-[#737373] uppercase">
                                                     Template Catatan Cepat (Klik
                                                     untuk menyisipkan):
                                                 </span>
@@ -897,7 +897,7 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                                                         suggestion,
                                                                     )
                                                                 }
-                                                                className="min-h-[44px] rounded-lg border border-[var(--color-border-subtle)] bg-[var(--color-surface-subtle)]/70 px-2.5 py-2 text-left text-[11px] text-[var(--color-ink)] transition-colors hover:border-rose-300 hover:bg-rose-50/50"
+                                                                className="min-h-[44px] rounded-lg border border-[#262626] bg-[#161616] px-2.5 py-2 text-left text-[11px] text-[#A3A3A3] transition-colors hover:border-rose-500/40 hover:bg-rose-950/20 hover:text-rose-300"
                                                             >
                                                                 + {suggestion}
                                                             </button>
@@ -913,7 +913,7 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                                     rejectForm.processing ||
                                                     !rejectForm.data.rejection_reason.trim()
                                                 }
-                                                className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl border border-rose-300 bg-rose-50 px-4 py-3 text-xs font-semibold text-rose-700 shadow-xs transition-all hover:bg-rose-100 active:scale-[0.98] disabled:opacity-50"
+                                                className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl border border-rose-500/30 bg-rose-950/40 px-4 py-3 text-xs font-semibold text-rose-400 shadow-xs transition-all hover:bg-rose-900/60 hover:text-white active:scale-[0.98] disabled:opacity-50"
                                             >
                                                 <X
                                                     className="size-4"
@@ -931,17 +931,17 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                             </div>
                         ) : (
                             /* State Locking Card for already finalized review */
-                            <div className="space-y-3 rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] p-5 text-center shadow-xs">
-                                <div className="mx-auto flex size-12 items-center justify-center rounded-2xl bg-[var(--color-surface-subtle)] text-[var(--color-ink-muted)]">
+                            <div className="space-y-3 rounded-2xl border border-[#262626] bg-[#121212] p-5 text-center shadow-xs">
+                                <div className="mx-auto flex size-12 items-center justify-center rounded-2xl bg-[#181818] text-[#737373]">
                                     <Clock
                                         className="size-6"
                                         aria-hidden="true"
                                     />
                                 </div>
-                                <h3 className="font-display text-sm font-bold text-[var(--color-ink)]">
+                                <h3 className="font-display text-sm font-bold text-[#F5F2EB]">
                                     Status Pengajuan Terkunci
                                 </h3>
-                                <p className="text-xs leading-relaxed text-[var(--color-ink-muted)]">
+                                <p className="text-xs leading-relaxed text-[#737373]">
                                     Pengajuan ini telah diproses sebelumnya (
                                     {badge.label}) dan tidak dapat diubah
                                     kembali demi integritas audit dan riwayat
@@ -950,7 +950,7 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                 <div className="pt-2">
                                     <Link
                                         href="/cooperative/consignments"
-                                        className="inline-flex min-h-[44px] w-full items-center justify-center rounded-xl bg-[var(--color-primary-soft)] px-4 py-2.5 text-xs font-semibold text-[var(--color-primary)] transition-colors hover:bg-[var(--color-primary)] hover:text-white"
+                                        className="inline-flex min-h-[44px] w-full items-center justify-center rounded-xl border border-[#E34A27]/30 bg-[#E34A27]/10 px-4 py-2.5 text-xs font-semibold text-[#E34A27] transition-colors hover:bg-[#E34A27] hover:text-white"
                                     >
                                         Kembali ke Antrean Review
                                     </Link>
@@ -959,10 +959,10 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                         )}
 
                         {/* Operational Guidance Card */}
-                        <div className="space-y-2 rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface-subtle)]/60 p-4 text-xs text-[var(--color-ink-muted)]">
-                            <div className="flex items-center gap-1.5 font-bold text-[var(--color-ink)]">
+                        <div className="space-y-2 rounded-2xl border border-[#262626] bg-[#141414] p-4 text-xs text-[#737373]">
+                            <div className="flex items-center gap-1.5 font-bold text-[#F5F2EB]">
                                 <HelpCircle
-                                    className="size-4 text-[var(--color-primary)]"
+                                    className="size-4 text-[#E34A27]"
                                     aria-hidden="true"
                                 />
                                 <span>Panduan Kurasi KOPDIG</span>

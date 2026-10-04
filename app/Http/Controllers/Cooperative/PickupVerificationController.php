@@ -80,6 +80,13 @@ class PickupVerificationController extends Controller
         $rawInput = (string) $validated['credential'];
         $parsed = $credentialService->parseScannedInput($rawInput);
 
+        if (isset($parsed['error'])) {
+            return response()->json([
+                'message' => $parsed['message'] ?? 'Kredensial pengambilan tidak valid.',
+                'error_type' => $parsed['error'],
+            ], 422);
+        }
+
         $orderNumber = $validated['order_number'] ?? $parsed['order_number'];
         $candidateCredential = $parsed['credential'];
 

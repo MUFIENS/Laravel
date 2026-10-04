@@ -9,12 +9,17 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\PickupSession;
 use App\Models\User;
+use App\Services\CashPaymentService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 class CreateOrder
 {
+    public function __construct(
+        protected CashPaymentService $cashPaymentService,
+    ) {}
+
     /**
      * Execute atomic order creation from the student's active shopping cart.
      *
@@ -124,7 +129,20 @@ class CreateOrder
                 $order->items()->create($itemData);
             }
 
-            // 7. Clear student's cart items
+            // 7. Create initial cash payment record with one-time verification token
+            $rawToken = $this->cashPaymentService->generateRawToken($order);
+            $tokenHash = $this->cashPaymentService->hashToken($rawToken);
+
+            $order->payments()->create([
+                'provider' => 'cash',
+                'provider_order_id' => $order->order_number,
+                'payment_type' => 'cash',
+                'payment_token_hash' => $tokenHash,
+                'status' => PaymentStatus::Pending,
+                'gross_amount' => $order->total,
+            ]);
+
+            // 8. Clear student's cart items
             $cart->items()->delete();
 
             return $order;

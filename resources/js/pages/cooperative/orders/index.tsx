@@ -123,43 +123,43 @@ export default function CooperativeOrdersIndex({
         switch (status) {
             case 'pending_payment':
                 return (
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-xs font-semibold text-amber-700">
-                        <Clock className="h-3 w-3 text-amber-500" />
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-950/40 px-2.5 py-0.5 text-xs font-semibold text-amber-400">
+                        <Clock className="h-3 w-3 text-amber-400" />
                         {label}
                     </span>
                 );
             case 'paid':
                 return (
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-700">
-                        <CheckCircle2 className="h-3 w-3 text-blue-500" />
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-sky-500/20 bg-sky-950/40 px-2.5 py-0.5 text-xs font-semibold text-sky-400">
+                        <CheckCircle2 className="h-3 w-3 text-sky-400" />
                         {label}
                     </span>
                 );
             case 'ready_for_pickup':
                 return (
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-700">
-                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-950/40 px-2.5 py-0.5 text-xs font-semibold text-emerald-400">
+                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
                         {label}
                     </span>
                 );
             case 'completed':
                 return (
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-700">
-                        <CheckCircle2 className="h-3 w-3 text-slate-500" />
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#262626] bg-[#1A1A1A] px-2.5 py-0.5 text-xs font-semibold text-[#A3A3A3]">
+                        <CheckCircle2 className="h-3 w-3 text-[#737373]" />
                         {label}
                     </span>
                 );
             case 'cancelled':
             case 'payment_failed':
                 return (
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-rose-200 bg-rose-50 px-2.5 py-0.5 text-xs font-semibold text-rose-700">
-                        <XCircle className="h-3 w-3 text-rose-500" />
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-rose-500/20 bg-rose-950/40 px-2.5 py-0.5 text-xs font-semibold text-rose-400">
+                        <XCircle className="h-3 w-3 text-rose-400" />
                         {label}
                     </span>
                 );
             default:
                 return (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-700">
+                    <span className="inline-flex items-center gap-1 rounded-full border border-[#262626] bg-[#1A1A1A] px-2.5 py-0.5 text-xs font-semibold text-[#A3A3A3]">
                         {label || status}
                     </span>
                 );
@@ -170,15 +170,15 @@ export default function CooperativeOrdersIndex({
         switch (status) {
             case 'paid':
                 return (
-                    <span className="inline-flex items-center gap-1 rounded border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700">
-                        <CheckCircle2 className="h-3 w-3 text-emerald-600" />
+                    <span className="inline-flex items-center gap-1 rounded border border-emerald-500/20 bg-emerald-950/40 px-2 py-0.5 text-xs font-medium text-emerald-400">
+                        <CheckCircle2 className="h-3 w-3 text-emerald-400" />
                         {label}
                     </span>
                 );
             case 'pending':
                 return (
-                    <span className="inline-flex items-center gap-1 rounded border border-amber-200 bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700">
-                        <Clock className="h-3 w-3 text-amber-600" />
+                    <span className="inline-flex items-center gap-1 rounded border border-amber-500/20 bg-amber-950/40 px-2 py-0.5 text-xs font-medium text-amber-400">
+                        <Clock className="h-3 w-3 text-amber-400" />
                         {label}
                     </span>
                 );
@@ -186,14 +186,14 @@ export default function CooperativeOrdersIndex({
             case 'cancelled':
             case 'expired':
                 return (
-                    <span className="inline-flex items-center gap-1 rounded border border-rose-200 bg-rose-50 px-2 py-0.5 text-xs font-medium text-rose-700">
-                        <XCircle className="h-3 w-3 text-rose-600" />
+                    <span className="inline-flex items-center gap-1 rounded border border-rose-500/20 bg-rose-950/40 px-2 py-0.5 text-xs font-medium text-rose-400">
+                        <XCircle className="h-3 w-3 text-rose-400" />
                         {label}
                     </span>
                 );
             default:
                 return (
-                    <span className="inline-flex items-center gap-1 rounded bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-700">
+                    <span className="inline-flex items-center gap-1 rounded border border-[#262626] bg-[#1A1A1A] px-2 py-0.5 text-xs font-medium text-[#A3A3A3]">
                         {label || status}
                     </span>
                 );
@@ -206,16 +206,16 @@ export default function CooperativeOrdersIndex({
 
             <div className="mx-auto max-w-7xl space-y-6 pb-12">
                 {/* Header Section */}
-                <div className="flex flex-col gap-4 border-b border-slate-200 pb-2 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex flex-col gap-4 border-b border-[#262626] pb-4 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                        <div className="mb-1 flex items-center gap-2 text-xs font-semibold tracking-wider text-emerald-700 uppercase">
+                        <div className="mb-1 flex items-center gap-2 text-xs font-semibold tracking-wider text-[#E34A27] uppercase">
                             <ShoppingBag className="h-4 w-4" />
                             <span>Operasional Penjualan & Antrean</span>
                         </div>
-                        <h1 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                        <h1 className="font-heading text-2xl font-bold tracking-tight text-[#F5F2EB] sm:text-3xl">
                             Manajemen Pesanan Masuk
                         </h1>
-                        <p className="mt-1 text-sm text-slate-500">
+                        <p className="mt-1 text-xs text-[#737373] sm:text-sm">
                             Monitoring pesanan warga sekolah, status pembayaran,
                             nomor antrean sesi, dan progres pemenuhan loket.
                         </p>
@@ -224,7 +224,7 @@ export default function CooperativeOrdersIndex({
                     <div className="flex items-center gap-2">
                         <Link
                             href="/cooperative/pickup"
-                            className="inline-flex items-center gap-2 rounded-lg bg-emerald-700 px-3.5 py-2 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-emerald-800"
+                            className="inline-flex items-center gap-2 rounded-full bg-[#E34A27] px-4 py-2 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-[#D03E1C] active:scale-98"
                         >
                             <QrCode className="h-3.5 w-3.5" />
                             <span>Loket Pemindai QR</span>
@@ -234,112 +234,112 @@ export default function CooperativeOrdersIndex({
 
                 {/* Flash Notifications */}
                 {flash?.success && (
-                    <div className="flex items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800">
-                        <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-600" />
-                        <span className="font-medium">{flash.success}</span>
+                    <div className="flex items-center gap-3 rounded-2xl border border-emerald-500/20 bg-emerald-950/40 p-4 text-xs font-medium text-emerald-400">
+                        <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-400" />
+                        <span>{flash.success}</span>
                     </div>
                 )}
 
                 {flash?.error && (
-                    <div className="flex items-center gap-3 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800">
-                        <AlertTriangle className="h-5 w-5 shrink-0 text-rose-600" />
-                        <span className="font-medium">{flash.error}</span>
+                    <div className="flex items-center gap-3 rounded-2xl border border-rose-500/20 bg-rose-950/40 p-4 text-xs font-medium text-rose-400">
+                        <AlertTriangle className="h-5 w-5 shrink-0 text-rose-400" />
+                        <span>{flash.error}</span>
                     </div>
                 )}
 
                 {/* Real Database Statistics Grid */}
                 <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-5">
-                    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                        <div className="mb-2 flex items-center justify-between text-slate-500">
-                            <span className="text-xs font-medium tracking-wider uppercase">
+                    <div className="rounded-2xl border border-[#262626] bg-[#121212] p-4 shadow-sm">
+                        <div className="mb-2 flex items-center justify-between text-[#737373]">
+                            <span className="text-[11px] font-semibold tracking-wider uppercase">
                                 Total Pesanan
                             </span>
-                            <ShoppingBag className="h-4 w-4 text-slate-400" />
+                            <ShoppingBag className="h-4 w-4 text-[#525252]" />
                         </div>
-                        <div className="text-2xl font-bold text-slate-900">
+                        <div className="font-mono text-2xl font-bold text-[#F5F2EB]">
                             {stats.total_orders}
                         </div>
-                        <div className="mt-1 text-xs text-slate-500">
+                        <div className="mt-1 text-xs text-[#525252]">
                             Seluruh transaksi tercatat
                         </div>
                     </div>
 
-                    <div className="rounded-xl border border-amber-200 bg-amber-50/50 p-4 shadow-sm">
-                        <div className="mb-2 flex items-center justify-between text-amber-700">
-                            <span className="text-xs font-medium tracking-wider uppercase">
+                    <div className="rounded-2xl border border-amber-500/20 bg-amber-950/20 p-4 shadow-sm">
+                        <div className="mb-2 flex items-center justify-between text-amber-400">
+                            <span className="text-[11px] font-semibold tracking-wider uppercase">
                                 Menunggu Bayar
                             </span>
-                            <Clock className="h-4 w-4 text-amber-500" />
+                            <Clock className="h-4 w-4 text-amber-400" />
                         </div>
-                        <div className="text-2xl font-bold text-amber-900">
+                        <div className="font-mono text-2xl font-bold text-amber-300">
                             {stats.pending_payment}
                         </div>
-                        <div className="mt-1 text-xs text-amber-600">
+                        <div className="mt-1 text-xs text-amber-400/80">
                             Menanti konfirmasi kasir / gateway
                         </div>
                     </div>
 
-                    <div className="rounded-xl border border-emerald-200 bg-emerald-50/50 p-4 shadow-sm">
-                        <div className="mb-2 flex items-center justify-between text-emerald-700">
-                            <span className="text-xs font-medium tracking-wider uppercase">
+                    <div className="rounded-2xl border border-emerald-500/20 bg-emerald-950/20 p-4 shadow-sm">
+                        <div className="mb-2 flex items-center justify-between text-emerald-400">
+                            <span className="text-[11px] font-semibold tracking-wider uppercase">
                                 Siap Diambil
                             </span>
-                            <Ticket className="h-4 w-4 text-emerald-500" />
+                            <Ticket className="h-4 w-4 text-emerald-400" />
                         </div>
-                        <div className="text-2xl font-bold text-emerald-900">
+                        <div className="font-mono text-2xl font-bold text-emerald-300">
                             {stats.ready_for_pickup}
                         </div>
-                        <div className="mt-1 text-xs text-emerald-600">
+                        <div className="mt-1 text-xs text-emerald-400/80">
                             Antrean loket aktif
                         </div>
                     </div>
 
-                    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                        <div className="mb-2 flex items-center justify-between text-slate-500">
-                            <span className="text-xs font-medium tracking-wider uppercase">
+                    <div className="rounded-2xl border border-[#262626] bg-[#121212] p-4 shadow-sm">
+                        <div className="mb-2 flex items-center justify-between text-[#737373]">
+                            <span className="text-[11px] font-semibold tracking-wider uppercase">
                                 Selesai
                             </span>
-                            <CheckCircle2 className="h-4 w-4 text-slate-400" />
+                            <CheckCircle2 className="h-4 w-4 text-[#525252]" />
                         </div>
-                        <div className="text-2xl font-bold text-slate-900">
+                        <div className="font-mono text-2xl font-bold text-[#F5F2EB]">
                             {stats.completed}
                         </div>
-                        <div className="mt-1 text-xs text-slate-500">
+                        <div className="mt-1 text-xs text-[#525252]">
                             Telah diambil oleh siswa
                         </div>
                     </div>
 
-                    <div className="col-span-2 rounded-xl border border-emerald-200 bg-white p-4 shadow-sm lg:col-span-1">
-                        <div className="mb-2 flex items-center justify-between text-slate-500">
-                            <span className="text-xs font-medium tracking-wider uppercase">
+                    <div className="col-span-2 rounded-2xl border border-[#262626] bg-[#121212] p-4 shadow-sm lg:col-span-1">
+                        <div className="mb-2 flex items-center justify-between text-[#737373]">
+                            <span className="text-[11px] font-semibold tracking-wider uppercase">
                                 Pendapatan Lunas
                             </span>
-                            <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                            <CheckCircle2 className="h-4 w-4 text-emerald-400" />
                         </div>
-                        <div className="text-xl font-bold text-slate-900 sm:text-2xl">
+                        <div className="font-mono text-xl font-bold text-[#F5F2EB] sm:text-2xl">
                             <PriceDisplay amount={stats.total_paid_revenue} />
                         </div>
-                        <div className="mt-1 text-xs text-slate-500">
+                        <div className="mt-1 text-xs text-[#525252]">
                             Total pesanan terbayar
                         </div>
                     </div>
                 </div>
 
                 {/* Filter and Search Bar */}
-                <div className="space-y-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                <div className="space-y-3 rounded-2xl border border-[#262626] bg-[#121212] p-4 shadow-sm">
                     <div className="flex flex-col items-stretch justify-between gap-3 md:flex-row md:items-center">
                         {/* Search Input */}
                         <form
                             onSubmit={handleSearch}
                             className="relative flex-1"
                         >
-                            <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                            <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-[#525252]" />
                             <input
                                 type="text"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 placeholder="Cari no. pesanan, kode antrean (A-001), atau nama/NISN pemesan..."
-                                className="w-full rounded-lg border border-slate-200 py-2 pr-4 pl-9 text-sm transition-colors focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none"
+                                className="w-full rounded-xl border border-[#262626] bg-[#141414] py-2 pr-4 pl-9 text-xs text-[#F5F2EB] transition-colors placeholder:text-[#525252] focus:border-[#E34A27] focus:ring-1 focus:ring-[#E34A27]/20 focus:outline-none"
                             />
                         </form>
 
@@ -351,10 +351,14 @@ export default function CooperativeOrdersIndex({
                                 onChange={(e) =>
                                     applyFilter('order_status', e.target.value)
                                 }
-                                className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none"
+                                className="rounded-xl border border-[#262626] bg-[#141414] px-3 py-2 text-xs font-medium text-[#F5F2EB] hover:border-[#383838] focus:border-[#E34A27] focus:outline-none"
                             >
                                 {orderStatusOptions.map((opt) => (
-                                    <option key={opt.key} value={opt.key}>
+                                    <option
+                                        key={opt.key}
+                                        value={opt.key}
+                                        className="bg-[#141414] text-[#F5F2EB]"
+                                    >
                                         {opt.label}
                                     </option>
                                 ))}
@@ -369,10 +373,14 @@ export default function CooperativeOrdersIndex({
                                         e.target.value,
                                     )
                                 }
-                                className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none"
+                                className="rounded-xl border border-[#262626] bg-[#141414] px-3 py-2 text-xs font-medium text-[#F5F2EB] hover:border-[#383838] focus:border-[#E34A27] focus:outline-none"
                             >
                                 {paymentStatusOptions.map((opt) => (
-                                    <option key={opt.key} value={opt.key}>
+                                    <option
+                                        key={opt.key}
+                                        value={opt.key}
+                                        className="bg-[#141414] text-[#F5F2EB]"
+                                    >
                                         {opt.label}
                                     </option>
                                 ))}
@@ -387,15 +395,19 @@ export default function CooperativeOrdersIndex({
                                         e.target.value,
                                     )
                                 }
-                                className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none"
+                                className="rounded-xl border border-[#262626] bg-[#141414] px-3 py-2 text-xs font-medium text-[#F5F2EB] hover:border-[#383838] focus:border-[#E34A27] focus:outline-none"
                             >
-                                <option value="all">
+                                <option
+                                    value="all"
+                                    className="bg-[#141414] text-[#F5F2EB]"
+                                >
                                     Semua Sesi Pengambilan
                                 </option>
                                 {pickup_sessions.map((sess) => (
                                     <option
                                         key={sess.id}
                                         value={sess.id.toString()}
+                                        className="bg-[#141414] text-[#F5F2EB]"
                                     >
                                         {sess.name} ({sess.formatted_time})
                                     </option>
@@ -413,10 +425,10 @@ export default function CooperativeOrdersIndex({
                                             : 'today',
                                     )
                                 }
-                                className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-2 text-xs font-medium transition-colors ${
+                                className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-medium transition-colors ${
                                     filters.date === 'today'
-                                        ? 'border-emerald-300 bg-emerald-50 font-semibold text-emerald-700'
-                                        : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50'
+                                        ? 'border-[#E34A27] bg-[#E34A27]/10 font-semibold text-[#E34A27]'
+                                        : 'border-[#262626] bg-[#141414] text-[#A3A3A3] hover:border-[#383838] hover:text-[#F5F2EB]'
                                 }`}
                             >
                                 <Calendar className="h-3.5 w-3.5" />
@@ -428,7 +440,7 @@ export default function CooperativeOrdersIndex({
                                 <button
                                     type="button"
                                     onClick={handleReset}
-                                    className="inline-flex items-center gap-1.5 rounded-lg bg-slate-100 px-3 py-2 text-xs font-medium text-slate-600 transition-colors hover:bg-slate-200 hover:text-slate-900"
+                                    className="inline-flex items-center gap-1.5 rounded-xl border border-[#262626] bg-[#161616] px-3 py-2 text-xs font-medium text-[#A3A3A3] transition-colors hover:border-[#383838] hover:text-[#F5F2EB]"
                                     title="Reset filter"
                                 >
                                     <X className="h-3.5 w-3.5" />
@@ -441,12 +453,12 @@ export default function CooperativeOrdersIndex({
 
                 {/* Main Content Area */}
                 {orders.data.length === 0 ? (
-                    <div className="rounded-xl border border-slate-200 bg-white p-12 text-center shadow-sm">
-                        <ShoppingBag className="mx-auto mb-3 h-12 w-12 text-slate-300" />
-                        <h3 className="text-base font-semibold text-slate-900">
+                    <div className="rounded-2xl border border-[#262626] bg-[#121212] p-12 text-center shadow-sm">
+                        <ShoppingBag className="mx-auto mb-3 h-12 w-12 text-[#525252]" />
+                        <h3 className="font-heading text-base font-semibold text-[#F5F2EB]">
                             Tidak ada pesanan ditemukan
                         </h3>
-                        <p className="mx-auto mt-1 max-w-sm text-sm text-slate-500">
+                        <p className="mx-auto mt-1 max-w-sm text-xs text-[#737373]">
                             {hasActiveFilters
                                 ? 'Tidak ada data pesanan yang sesuai dengan filter atau kata kunci pencarian Anda.'
                                 : 'Belum ada pesanan yang masuk ke koperasi saat ini.'}
@@ -455,7 +467,7 @@ export default function CooperativeOrdersIndex({
                             <button
                                 type="button"
                                 onClick={handleReset}
-                                className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-emerald-50 px-4 py-2 text-xs font-medium text-emerald-700 transition-colors hover:bg-emerald-100"
+                                className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-[#262626] bg-[#161616] px-4 py-2 text-xs font-medium text-[#A3A3A3] transition-colors hover:border-[#383838] hover:text-[#F5F2EB]"
                             >
                                 <RefreshCw className="h-3.5 w-3.5" />
                                 <span>Hapus Semua Filter</span>
@@ -465,10 +477,10 @@ export default function CooperativeOrdersIndex({
                 ) : (
                     <>
                         {/* Desktop Table View */}
-                        <div className="hidden overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm md:block">
+                        <div className="hidden overflow-hidden rounded-2xl border border-[#262626] bg-[#121212] shadow-sm md:block">
                             <div className="overflow-x-auto">
-                                <table className="w-full border-collapse text-left text-sm text-slate-600">
-                                    <thead className="border-b border-slate-200 bg-slate-50 text-xs font-semibold tracking-wider text-slate-600 uppercase">
+                                <table className="w-full border-collapse text-left text-xs text-[#A3A3A3]">
+                                    <thead className="border-b border-[#262626] bg-[#161616] text-[11px] font-semibold tracking-wider text-[#737373] uppercase">
                                         <tr>
                                             <th className="px-4 py-3.5">
                                                 No. Pesanan & Waktu
@@ -493,22 +505,22 @@ export default function CooperativeOrdersIndex({
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody className="divide-y divide-slate-100">
+                                    <tbody className="divide-y divide-[#262626]">
                                         {orders.data.map((order) => (
                                             <tr
                                                 key={order.id}
-                                                className="transition-colors hover:bg-slate-50/75"
+                                                className="transition-colors hover:bg-[#161616]"
                                             >
                                                 {/* Order Number & Timestamp */}
                                                 <td className="px-4 py-3.5">
                                                     <div className="space-y-0.5">
                                                         <Link
                                                             href={`/cooperative/orders/${order.order_number}`}
-                                                            className="block font-mono font-bold text-slate-900 transition-colors hover:text-emerald-700"
+                                                            className="block font-mono font-bold text-[#F5F2EB] transition-colors hover:text-[#E34A27]"
                                                         >
                                                             {order.order_number}
                                                         </Link>
-                                                        <div className="flex items-center gap-1 text-xs text-slate-400">
+                                                        <div className="flex items-center gap-1 text-[11px] text-[#737373]">
                                                             <Clock className="h-3 w-3" />
                                                             {new Date(
                                                                 order.created_at ||
@@ -524,7 +536,7 @@ export default function CooperativeOrdersIndex({
                                                                 },
                                                             )}
                                                         </div>
-                                                        <div className="text-[11px] text-slate-500">
+                                                        <div className="text-[11px] text-[#525252]">
                                                             {order.items_count}{' '}
                                                             jenis barang (
                                                             {
@@ -539,8 +551,8 @@ export default function CooperativeOrdersIndex({
                                                 <td className="px-4 py-3.5">
                                                     {order.customer ? (
                                                         <div className="space-y-0.5">
-                                                            <div className="flex items-center gap-1.5 font-medium text-slate-900">
-                                                                <UserIcon className="h-3.5 w-3.5 text-slate-400" />
+                                                            <div className="flex items-center gap-1.5 font-medium text-[#F5F2EB]">
+                                                                <UserIcon className="h-3.5 w-3.5 text-[#737373]" />
                                                                 <span>
                                                                     {
                                                                         order
@@ -551,7 +563,7 @@ export default function CooperativeOrdersIndex({
                                                             </div>
                                                             {order.customer
                                                                 .student_identifier && (
-                                                                <div className="font-mono text-xs text-slate-500">
+                                                                <div className="font-mono text-[11px] text-[#737373]">
                                                                     NISN:{' '}
                                                                     {
                                                                         order
@@ -562,7 +574,7 @@ export default function CooperativeOrdersIndex({
                                                             )}
                                                         </div>
                                                     ) : (
-                                                        <span className="text-xs text-slate-400 italic">
+                                                        <span className="text-xs text-[#525252] italic">
                                                             Tamu / Warga
                                                         </span>
                                                     )}
@@ -572,21 +584,21 @@ export default function CooperativeOrdersIndex({
                                                 <td className="px-4 py-3.5">
                                                     <div className="space-y-1">
                                                         {order.queue_code ? (
-                                                            <span className="inline-flex items-center gap-1 rounded-md border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 font-mono text-xs font-bold text-emerald-800">
-                                                                <Ticket className="h-3 w-3 text-emerald-600" />
+                                                            <span className="inline-flex items-center gap-1 rounded-md border border-[#262626] bg-[#1A1A1A] px-2.5 py-0.5 font-mono text-xs font-bold text-emerald-400">
+                                                                <Ticket className="h-3 w-3 text-emerald-400" />
                                                                 Antrean{' '}
                                                                 {
                                                                     order.queue_code
                                                                 }
                                                             </span>
                                                         ) : (
-                                                            <span className="block text-xs text-slate-400 italic">
+                                                            <span className="block text-xs text-[#525252] italic">
                                                                 Belum ada
                                                                 antrean
                                                             </span>
                                                         )}
                                                         {order.pickup_session && (
-                                                            <div className="text-xs text-slate-600">
+                                                            <div className="text-xs text-[#A3A3A3]">
                                                                 <span className="font-medium">
                                                                     {
                                                                         order
@@ -594,7 +606,7 @@ export default function CooperativeOrdersIndex({
                                                                             .name
                                                                     }
                                                                 </span>
-                                                                <div className="text-[11px] text-slate-400">
+                                                                <div className="text-[11px] text-[#737373]">
                                                                     {
                                                                         order
                                                                             .pickup_session
@@ -623,10 +635,10 @@ export default function CooperativeOrdersIndex({
                                                 </td>
 
                                                 {/* Total */}
-                                                <td className="px-4 py-3.5 text-right">
+                                                <td className="px-4 py-3.5 text-right font-mono font-bold text-[#F5F2EB]">
                                                     <PriceDisplay
                                                         amount={order.total}
-                                                        className="text-sm font-bold text-slate-900"
+                                                        className="text-xs font-bold text-[#F5F2EB]"
                                                     />
                                                 </td>
 
@@ -634,7 +646,7 @@ export default function CooperativeOrdersIndex({
                                                 <td className="px-4 py-3.5 text-right">
                                                     <Link
                                                         href={`/cooperative/orders/${order.order_number}`}
-                                                        className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-700 transition-colors hover:bg-emerald-100"
+                                                        className="inline-flex items-center gap-1.5 rounded-full border border-[#262626] bg-[#161616] px-3 py-1.5 text-xs font-medium text-[#A3A3A3] transition-colors hover:border-[#383838] hover:text-[#F5F2EB]"
                                                     >
                                                         <Eye className="h-3.5 w-3.5" />
                                                         <span>Detail</span>
@@ -652,17 +664,17 @@ export default function CooperativeOrdersIndex({
                             {orders.data.map((order) => (
                                 <div
                                     key={order.id}
-                                    className="space-y-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
+                                    className="space-y-3 rounded-2xl border border-[#262626] bg-[#121212] p-4 shadow-sm"
                                 >
                                     <div className="flex items-start justify-between gap-2">
                                         <div>
                                             <Link
                                                 href={`/cooperative/orders/${order.order_number}`}
-                                                className="block font-mono text-sm font-bold text-slate-900 hover:text-emerald-700"
+                                                className="block font-mono text-sm font-bold text-[#F5F2EB] hover:text-[#E34A27]"
                                             >
                                                 {order.order_number}
                                             </Link>
-                                            <div className="mt-0.5 text-xs text-slate-500">
+                                            <div className="mt-0.5 text-xs text-[#737373]">
                                                 {new Date(
                                                     order.created_at || '',
                                                 ).toLocaleDateString('id-ID', {
@@ -675,27 +687,27 @@ export default function CooperativeOrdersIndex({
                                         </div>
 
                                         {order.queue_code ? (
-                                            <span className="inline-flex items-center gap-1 rounded-md border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 font-mono text-xs font-bold text-emerald-800">
-                                                <Ticket className="h-3 w-3 text-emerald-600" />
+                                            <span className="inline-flex items-center gap-1 rounded-md border border-[#262626] bg-[#1A1A1A] px-2.5 py-0.5 font-mono text-xs font-bold text-emerald-400">
+                                                <Ticket className="h-3 w-3 text-emerald-400" />
                                                 {order.queue_code}
                                             </span>
                                         ) : (
-                                            <span className="text-[11px] text-slate-400 italic">
+                                            <span className="text-[11px] text-[#525252] italic">
                                                 No Queue
                                             </span>
                                         )}
                                     </div>
 
                                     {/* Customer & Item count */}
-                                    <div className="flex items-center justify-between border-t border-slate-100 pt-2 text-xs">
-                                        <div className="flex items-center gap-1.5 font-medium text-slate-800">
-                                            <UserIcon className="h-3.5 w-3.5 text-slate-400" />
+                                    <div className="flex items-center justify-between border-t border-[#262626] pt-2 text-xs">
+                                        <div className="flex items-center gap-1.5 font-medium text-[#F5F2EB]">
+                                            <UserIcon className="h-3.5 w-3.5 text-[#737373]" />
                                             <span>
                                                 {order.customer?.name ||
                                                     'Warga Sekolah'}
                                             </span>
                                         </div>
-                                        <div className="text-slate-500">
+                                        <div className="text-[#737373]">
                                             {order.items_count} item (
                                             {order.total_quantity} unit)
                                         </div>
@@ -715,15 +727,15 @@ export default function CooperativeOrdersIndex({
                                         </div>
                                         <PriceDisplay
                                             amount={order.total}
-                                            className="text-sm font-bold text-slate-900"
+                                            className="font-mono text-xs font-bold text-[#F5F2EB]"
                                         />
                                     </div>
 
                                     {/* Action link */}
-                                    <div className="border-t border-slate-100 pt-2">
+                                    <div className="border-t border-[#262626] pt-2">
                                         <Link
                                             href={`/cooperative/orders/${order.order_number}`}
-                                            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-700 transition-colors hover:bg-emerald-100"
+                                            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#262626] bg-[#161616] px-3 py-2 text-xs font-medium text-[#A3A3A3] transition-colors hover:border-[#383838] hover:text-[#F5F2EB]"
                                         >
                                             <Eye className="h-3.5 w-3.5" />
                                             <span>
@@ -738,19 +750,19 @@ export default function CooperativeOrdersIndex({
 
                         {/* Pagination Links */}
                         {orders.links.length > 3 && (
-                            <div className="flex items-center justify-between gap-4 border-t border-slate-200 pt-4">
-                                <div className="text-xs text-slate-500">
+                            <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#262626] pt-4">
+                                <div className="text-xs text-[#737373]">
                                     Halaman{' '}
-                                    <span className="font-medium">
+                                    <span className="font-mono font-medium text-[#F5F2EB]">
                                         {orders.current_page}
                                     </span>{' '}
                                     dari{' '}
-                                    <span className="font-medium">
+                                    <span className="font-mono font-medium text-[#F5F2EB]">
                                         {orders.last_page}
                                     </span>{' '}
                                     ({orders.total} total pesanan)
                                 </div>
-                                <div className="flex items-center gap-1">
+                                <div className="flex flex-wrap items-center gap-1">
                                     {orders.links.map((link, idx) => {
                                         if (!link.url) {
                                             return (
@@ -759,7 +771,7 @@ export default function CooperativeOrdersIndex({
                                                     dangerouslySetInnerHTML={{
                                                         __html: link.label,
                                                     }}
-                                                    className="rounded border border-slate-100 px-3 py-1.5 text-xs text-slate-300"
+                                                    className="rounded-lg border border-[#262626] px-3 py-1.5 text-xs text-[#525252]"
                                                 />
                                             );
                                         }
@@ -771,10 +783,10 @@ export default function CooperativeOrdersIndex({
                                                 dangerouslySetInnerHTML={{
                                                     __html: link.label,
                                                 }}
-                                                className={`rounded border px-3 py-1.5 text-xs transition-colors ${
+                                                className={`rounded-lg border px-3 py-1.5 text-xs transition-colors ${
                                                     link.active
-                                                        ? 'border-emerald-700 bg-emerald-700 font-semibold text-white'
-                                                        : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
+                                                        ? 'border-[#E34A27] bg-[#E34A27] font-semibold text-white'
+                                                        : 'border-[#262626] bg-[#141414] text-[#A3A3A3] hover:border-[#383838] hover:text-[#F5F2EB]'
                                                 }`}
                                             />
                                         );

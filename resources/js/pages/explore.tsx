@@ -481,7 +481,7 @@ export default function Explore({
                                 href={
                                     user.role === 'cooperative'
                                         ? '/cooperative'
-                                        : '/orders'
+                                        : '/settings/profile'
                                 }
                                 className="flex items-center gap-2 rounded-full border border-[#262626] bg-[#141414] p-1.5 text-xs text-[#F5F2EB] transition-colors hover:border-[#E34A27] sm:py-2 sm:pr-4 sm:pl-2"
                             >

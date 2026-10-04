@@ -6,6 +6,7 @@ export type CooperativeNavKey =
     | 'consignments'
     | 'products'
     | 'inventory'
+    | 'payments'
     | 'pickup'
     | 'reports';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, usePage } from '@inertiajs/react';
-import { ExternalLink, LogOut, ShieldCheck } from 'lucide-react';
+import { ExternalLink, LogOut } from 'lucide-react';
 import { COOPERATIVE_NAV_ITEMS } from './nav-config';
 import type { CooperativeNavKey } from '@/types/cooperative-navigation';
 import type { Auth } from '@/types/auth';
@@ -25,31 +25,28 @@ export const CooperativeSidebarContent: React.FC<Props> = ({
     };
 
     return (
-        <div className="flex h-full flex-col justify-between bg-[var(--color-surface)] text-[var(--color-ink)]">
+        <div className="flex h-full flex-col justify-between bg-[#0E0E0E] text-[#F5F2EB]">
             {/* Top Brand Section */}
             <div>
-                <div className="border-b border-[var(--color-border-subtle)] px-6 py-5">
+                <div className="border-b border-[#262626] px-6 py-5">
                     <Link
                         href="/cooperative"
                         className="group flex items-center gap-3"
                         onClick={onNavigate}
                     >
-                        <div className="flex size-10 items-center justify-center rounded-xl bg-[var(--color-primary)] text-white shadow-sm transition-transform group-hover:scale-105">
-                            <ShieldCheck
-                                className="size-6 text-[var(--color-accent)]"
-                                aria-hidden="true"
-                            />
+                        <div className="flex size-9 items-center justify-center bg-[#F5F2EB] font-heading text-sm font-black text-[#0A0A0A] shadow-xs transition-transform duration-300 group-hover:scale-95 group-hover:rotate-6">
+                            K
                         </div>
                         <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-2">
-                                <span className="font-display text-base font-black tracking-tight text-[var(--color-primary)]">
+                                <span className="font-heading text-base font-bold tracking-tight text-[#F5F2EB]">
                                     KOPDIG
                                 </span>
-                                <span className="rounded-full bg-[var(--color-primary-soft)] px-2 py-0.5 text-[9px] font-bold tracking-wider text-[var(--color-primary)] uppercase">
+                                <span className="border border-[#E34A27]/30 bg-[#E34A27]/10 px-2 py-0.5 font-mono text-[9px] font-bold tracking-widest text-[#E34A27] uppercase">
                                     Koperasi
                                 </span>
                             </div>
-                            <p className="truncate text-xs font-medium text-[var(--color-ink-muted)]">
+                            <p className="truncate text-xs font-medium text-[#737373]">
                                 Ruang Niaga Warga Sekolah
                             </p>
                         </div>
@@ -61,7 +58,7 @@ export const CooperativeSidebarContent: React.FC<Props> = ({
                     aria-label="Navigasi Pengurus Koperasi"
                     className="space-y-1 px-3 py-4"
                 >
-                    <div className="px-3 pb-2 text-[10px] font-bold tracking-wider text-[var(--color-ink-muted)] uppercase">
+                    <div className="px-3 pb-2 font-mono text-[10px] font-bold tracking-widest text-[#737373] uppercase">
                         Menu Operasional
                     </div>
                     {COOPERATIVE_NAV_ITEMS.map((item) => {
@@ -73,10 +70,10 @@ export const CooperativeSidebarContent: React.FC<Props> = ({
                                 key={item.key}
                                 href={item.href}
                                 onClick={onNavigate}
-                                className={`group flex min-h-[44px] items-center justify-between rounded-xl px-3 py-2.5 text-xs transition-all ${
+                                className={`group flex min-h-[44px] items-center justify-between rounded-lg px-3 py-2.5 text-xs transition-all ${
                                     isActive
-                                        ? 'border-l-4 border-[var(--color-primary)] bg-[var(--color-primary-soft)] font-semibold text-[var(--color-primary)] shadow-xs'
-                                        : 'text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-subtle)] hover:text-[var(--color-ink)]'
+                                        ? 'border-l-2 border-[#E34A27] bg-[#181818] font-semibold text-[#F5F2EB] shadow-xs'
+                                        : 'text-[#A3A3A3] hover:bg-[#141414] hover:text-[#F5F2EB]'
                                 }`}
                                 aria-current={isActive ? 'page' : undefined}
                             >
@@ -84,8 +81,8 @@ export const CooperativeSidebarContent: React.FC<Props> = ({
                                     <Icon
                                         className={`size-4.5 transition-colors ${
                                             isActive
-                                                ? 'text-[var(--color-primary)]'
-                                                : 'text-[var(--color-ink-muted)] group-hover:text-[var(--color-ink)]'
+                                                ? 'text-[#E34A27]'
+                                                : 'text-[#737373] group-hover:text-[#F5F2EB]'
                                         }`}
                                         aria-hidden="true"
                                     />
@@ -99,10 +96,10 @@ export const CooperativeSidebarContent: React.FC<Props> = ({
 
                                 {item.badge && (
                                     <span
-                                        className={`rounded-md px-1.5 py-0.5 text-[9px] font-semibold tracking-wide ${
+                                        className={`rounded px-1.5 py-0.5 font-mono text-[9px] font-semibold tracking-wide ${
                                             item.status === 'active'
-                                                ? 'bg-emerald-100 text-emerald-800'
-                                                : 'bg-[var(--color-surface-subtle)] text-[var(--color-ink-muted)]'
+                                                ? 'border border-emerald-500/30 bg-emerald-500/10 text-emerald-400'
+                                                : 'border border-[#262626] bg-[#141414] text-[#737373]'
                                         }`}
                                     >
                                         {item.badge}
@@ -115,36 +112,34 @@ export const CooperativeSidebarContent: React.FC<Props> = ({
             </div>
 
             {/* Bottom Actions & User Profile */}
-            <div className="border-t border-[var(--color-border-subtle)] p-3">
+            <div className="border-t border-[#262626] p-3">
                 {/* Switch to Student Catalog */}
                 <Link
                     href="/explore"
-                    className="flex min-h-[44px] items-center justify-between rounded-xl px-3 py-2 text-xs font-medium text-[var(--color-ink-muted)] transition-colors hover:bg-[var(--color-surface-subtle)] hover:text-[var(--color-primary)]"
+                    className="flex min-h-[44px] items-center justify-between rounded-lg px-3 py-2 text-xs font-medium text-[#737373] transition-colors hover:bg-[#141414] hover:text-[#F5F2EB]"
                 >
                     <span className="flex items-center gap-2">
                         <ExternalLink className="size-4" aria-hidden="true" />
                         Buka Katalog Siswa
                     </span>
-                    <span className="text-[10px] text-[var(--color-ink-muted)]">
-                        ↗
-                    </span>
+                    <span className="text-[10px] text-[#737373]">↗</span>
                 </Link>
 
                 {/* Authenticated Cooperative Staff Card */}
-                <div className="mt-2 flex items-center justify-between rounded-xl bg-[var(--color-surface-subtle)]/70 p-2.5">
+                <div className="mt-2 flex items-center justify-between rounded-lg border border-[#262626] bg-[#141414] p-2.5">
                     <div className="flex min-w-0 items-center gap-2.5">
                         <div
-                            className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[var(--color-primary)] text-xs font-bold text-white shadow-xs"
+                            className="flex size-9 shrink-0 items-center justify-center rounded bg-[#E34A27] text-xs font-bold text-white shadow-xs"
                             aria-hidden="true"
                         >
                             {getInitials(user?.name)}
                         </div>
                         <div className="min-w-0 flex-1">
-                            <p className="truncate text-xs font-bold text-[var(--color-ink)]">
+                            <p className="truncate text-xs font-bold text-[#F5F2EB]">
                                 {user?.name ?? 'Pengurus Koperasi'}
                             </p>
-                            <span className="inline-block rounded-sm text-[10px] font-medium text-[var(--color-primary)]">
-                                Pengurus Koperasi
+                            <span className="inline-block font-mono text-[10px] font-semibold text-[#E34A27]">
+                                Operator Koperasi
                             </span>
                         </div>
                     </div>
@@ -154,7 +149,7 @@ export const CooperativeSidebarContent: React.FC<Props> = ({
                         href="/logout"
                         method="post"
                         as="button"
-                        className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg text-[var(--color-ink-muted)] transition-colors hover:bg-rose-50 hover:text-[var(--color-status-danger)] focus:ring-2 focus:ring-[var(--color-status-danger)] focus:outline-hidden"
+                        className="inline-flex size-9 shrink-0 items-center justify-center rounded text-[#737373] transition-colors hover:bg-rose-950/40 hover:text-rose-400 focus:ring-2 focus:ring-[#E34A27] focus:outline-hidden"
                         title="Keluar dari akun"
                         aria-label="Keluar dari akun koperasi"
                     >

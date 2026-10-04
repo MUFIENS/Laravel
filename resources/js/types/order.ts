@@ -27,6 +27,10 @@ export interface OrderData {
     pickup_token_hash: string | null;
     pickup_credential?: string | null;
     qr_payload?: string | null;
+    payment_token?: string | null;
+    payment_qr_payload?: string | null;
+    payment_method?: string;
+    payment_method_label?: string;
     paid_at: string | null;
     ready_at: string | null;
     completed_at: string | null;

@@ -20,15 +20,15 @@ export const CooperativePageContainer: React.FC<Props> = ({
             className={`mx-auto max-w-7xl space-y-6 px-4 py-6 sm:px-6 lg:px-8 ${className}`}
         >
             {(title || actions) && (
-                <div className="flex flex-col gap-4 border-b border-[var(--color-border-subtle)] pb-5 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex flex-col gap-4 border-b border-[#262626] pb-5 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                         {title && (
-                            <h1 className="font-display text-2xl font-bold tracking-tight text-[var(--color-ink)] sm:text-3xl">
+                            <h1 className="font-heading text-2xl font-bold tracking-tight text-[#F5F2EB] sm:text-3xl">
                                 {title}
                             </h1>
                         )}
                         {subtitle && (
-                            <p className="mt-1 text-xs text-[var(--color-ink-muted)] sm:text-sm">
+                            <p className="mt-1 text-xs text-[#A3A3A3] sm:text-sm">
                                 {subtitle}
                             </p>
                         )}

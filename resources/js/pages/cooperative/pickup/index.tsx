@@ -324,12 +324,12 @@ export default function CooperativePickupIndex({
         >
             <div className="space-y-6">
                 {/* Header Context */}
-                <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap items-center justify-between gap-3">
                     <div>
-                        <h2 className="font-display text-xl font-bold text-[var(--color-ink)] sm:text-2xl">
+                        <h2 className="font-heading text-xl font-bold tracking-tight text-[#F5F2EB] sm:text-2xl">
                             Verifikasi Tiket QR Loket
                         </h2>
-                        <p className="mt-1 text-xs text-[var(--color-ink-muted)]">
+                        <p className="mt-1 text-xs text-[#737373]">
                             Pindai QR code siswa atau masukkan kode kredensial
                             manual untuk memverifikasi dan menyerahkan pesanan.
                         </p>
@@ -337,8 +337,8 @@ export default function CooperativePickupIndex({
 
                     {/* Active session pill */}
                     {active_sessions.length > 0 && (
-                        <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary">
-                            <Clock className="size-3.5" />
+                        <div className="inline-flex items-center gap-1.5 rounded-full border border-[#262626] bg-[#141414] px-3.5 py-1.5 text-xs font-medium text-[#A3A3A3]">
+                            <Clock className="size-3.5 text-[#E34A27]" />
                             <span>
                                 {active_sessions[0].name} (
                                 {active_sessions[0].starts_at} -{' '}
@@ -352,20 +352,20 @@ export default function CooperativePickupIndex({
                 {completedSuccess && (
                     <div
                         role="status"
-                        className="mb-6 flex animate-in items-start gap-3 rounded-2xl border border-emerald-300 bg-emerald-50 p-4 text-xs text-emerald-900 shadow-xs fade-in"
+                        className="flex animate-in items-start gap-3 rounded-2xl border border-emerald-500/20 bg-emerald-950/40 p-4 text-xs text-emerald-400 shadow-sm fade-in"
                     >
-                        <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-emerald-600" />
+                        <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-emerald-400" />
                         <div className="flex-1">
-                            <p className="font-bold text-emerald-900">
+                            <p className="font-bold text-emerald-300">
                                 Pengambilan Berhasil Dikonfirmasi!
                             </p>
-                            <p className="mt-0.5 leading-relaxed text-emerald-800">
+                            <p className="mt-0.5 leading-relaxed text-emerald-400/90">
                                 {completedSuccess}
                             </p>
                             <button
                                 type="button"
                                 onClick={handleResetAll}
-                                className="mt-2.5 inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white shadow-xs hover:bg-emerald-700 active:scale-95"
+                                className="mt-2.5 inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-900/40 px-3 py-1.5 text-xs font-semibold text-emerald-200 transition-colors hover:bg-emerald-900/60 active:scale-95"
                             >
                                 <RotateCcw className="size-3.5" />
                                 <span>Pindai Pesanan Berikutnya</span>
@@ -378,14 +378,14 @@ export default function CooperativePickupIndex({
                 {verificationError && (
                     <div
                         role="alert"
-                        className="mb-6 flex animate-in items-start gap-3 rounded-2xl border border-rose-300 bg-rose-50 p-4 text-xs text-rose-900 shadow-xs fade-in"
+                        className="flex animate-in items-start gap-3 rounded-2xl border border-rose-500/20 bg-rose-950/40 p-4 text-xs text-rose-400 shadow-sm fade-in"
                     >
-                        <AlertCircle className="mt-0.5 size-5 shrink-0 text-rose-600" />
+                        <AlertCircle className="mt-0.5 size-5 shrink-0 text-rose-400" />
                         <div className="flex-1">
-                            <p className="font-bold text-rose-900">
+                            <p className="font-bold text-rose-300">
                                 Verifikasi Gagal
                             </p>
-                            <p className="mt-0.5 leading-relaxed text-rose-800">
+                            <p className="mt-0.5 leading-relaxed text-rose-400/90">
                                 {verificationError}
                             </p>
                         </div>
@@ -394,37 +394,37 @@ export default function CooperativePickupIndex({
 
                 {/* VERIFIED ORDER CARD (Confirmation Stage) */}
                 {verifiedOrder ? (
-                    <div className="overflow-hidden rounded-3xl border-2 border-emerald-500 bg-surface shadow-md">
+                    <div className="overflow-hidden rounded-3xl border border-emerald-500/30 bg-[#121212] shadow-xl">
                         {/* Queue Header Badge */}
-                        <div className="bg-emerald-700 px-5 py-4 text-white sm:px-6">
+                        <div className="border-b border-[#262626] bg-[#161616] px-5 py-4 text-[#F5F2EB] sm:px-6">
                             <div className="flex items-center justify-between">
-                                <span className="rounded-md bg-emerald-800/80 px-2 py-0.5 text-[10px] font-bold tracking-wider text-emerald-100 uppercase">
+                                <span className="rounded-full border border-emerald-500/30 bg-emerald-950/60 px-2.5 py-0.5 text-[10px] font-bold tracking-wider text-emerald-400 uppercase">
                                     Pesanan Terverifikasi
                                 </span>
-                                <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-100">
+                                <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-400">
                                     <Check className="size-4" />
                                     <span>Lunas & Siap Diambil</span>
                                 </span>
                             </div>
 
-                            <div className="mt-3 flex flex-wrap items-baseline justify-between gap-3 border-t border-emerald-600/60 pt-3">
+                            <div className="mt-4 flex flex-wrap items-baseline justify-between gap-3 border-t border-[#262626] pt-3">
                                 <div>
-                                    <span className="text-[11px] text-emerald-200">
+                                    <span className="text-[11px] text-[#737373]">
                                         Nomor Antrean Siswa
                                     </span>
-                                    <p className="font-mono text-3xl font-extrabold text-white sm:text-4xl">
+                                    <p className="font-mono text-3xl font-extrabold text-[#F5F2EB] sm:text-4xl">
                                         {verifiedOrder.queue_code ||
                                             `Antrean #${verifiedOrder.queue_number}`}
                                     </p>
                                 </div>
                                 <div className="text-right">
-                                    <span className="text-[11px] text-emerald-200">
+                                    <span className="text-[11px] text-[#737373]">
                                         Nama Siswa / Pembeli
                                     </span>
-                                    <p className="text-base font-bold text-white sm:text-lg">
+                                    <p className="text-base font-bold text-[#F5F2EB] sm:text-lg">
                                         {verifiedOrder.student_name}
                                     </p>
-                                    <p className="font-mono text-[11px] text-emerald-200">
+                                    <p className="font-mono text-[11px] text-[#737373]">
                                         #{verifiedOrder.order_number}
                                     </p>
                                 </div>
@@ -432,12 +432,12 @@ export default function CooperativePickupIndex({
                         </div>
 
                         {/* Order Items & Handover Checklist */}
-                        <div className="space-y-4 bg-white p-5 sm:p-6">
-                            <div className="flex items-center justify-between border-b border-border/70 pb-3">
-                                <span className="text-xs font-bold tracking-wider text-ink uppercase">
+                        <div className="space-y-4 p-5 sm:p-6">
+                            <div className="flex items-center justify-between border-b border-[#262626] pb-3">
+                                <span className="text-xs font-bold tracking-wider text-[#A3A3A3] uppercase">
                                     Daftar Barang yang Diserahkan
                                 </span>
-                                <span className="text-xs text-muted">
+                                <span className="text-xs text-[#737373]">
                                     Total:{' '}
                                     {verifiedOrder.items.reduce(
                                         (acc, cur) => acc + cur.quantity,
@@ -447,21 +447,21 @@ export default function CooperativePickupIndex({
                                 </span>
                             </div>
 
-                            <div className="divide-y divide-border/60">
+                            <div className="divide-y divide-[#262626]">
                                 {verifiedOrder.items.map((item) => (
                                     <div
                                         key={item.id}
-                                        className="flex items-center justify-between py-2.5 text-xs"
+                                        className="flex items-center justify-between py-3 text-xs"
                                     >
-                                        <div className="flex items-center gap-2">
-                                            <div className="flex size-7 items-center justify-center rounded-lg bg-emerald-50 text-xs font-bold text-emerald-700">
+                                        <div className="flex items-center gap-3">
+                                            <div className="flex size-7 items-center justify-center rounded-lg border border-[#262626] bg-[#1A1A1A] font-mono text-xs font-bold text-[#F5F2EB]">
                                                 {item.quantity}x
                                             </div>
                                             <div>
-                                                <p className="font-bold text-ink">
+                                                <p className="font-medium text-[#F5F2EB]">
                                                     {item.product_name}
                                                 </p>
-                                                <p className="text-[11px] text-muted">
+                                                <p className="text-[11px] text-[#737373]">
                                                     <PriceDisplay
                                                         amount={item.unit_price}
                                                         size="sm"
@@ -469,7 +469,7 @@ export default function CooperativePickupIndex({
                                                 </p>
                                             </div>
                                         </div>
-                                        <div className="text-right font-semibold text-ink">
+                                        <div className="text-right font-semibold text-[#F5F2EB]">
                                             <PriceDisplay
                                                 amount={item.subtotal}
                                                 size="sm"
@@ -480,11 +480,11 @@ export default function CooperativePickupIndex({
                             </div>
 
                             {/* Total summary */}
-                            <div className="flex items-center justify-between rounded-xl border border-border bg-[#FAF9F5] p-3 text-xs">
-                                <span className="font-semibold text-muted">
+                            <div className="flex items-center justify-between rounded-xl border border-[#262626] bg-[#161616] p-3.5 text-xs">
+                                <span className="font-semibold text-[#737373]">
                                     Total Transaksi
                                 </span>
-                                <span className="font-heading text-sm font-bold text-primary">
+                                <span className="font-mono text-base font-bold text-[#F5F2EB]">
                                     <PriceDisplay
                                         amount={verifiedOrder.total}
                                         size="md"
@@ -498,10 +498,10 @@ export default function CooperativePickupIndex({
                                     type="button"
                                     disabled={isCompleting}
                                     onClick={handleCompletePickup}
-                                    className={`flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-full px-6 py-3 text-xs font-bold text-white shadow-md transition-all select-none ${
+                                    className={`flex min-h-[46px] flex-1 items-center justify-center gap-2 rounded-full px-6 py-2.5 text-xs font-semibold text-white shadow-sm transition-all select-none ${
                                         isCompleting
-                                            ? 'cursor-not-allowed bg-emerald-600/70'
-                                            : 'cursor-pointer bg-emerald-700 hover:bg-emerald-800 active:scale-98'
+                                            ? 'cursor-not-allowed bg-[#E34A27]/60'
+                                            : 'cursor-pointer bg-[#E34A27] hover:bg-[#D03E1C] active:scale-98'
                                     }`}
                                 >
                                     {isCompleting ? (
@@ -524,9 +524,9 @@ export default function CooperativePickupIndex({
                                 <button
                                     type="button"
                                     onClick={handleResetAll}
-                                    className="hover:bg-surface-subtle flex min-h-[48px] items-center justify-center gap-1.5 rounded-full border border-border bg-surface px-4 py-3 text-xs font-semibold text-ink shadow-2xs active:scale-98"
+                                    className="flex min-h-[46px] items-center justify-center gap-1.5 rounded-full border border-[#262626] bg-[#161616] px-5 py-2.5 text-xs font-medium text-[#A3A3A3] transition-colors hover:border-[#383838] hover:text-[#F5F2EB] active:scale-98"
                                 >
-                                    <RotateCcw className="size-3.5 text-muted" />
+                                    <RotateCcw className="size-3.5 text-[#737373]" />
                                     <span>Batal / Reset</span>
                                 </button>
                             </div>
@@ -534,16 +534,16 @@ export default function CooperativePickupIndex({
                     </div>
                 ) : (
                     /* INPUT / SCANNER MODES CONSOLE */
-                    <div className="overflow-hidden rounded-3xl border border-border bg-surface shadow-xs">
+                    <div className="overflow-hidden rounded-3xl border border-[#262626] bg-[#121212] shadow-sm">
                         {/* Tab Switcher */}
-                        <div className="flex border-b border-border bg-[#FAF9F5] p-1.5">
+                        <div className="flex border-b border-[#262626] bg-[#141414] p-1.5">
                             <button
                                 type="button"
                                 onClick={() => setMode('scan')}
-                                className={`flex flex-1 items-center justify-center gap-2 rounded-2xl py-2.5 text-xs font-bold transition-all ${
+                                className={`flex flex-1 items-center justify-center gap-2 rounded-2xl py-2.5 text-xs font-semibold transition-all ${
                                     mode === 'scan'
-                                        ? 'bg-white text-ink shadow-xs'
-                                        : 'text-muted hover:text-ink'
+                                        ? 'border border-[#333333] bg-[#1E1E1E] text-[#F5F2EB] shadow-xs'
+                                        : 'text-[#737373] hover:text-[#F5F2EB]'
                                 }`}
                             >
                                 <Camera className="size-4" />
@@ -552,10 +552,10 @@ export default function CooperativePickupIndex({
                             <button
                                 type="button"
                                 onClick={() => setMode('manual')}
-                                className={`flex flex-1 items-center justify-center gap-2 rounded-2xl py-2.5 text-xs font-bold transition-all ${
+                                className={`flex flex-1 items-center justify-center gap-2 rounded-2xl py-2.5 text-xs font-semibold transition-all ${
                                     mode === 'manual'
-                                        ? 'bg-white text-ink shadow-xs'
-                                        : 'text-muted hover:text-ink'
+                                        ? 'border border-[#333333] bg-[#1E1E1E] text-[#F5F2EB] shadow-xs'
+                                        : 'text-[#737373] hover:text-[#F5F2EB]'
                                 }`}
                             >
                                 <Keyboard className="size-4" />
@@ -569,16 +569,16 @@ export default function CooperativePickupIndex({
                                 <div className="mx-auto max-w-sm">
                                     <div
                                         id="coop-qr-reader"
-                                        className="overflow-hidden rounded-2xl border-2 border-border/80 bg-black/5"
+                                        className="overflow-hidden rounded-2xl border border-[#262626] bg-[#0A0A0A]"
                                         style={{ minHeight: '280px' }}
                                     />
 
                                     {cameraError && (
-                                        <div className="mt-3 rounded-xl border border-amber-300 bg-amber-50 p-3 text-left text-xs text-amber-900">
-                                            <p className="font-semibold">
+                                        <div className="mt-3 rounded-xl border border-amber-500/20 bg-amber-950/40 p-3 text-left text-xs text-amber-400">
+                                            <p className="font-semibold text-amber-300">
                                                 Kamera Belum Aktif
                                             </p>
-                                            <p className="mt-0.5 text-[11px] leading-relaxed">
+                                            <p className="mt-0.5 text-[11px] leading-relaxed text-amber-400/90">
                                                 {cameraError}
                                             </p>
                                             <button
@@ -586,14 +586,14 @@ export default function CooperativePickupIndex({
                                                 onClick={() =>
                                                     setMode('manual')
                                                 }
-                                                className="mt-2 font-bold text-primary underline"
+                                                className="mt-2 font-medium text-[#E34A27] underline"
                                             >
                                                 Beralih ke Input Manual →
                                             </button>
                                         </div>
                                     )}
 
-                                    <p className="mt-3 text-xs text-muted">
+                                    <p className="mt-3 text-xs text-[#737373]">
                                         Arahkan kamera ke QR Code yang
                                         ditampilkan pada ponsel siswa.
                                     </p>
@@ -610,7 +610,7 @@ export default function CooperativePickupIndex({
                                 <div>
                                     <label
                                         htmlFor="credential-input"
-                                        className="block text-xs font-bold tracking-wider text-ink uppercase"
+                                        className="block text-xs font-semibold tracking-wider text-[#A3A3A3] uppercase"
                                     >
                                         Kode Kredensial Pengambilan
                                     </label>
@@ -625,11 +625,11 @@ export default function CooperativePickupIndex({
                                                 )
                                             }
                                             placeholder="Contoh: 7F9B-2E4A-8C1D-5F03 atau tempel payload"
-                                            className="w-full rounded-2xl border border-border bg-white px-4 py-3 font-mono text-xs text-ink uppercase shadow-2xs focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                                            className="w-full rounded-xl border border-[#262626] bg-[#141414] px-4 py-3 font-mono text-xs text-[#F5F2EB] uppercase placeholder:text-[#525252] focus:border-[#E34A27] focus:ring-1 focus:ring-[#E34A27]/20 focus:outline-none"
                                             required
                                         />
                                     </div>
-                                    <p className="mt-1 text-[11px] text-muted">
+                                    <p className="mt-1 text-[11px] text-[#737373]">
                                         Kode 16 karakter dapat ditemukan tepat
                                         di bawah QR code siswa.
                                     </p>
@@ -638,7 +638,7 @@ export default function CooperativePickupIndex({
                                 <div>
                                     <label
                                         htmlFor="order-number-input"
-                                        className="block text-xs font-bold tracking-wider text-ink uppercase"
+                                        className="block text-xs font-semibold tracking-wider text-[#A3A3A3] uppercase"
                                     >
                                         Nomor Pesanan (Opsional)
                                     </label>
@@ -653,7 +653,7 @@ export default function CooperativePickupIndex({
                                                 )
                                             }
                                             placeholder="Contoh: KD-20261003-AB12CD"
-                                            className="w-full rounded-2xl border border-border bg-white px-4 py-3 font-mono text-xs text-ink uppercase shadow-2xs focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                                            className="w-full rounded-xl border border-[#262626] bg-[#141414] px-4 py-3 font-mono text-xs text-[#F5F2EB] uppercase placeholder:text-[#525252] focus:border-[#E34A27] focus:ring-1 focus:ring-[#E34A27]/20 focus:outline-none"
                                         />
                                     </div>
                                 </div>
@@ -663,10 +663,10 @@ export default function CooperativePickupIndex({
                                     disabled={
                                         isVerifying || !manualCredential.trim()
                                     }
-                                    className={`flex min-h-[46px] w-full items-center justify-center gap-2 rounded-full py-2.5 text-xs font-bold text-white shadow-xs transition-all ${
+                                    className={`flex min-h-[46px] w-full items-center justify-center gap-2 rounded-full py-2.5 text-xs font-semibold text-white shadow-sm transition-all ${
                                         isVerifying || !manualCredential.trim()
-                                            ? 'cursor-not-allowed bg-primary/70'
-                                            : 'cursor-pointer bg-primary hover:bg-primary-hover active:scale-98'
+                                            ? 'cursor-not-allowed bg-[#E34A27]/60'
+                                            : 'cursor-pointer bg-[#E34A27] hover:bg-[#D03E1C] active:scale-98'
                                     }`}
                                 >
                                     {isVerifying ? (
@@ -698,43 +698,43 @@ export default function CooperativePickupIndex({
                     <div className="mb-3 flex items-center justify-between">
                         <h3
                             id="recent-pickups-title"
-                            className="font-heading text-sm font-bold text-ink sm:text-base"
+                            className="font-heading text-sm font-bold text-[#F5F2EB] sm:text-base"
                         >
                             Riwayat Pengambilan Hari Ini
                         </h3>
-                        <span className="text-xs text-muted">
+                        <span className="text-xs text-[#737373]">
                             {recentPickups.length} pesanan diserahkan
                         </span>
                     </div>
 
-                    <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-xs">
+                    <div className="overflow-hidden rounded-2xl border border-[#262626] bg-[#121212] shadow-sm">
                         {recentPickups.length > 0 ? (
-                            <div className="divide-y divide-border/60">
+                            <div className="divide-y divide-[#262626]">
                                 {recentPickups.map((log) => (
                                     <div
                                         key={log.id}
-                                        className="flex items-center justify-between p-3.5 text-xs transition-colors hover:bg-[#FAF9F5]"
+                                        className="flex items-center justify-between p-3.5 text-xs transition-colors hover:bg-[#161616]"
                                     >
                                         <div className="flex items-center gap-3">
-                                            <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-emerald-100 font-mono text-xs font-bold text-emerald-800">
+                                            <span className="flex size-7 shrink-0 items-center justify-center rounded-lg border border-[#262626] bg-[#1A1A1A] font-mono text-xs font-bold text-emerald-400">
                                                 {log.queue_code || 'OK'}
                                             </span>
                                             <div>
-                                                <p className="font-bold text-ink">
+                                                <p className="font-medium text-[#F5F2EB]">
                                                     {log.student_name}
                                                 </p>
-                                                <p className="font-mono text-[11px] text-muted">
+                                                <p className="font-mono text-[11px] text-[#737373]">
                                                     #{log.order_number}
                                                 </p>
                                             </div>
                                         </div>
 
                                         <div className="text-right">
-                                            <div className="flex items-center justify-end gap-1.5 text-[11px] font-semibold text-emerald-700">
+                                            <div className="flex items-center justify-end gap-1.5 text-[11px] font-semibold text-emerald-400">
                                                 <CheckCircle2 className="size-3.5" />
                                                 <span>{log.verified_at}</span>
                                             </div>
-                                            <span className="inline-block text-[10px] text-muted uppercase">
+                                            <span className="inline-block text-[10px] text-[#737373] uppercase">
                                                 Via{' '}
                                                 {log.method === 'qr'
                                                     ? 'QR Scanner'
@@ -745,7 +745,7 @@ export default function CooperativePickupIndex({
                                 ))}
                             </div>
                         ) : (
-                            <div className="p-8 text-center text-xs text-muted">
+                            <div className="p-8 text-center text-xs text-[#737373]">
                                 Belum ada pengambilan yang diselesaikan pada
                                 hari ini.
                             </div>

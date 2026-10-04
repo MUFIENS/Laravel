@@ -1,4 +1,5 @@
 import {
+    Banknote,
     BarChart3,
     Boxes,
     Inbox,
@@ -24,7 +25,6 @@ export const COOPERATIVE_NAV_ITEMS: CooperativeNavItem[] = [
         href: '/cooperative/orders',
         icon: ShoppingBag,
         status: 'active',
-        badge: 'Aktif',
         description: 'Manajemen antrean pesanan & status pemenuhan',
     },
     {
@@ -33,7 +33,6 @@ export const COOPERATIVE_NAV_ITEMS: CooperativeNavItem[] = [
         href: '/cooperative/consignments',
         icon: Inbox,
         status: 'active',
-        badge: 'Aktif',
         description: 'Kurasi & persetujuan produk konsinyasi siswa',
     },
     {
@@ -42,7 +41,6 @@ export const COOPERATIVE_NAV_ITEMS: CooperativeNavItem[] = [
         href: '/cooperative/products',
         icon: Package,
         status: 'active',
-        badge: 'Aktif',
         description: 'Katalog produk koperasi & kontrol harga',
     },
     {
@@ -51,8 +49,15 @@ export const COOPERATIVE_NAV_ITEMS: CooperativeNavItem[] = [
         href: '/cooperative/inventory',
         icon: Boxes,
         status: 'active',
-        badge: 'Aktif',
         description: 'Mutasi inventaris & opname stok fisik',
+    },
+    {
+        key: 'payments',
+        label: 'Kasir QR',
+        href: '/cooperative/payments/verify',
+        icon: Banknote,
+        status: 'active',
+        description: 'Verifikasi pembayaran tunai & scan QR kasir',
     },
     {
         key: 'pickup',
@@ -60,7 +65,6 @@ export const COOPERATIVE_NAV_ITEMS: CooperativeNavItem[] = [
         href: '/cooperative/pickup',
         icon: QrCode,
         status: 'active',
-        badge: 'Aktif',
         description: 'Verifikasi pemindai QR loket pengambilan',
     },
     {

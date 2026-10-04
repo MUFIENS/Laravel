@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PaymentStatus;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\User;
+use App\Services\CashPaymentService;
 use App\Services\PickupCredentialService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
@@ -62,13 +64,17 @@ class OrderController extends Controller
     /**
      * Display the specified order confirmation / details.
      */
-    public function show(Order $order, PickupCredentialService $credentialService): Response
-    {
+    public function show(
+        Order $order,
+        PickupCredentialService $credentialService,
+        CashPaymentService $cashService
+    ): Response {
         $this->authorize('view', $order);
 
         $order->load([
             'pickupSession',
             'pickupLog',
+            'payments',
             'items' => function ($query) {
                 $query->orderBy('id', 'asc');
             },
@@ -77,11 +83,29 @@ class OrderController extends Controller
 
         $pickupCredential = null;
         $qrPayload = null;
+        $paymentToken = null;
+        $paymentQrPayload = null;
 
-        // Only generate pickup credential and QR payload if order is ready for pickup or completed
+        // 1. If order is ready for pickup or completed: generate pickup credential & pickup QR
         if ($order->isReadyForPickup() || $order->isCompleted()) {
             $pickupCredential = $credentialService->generateRawCredential($order);
             $qrPayload = $credentialService->buildQrPayload($order, $pickupCredential);
+        }
+
+        // 2. If order is pending payment: generate Cash Payment verification token & Cash Payment QR
+        if ($order->payment_status === PaymentStatus::Pending) {
+            $activePayment = $order->payments
+                ->where('status', PaymentStatus::Pending)
+                ->whereNotNull('payment_token_hash')
+                ->first();
+
+            if ($activePayment) {
+                $rawToken = $cashService->generateRawToken($order);
+                if ($cashService->verifyToken($activePayment, $rawToken)) {
+                    $paymentToken = $rawToken;
+                    $paymentQrPayload = $cashService->buildPaymentQrPayload($order, $rawToken);
+                }
+            }
         }
 
         return Inertia::render('orders/show', [
@@ -92,6 +116,10 @@ class OrderController extends Controller
                 'queue_code' => $order->queue_code,
                 'pickup_credential' => $pickupCredential,
                 'qr_payload' => $qrPayload,
+                'payment_token' => $paymentToken,
+                'payment_qr_payload' => $paymentQrPayload,
+                'payment_method' => 'cash',
+                'payment_method_label' => 'Bayar Tunai di Koperasi',
                 'subtotal' => $order->subtotal,
                 'total' => $order->total,
                 'order_status' => $order->order_status->value,
@@ -137,8 +165,6 @@ class OrderController extends Controller
                     ];
                 }),
             ],
-            'midtrans_client_key' => (string) config('services.midtrans.client_key', ''),
-            'snap_js_url' => (string) config('services.midtrans.snap_js_url', 'https://app.sandbox.midtrans.com/snap/snap.js'),
         ]);
     }
 }

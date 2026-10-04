@@ -47,22 +47,22 @@ export const CooperativeMobileNav: React.FC<Props> = ({
         >
             {/* Backdrop overlay */}
             <div
-                className="fixed inset-0 bg-black/40 backdrop-blur-xs transition-opacity"
+                className="fixed inset-0 bg-black/70 backdrop-blur-xs transition-opacity"
                 onClick={onClose}
                 aria-hidden="true"
             />
 
             {/* Slide-over panel */}
-            <div className="relative flex w-full max-w-xs flex-1 animate-in flex-col bg-[var(--color-surface)] shadow-2xl transition-transform duration-200 slide-in-from-left">
+            <div className="relative flex w-full max-w-xs flex-1 animate-in flex-col border-r border-[#262626] bg-[#0E0E0E] shadow-2xl transition-transform duration-200 slide-in-from-left">
                 {/* Close Button Header */}
                 <div className="absolute top-3 right-3 z-10">
                     <button
                         type="button"
                         onClick={onClose}
-                        className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl bg-[var(--color-surface-subtle)] text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] focus:ring-2 focus:ring-[var(--color-primary)] focus:outline-hidden"
+                        className="inline-flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg border border-[#262626] bg-[#181818] text-[#737373] hover:text-[#F5F2EB] focus:ring-2 focus:ring-[#E34A27] focus:outline-hidden"
                         aria-label="Tutup menu navigasi"
                     >
-                        <X className="size-5" aria-hidden="true" />
+                        <X className="size-4" aria-hidden="true" />
                     </button>
                 </div>
 

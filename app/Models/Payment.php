@@ -17,11 +17,14 @@ use Illuminate\Support\Carbon;
  * @property string|null $provider_transaction_id
  * @property string|null $provider_order_id
  * @property string|null $payment_token
+ * @property string|null $payment_token_hash
+ * @property int|null $verified_by
  * @property PaymentStatus $status
  * @property int $gross_amount
  * @property string|null $payment_type
  * @property string|null $raw_notification_reference
  * @property Carbon|null $paid_at
+ * @property Carbon|null $cash_received_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
@@ -31,11 +34,14 @@ use Illuminate\Support\Carbon;
     'provider_transaction_id',
     'provider_order_id',
     'payment_token',
+    'payment_token_hash',
+    'verified_by',
     'status',
     'gross_amount',
     'payment_type',
     'raw_notification_reference',
     'paid_at',
+    'cash_received_at',
 ])]
 class Payment extends Model
 {
@@ -53,6 +59,7 @@ class Payment extends Model
             'status' => PaymentStatus::class,
             'gross_amount' => 'integer',
             'paid_at' => 'datetime',
+            'cash_received_at' => 'datetime',
         ];
     }
 
@@ -79,5 +86,15 @@ class Payment extends Model
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
+    }
+
+    /**
+     * The cooperative user who verified this cash payment.
+     *
+     * @return BelongsTo<User, $this>
+     */
+    public function verifiedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'verified_by');
     }
 }

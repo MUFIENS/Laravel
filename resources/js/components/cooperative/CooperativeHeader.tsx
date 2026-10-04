@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, usePage } from '@inertiajs/react';
-import { LogOut, Menu, ShieldCheck } from 'lucide-react';
+import { LogOut, Menu } from 'lucide-react';
 import type { Auth } from '@/types/auth';
 
 interface Props {
@@ -27,13 +27,13 @@ export const CooperativeHeader: React.FC<Props> = ({
     };
 
     return (
-        <header className="sticky top-0 z-30 flex h-16 w-full items-center justify-between border-b border-[var(--color-border-subtle)] bg-[var(--color-surface)]/95 px-4 backdrop-blur-md sm:px-6 lg:px-8">
+        <header className="sticky top-0 z-30 flex h-16 w-full items-center justify-between border-b border-[#262626] bg-[#0A0A0A]/90 px-4 backdrop-blur-md sm:px-6 lg:px-8">
             <div className="flex items-center gap-3">
                 {/* Mobile hamburger menu toggle */}
                 <button
                     type="button"
                     onClick={onOpenMobileNav}
-                    className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl text-[var(--color-ink-muted)] transition-colors hover:bg-[var(--color-surface-subtle)] hover:text-[var(--color-ink)] focus:ring-2 focus:ring-[var(--color-primary)] focus:outline-hidden md:hidden"
+                    className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-[#737373] transition-colors hover:bg-[#181818] hover:text-[#F5F2EB] focus:ring-2 focus:ring-[#E34A27] focus:outline-hidden md:hidden"
                     aria-label="Buka menu navigasi"
                     aria-expanded={isMobileNavOpen}
                     aria-controls="cooperative-mobile-drawer"
@@ -43,13 +43,10 @@ export const CooperativeHeader: React.FC<Props> = ({
 
                 {/* Mobile brand indicator */}
                 <div className="flex items-center gap-2 md:hidden">
-                    <div className="flex size-8 items-center justify-center rounded-lg bg-[var(--color-primary)] text-white shadow-xs">
-                        <ShieldCheck
-                            className="size-4.5 text-[var(--color-accent)]"
-                            aria-hidden="true"
-                        />
+                    <div className="flex size-7 items-center justify-center bg-[#F5F2EB] font-heading text-xs font-black text-[#0A0A0A] shadow-xs">
+                        K
                     </div>
-                    <span className="font-display text-sm font-bold text-[var(--color-primary)]">
+                    <span className="font-heading text-sm font-bold tracking-tight text-[#F5F2EB]">
                         KOPDIG
                     </span>
                 </div>
@@ -61,26 +58,24 @@ export const CooperativeHeader: React.FC<Props> = ({
                 >
                     <Link
                         href="/cooperative"
-                        className="font-medium text-[var(--color-ink-muted)] hover:text-[var(--color-primary)]"
+                        className="font-medium text-[#737373] transition-colors hover:text-[#F5F2EB]"
                     >
                         Ruang Kerja Koperasi
                     </Link>
                     {breadcrumbs && breadcrumbs.length > 0
                         ? breadcrumbs.map((crumb) => (
                               <React.Fragment key={crumb.label}>
-                                  <span className="text-[var(--color-border)]">
-                                      /
-                                  </span>
+                                  <span className="text-[#333333]">/</span>
                                   {crumb.href ? (
                                       <Link
                                           href={crumb.href}
-                                          className="font-medium text-[var(--color-ink-muted)] hover:text-[var(--color-primary)]"
+                                          className="font-medium text-[#737373] transition-colors hover:text-[#F5F2EB]"
                                       >
                                           {crumb.label}
                                       </Link>
                                   ) : (
                                       <span
-                                          className="font-semibold text-[var(--color-ink)]"
+                                          className="font-semibold text-[#F5F2EB]"
                                           aria-current="page"
                                       >
                                           {crumb.label}
@@ -90,11 +85,9 @@ export const CooperativeHeader: React.FC<Props> = ({
                           ))
                         : title && (
                               <>
-                                  <span className="text-[var(--color-border)]">
-                                      /
-                                  </span>
+                                  <span className="text-[#333333]">/</span>
                                   <span
-                                      className="font-semibold text-[var(--color-ink)]"
+                                      className="font-semibold text-[#F5F2EB]"
                                       aria-current="page"
                                   >
                                       {title}
@@ -107,23 +100,23 @@ export const CooperativeHeader: React.FC<Props> = ({
             {/* Right side operational status & user context */}
             <div className="flex items-center gap-3">
                 {/* Role badge */}
-                <div className="hidden items-center gap-1.5 rounded-full bg-[var(--color-primary-soft)] px-2.5 py-1 text-xs font-semibold text-[var(--color-primary)] sm:flex">
+                <div className="hidden items-center gap-1.5 rounded border border-[#E34A27]/30 bg-[#E34A27]/10 px-2.5 py-1 font-mono text-[11px] font-semibold text-[#E34A27] sm:flex">
                     <span
-                        className="size-1.5 rounded-full bg-emerald-600"
+                        className="size-1.5 rounded-full bg-emerald-400"
                         aria-hidden="true"
                     />
-                    <span>Petugas Koperasi</span>
+                    <span>Operator Koperasi</span>
                 </div>
 
                 {/* User avatar & name */}
-                <div className="flex items-center gap-2 border-l border-[var(--color-border-subtle)] pl-2">
+                <div className="flex items-center gap-2 border-l border-[#262626] pl-3">
                     <div
-                        className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-[var(--color-primary)] text-xs font-bold text-white shadow-xs"
+                        className="flex size-8 shrink-0 items-center justify-center rounded bg-[#E34A27] text-xs font-bold text-white shadow-xs"
                         aria-hidden="true"
                     >
                         {getInitials(user?.name)}
                     </div>
-                    <span className="hidden max-w-[140px] truncate text-xs font-semibold text-[var(--color-ink)] lg:inline-block">
+                    <span className="hidden max-w-[140px] truncate text-xs font-semibold text-[#F5F2EB] lg:inline-block">
                         {user?.name ?? 'Pengurus'}
                     </span>
 
@@ -132,7 +125,7 @@ export const CooperativeHeader: React.FC<Props> = ({
                         href="/logout"
                         method="post"
                         as="button"
-                        className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-[var(--color-ink-muted)] transition-colors hover:bg-rose-50 hover:text-[var(--color-status-danger)] focus:ring-2 focus:ring-[var(--color-status-danger)] focus:outline-hidden"
+                        className="inline-flex min-h-[38px] min-w-[38px] items-center justify-center rounded text-[#737373] transition-colors hover:bg-rose-950/40 hover:text-rose-400 focus:ring-2 focus:ring-[#E34A27] focus:outline-hidden"
                         title="Keluar dari akun"
                         aria-label="Keluar dari akun"
                     >

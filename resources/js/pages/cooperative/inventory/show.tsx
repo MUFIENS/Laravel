@@ -102,35 +102,35 @@ export default function CooperativeInventoryShow({
         switch (type) {
             case 'restock':
                 return (
-                    <span className="inline-flex items-center gap-1 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-700">
+                    <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/20 bg-emerald-950/40 px-2.5 py-0.5 font-mono text-xs font-semibold text-emerald-400">
                         <PlusCircle className="h-3 w-3" />
                         {label || 'Restock'}
                     </span>
                 );
             case 'sale':
                 return (
-                    <span className="inline-flex items-center gap-1 rounded-full border border-blue-200 bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-700">
+                    <span className="inline-flex items-center gap-1 rounded-full border border-sky-500/20 bg-sky-950/40 px-2.5 py-0.5 font-mono text-xs font-semibold text-sky-400">
                         <ArrowDownRight className="h-3 w-3" />
                         {label || 'Penjualan'}
                     </span>
                 );
             case 'restore':
                 return (
-                    <span className="inline-flex items-center gap-1 rounded-full border border-purple-200 bg-purple-50 px-2.5 py-0.5 text-xs font-semibold text-purple-700">
+                    <span className="inline-flex items-center gap-1 rounded-full border border-purple-500/20 bg-purple-950/40 px-2.5 py-0.5 font-mono text-xs font-semibold text-purple-400">
                         <ArrowUpRight className="h-3 w-3" />
                         {label || 'Pengembalian'}
                     </span>
                 );
             case 'adjustment':
                 return (
-                    <span className="inline-flex items-center gap-1 rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-xs font-semibold text-amber-700">
+                    <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/20 bg-amber-950/40 px-2.5 py-0.5 font-mono text-xs font-semibold text-amber-400">
                         <Sliders className="h-3 w-3" />
                         {label || 'Penyesuaian'}
                     </span>
                 );
             default:
                 return (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-700">
+                    <span className="inline-flex items-center gap-1 rounded-full border border-[#262626] bg-[#161616] px-2.5 py-0.5 font-mono text-xs font-semibold text-[#A3A3A3]">
                         {label || type}
                     </span>
                 );
@@ -143,19 +143,19 @@ export default function CooperativeInventoryShow({
 
             <div className="mx-auto max-w-7xl space-y-6 pb-16">
                 {/* Back Link & Navigation Header */}
-                <div className="flex flex-col gap-4 border-b border-slate-200 pb-2 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex flex-col gap-4 border-b border-[#262626] pb-4 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                         <Link
                             href="/cooperative/inventory"
-                            className="mb-1 inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-emerald-700 uppercase transition-colors hover:text-emerald-800"
+                            className="mb-1.5 inline-flex items-center gap-2 font-mono text-xs font-semibold tracking-wider text-[#E34A27] uppercase transition-colors hover:text-[#cf3e1d]"
                         >
                             <ArrowLeft className="h-3.5 w-3.5" />
                             <span>Kembali ke Manajemen Stok</span>
                         </Link>
-                        <h1 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                        <h1 className="font-heading text-2xl font-bold tracking-tight text-[#F5F2EB] sm:text-3xl">
                             Inventaris: {product.name}
                         </h1>
-                        <p className="mt-1 text-sm text-slate-500">
+                        <p className="mt-1 text-sm text-[#A3A3A3]">
                             Buku mutasi stok fisik, saldo unit barang, dan
                             operasi penyesuaian inventaris koperasi.
                         </p>
@@ -164,9 +164,9 @@ export default function CooperativeInventoryShow({
                     <div className="flex items-center gap-2">
                         <Link
                             href={`/cooperative/products/${product.slug}`}
-                            className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-xs font-medium text-slate-700 shadow-sm transition-colors hover:bg-slate-50"
+                            className="inline-flex items-center gap-2 rounded-xl border border-[#262626] bg-[#141414] px-3.5 py-2 text-xs font-semibold text-[#F5F2EB] transition-colors hover:border-[#383838] hover:bg-[#1a1a1a]"
                         >
-                            <Package className="h-3.5 w-3.5 text-slate-500" />
+                            <Package className="h-3.5 w-3.5 text-[#A3A3A3]" />
                             <span>Detail Katalog Produk</span>
                         </Link>
                     </div>
@@ -174,15 +174,15 @@ export default function CooperativeInventoryShow({
 
                 {/* Flash Messages */}
                 {flash?.success && (
-                    <div className="flex items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800">
-                        <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-600" />
+                    <div className="flex items-center gap-3 rounded-2xl border border-emerald-500/20 bg-emerald-950/40 p-4 text-xs text-emerald-300">
+                        <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-400" />
                         <span className="font-medium">{flash.success}</span>
                     </div>
                 )}
 
                 {flash?.error && (
-                    <div className="flex items-center gap-3 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800">
-                        <AlertTriangle className="h-5 w-5 shrink-0 text-rose-600" />
+                    <div className="flex items-center gap-3 rounded-2xl border border-rose-500/20 bg-rose-950/40 p-4 text-xs text-rose-300">
+                        <AlertTriangle className="h-5 w-5 shrink-0 text-rose-400" />
                         <span className="font-medium">{flash.error}</span>
                     </div>
                 )}
@@ -191,35 +191,35 @@ export default function CooperativeInventoryShow({
                 <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
                     {/* Left: Product Overview Card (7 cols) */}
                     <div className="space-y-6 lg:col-span-7">
-                        <div className="space-y-5 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                        <div className="space-y-5 rounded-2xl border border-[#262626] bg-[#121212] p-5 shadow-xs">
                             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                                 {product.image_path ? (
                                     <img
                                         src={`/storage/${product.image_path}`}
                                         alt={product.name}
-                                        className="h-20 w-20 shrink-0 rounded-xl border border-slate-200 object-cover"
+                                        className="h-20 w-20 shrink-0 rounded-2xl border border-[#262626] object-cover"
                                     />
                                 ) : (
-                                    <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-slate-100 text-slate-400">
+                                    <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl border border-[#262626] bg-[#181818] text-[#737373]">
                                         <Package className="h-8 w-8" />
                                     </div>
                                 )}
                                 <div className="space-y-1">
                                     <div className="flex flex-wrap items-center gap-2">
                                         {product.category && (
-                                            <span className="inline-flex items-center gap-1 rounded bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-700">
-                                                <Tag className="h-3 w-3 text-slate-400" />
+                                            <span className="inline-flex items-center gap-1 rounded-full border border-[#262626] bg-[#181818] px-2.5 py-0.5 font-mono text-[10px] font-medium text-[#A3A3A3]">
+                                                <Tag className="h-3 w-3 text-[#737373]" />
                                                 {product.category.name}
                                             </span>
                                         )}
-                                        <span className="font-mono text-xs text-slate-400">
+                                        <span className="font-mono text-xs text-[#525252]">
                                             slug: {product.slug}
                                         </span>
                                     </div>
-                                    <h2 className="text-xl font-bold text-slate-900">
+                                    <h2 className="font-heading text-xl font-bold text-[#F5F2EB]">
                                         {product.name}
                                     </h2>
-                                    <p className="line-clamp-2 text-xs text-slate-500">
+                                    <p className="line-clamp-2 text-xs leading-relaxed text-[#737373]">
                                         {product.description ||
                                             'Tidak ada deskripsi tambahan.'}
                                     </p>
@@ -227,24 +227,24 @@ export default function CooperativeInventoryShow({
                             </div>
 
                             {/* Ownership & Stewardship Pillar */}
-                            <div className="space-y-3 rounded-xl border border-slate-200/80 bg-slate-50 p-4">
-                                <div className="flex items-center gap-2 text-xs font-semibold tracking-wider text-slate-700 uppercase">
-                                    <ShieldCheck className="h-4 w-4 text-emerald-600" />
+                            <div className="space-y-3 rounded-xl border border-[#262626] bg-[#161616] p-4">
+                                <div className="flex items-center gap-2 font-mono text-[11px] font-semibold tracking-wider text-[#A3A3A3] uppercase">
+                                    <ShieldCheck className="h-4 w-4 text-[#E34A27]" />
                                     <span>
                                         Integritas Kepemilikan & Pengelolaan
                                     </span>
                                 </div>
 
                                 <div className="grid grid-cols-1 gap-3 text-xs sm:grid-cols-3">
-                                    <div className="rounded-lg border border-slate-200 bg-white p-2.5">
-                                        <div className="mb-0.5 text-slate-400">
+                                    <div className="rounded-xl border border-[#262626] bg-[#121212] p-3">
+                                        <div className="mb-1 font-mono text-[10px] text-[#737373] uppercase">
                                             Pemilik Sah
                                         </div>
-                                        <div className="flex items-center gap-1.5 font-semibold text-slate-800">
+                                        <div className="flex items-center gap-1.5 font-semibold text-[#F5F2EB]">
                                             {product.source_type ===
                                             'student' ? (
                                                 <>
-                                                    <UserIcon className="h-3.5 w-3.5 text-amber-600" />
+                                                    <UserIcon className="h-3.5 w-3.5 text-amber-400" />
                                                     <span className="truncate">
                                                         {product.owner?.name ||
                                                             'Siswa'}
@@ -252,13 +252,13 @@ export default function CooperativeInventoryShow({
                                                 </>
                                             ) : (
                                                 <>
-                                                    <Store className="h-3.5 w-3.5 text-emerald-600" />
+                                                    <Store className="h-3.5 w-3.5 text-emerald-400" />
                                                     <span>Koperasi Siswa</span>
                                                 </>
                                             )}
                                         </div>
                                         {product.owner?.student_identifier && (
-                                            <div className="mt-0.5 text-[11px] text-slate-400">
+                                            <div className="mt-1 font-mono text-[11px] text-[#737373]">
                                                 NISN:{' '}
                                                 {
                                                     product.owner
@@ -268,69 +268,69 @@ export default function CooperativeInventoryShow({
                                         )}
                                     </div>
 
-                                    <div className="rounded-lg border border-slate-200 bg-white p-2.5">
-                                        <div className="mb-0.5 text-slate-400">
+                                    <div className="rounded-xl border border-[#262626] bg-[#121212] p-3">
+                                        <div className="mb-1 font-mono text-[10px] text-[#737373] uppercase">
                                             Pengelola & Operator
                                         </div>
-                                        <div className="flex items-center gap-1.5 font-semibold text-slate-800">
-                                            <Boxes className="h-3.5 w-3.5 text-emerald-600" />
+                                        <div className="flex items-center gap-1.5 font-semibold text-[#F5F2EB]">
+                                            <Boxes className="h-3.5 w-3.5 text-emerald-400" />
                                             <span>Koperasi KOPDIG</span>
                                         </div>
-                                        <div className="mt-0.5 text-[11px] text-slate-400">
+                                        <div className="mt-1 font-mono text-[10px] text-[#737373]">
                                             Kurasi & Mutasi Fisik
                                         </div>
                                     </div>
 
-                                    <div className="rounded-lg border border-slate-200 bg-white p-2.5">
-                                        <div className="mb-0.5 text-slate-400">
+                                    <div className="rounded-xl border border-[#262626] bg-[#121212] p-3">
+                                        <div className="mb-1 font-mono text-[10px] text-[#737373] uppercase">
                                             Klasifikasi Sumber
                                         </div>
-                                        <div className="font-semibold text-slate-800">
+                                        <div className="font-semibold text-[#F5F2EB]">
                                             {product.source_type ===
                                             'student' ? (
-                                                <span className="text-amber-700">
+                                                <span className="font-mono text-amber-400">
                                                     Konsinyasi Siswa
                                                 </span>
                                             ) : (
-                                                <span className="text-emerald-700">
+                                                <span className="font-mono text-emerald-400">
                                                     Pengadaan Koperasi
                                                 </span>
                                             )}
                                         </div>
-                                        <div className="mt-0.5 text-[11px] text-slate-400">
-                                            Status Produk: {product.status}
+                                        <div className="mt-1 font-mono text-[10px] text-[#525252]">
+                                            Status: {product.status}
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Commercial Pricing Breakdown */}
-                            <div className="grid grid-cols-3 gap-3 rounded-xl border border-slate-100 bg-slate-50/60 p-3.5 text-center">
+                            <div className="grid grid-cols-3 gap-3 rounded-xl border border-[#262626] bg-[#161616] p-3.5 text-center">
                                 <div>
-                                    <div className="mb-1 text-xs text-slate-400">
+                                    <div className="mb-1 font-mono text-[10px] text-[#737373] uppercase">
                                         Harga Dasar
                                     </div>
                                     <PriceDisplay
                                         amount={product.base_price}
-                                        className="text-sm font-semibold text-slate-700"
+                                        className="font-mono text-sm font-semibold text-[#A3A3A3]"
                                     />
                                 </div>
-                                <div className="border-x border-slate-200 px-2">
-                                    <div className="mb-1 text-xs text-slate-400">
+                                <div className="border-x border-[#262626] px-2">
+                                    <div className="mb-1 font-mono text-[10px] text-[#737373] uppercase">
                                         Margin Koperasi
                                     </div>
                                     <PriceDisplay
                                         amount={product.cooperative_margin}
-                                        className="text-sm font-semibold text-emerald-700"
+                                        className="font-mono text-sm font-semibold text-emerald-400"
                                     />
                                 </div>
                                 <div>
-                                    <div className="mb-1 text-xs text-slate-400">
+                                    <div className="mb-1 font-mono text-[10px] text-[#737373] uppercase">
                                         Harga Jual Publik
                                     </div>
                                     <PriceDisplay
                                         amount={product.selling_price}
-                                        className="text-sm font-bold text-slate-900"
+                                        className="font-mono text-sm font-bold text-[#F5F2EB]"
                                     />
                                 </div>
                             </div>
@@ -340,36 +340,36 @@ export default function CooperativeInventoryShow({
                     {/* Right: Current Stock & Manual Operation Form (5 cols) */}
                     <div className="space-y-6 lg:col-span-5">
                         {/* Current Stock Snapshot Card */}
-                        <div className="space-y-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                        <div className="space-y-4 rounded-2xl border border-[#262626] bg-[#121212] p-5 shadow-xs">
                             <div className="flex items-center justify-between">
-                                <span className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
+                                <span className="font-mono text-[10px] font-bold tracking-wider text-[#737373] uppercase">
                                     Saldo Fisik Terkini
                                 </span>
                                 {product.stock_status === 'out_of_stock' ? (
-                                    <span className="inline-flex items-center gap-1 rounded-full border border-rose-200 bg-rose-50 px-2.5 py-1 text-xs font-semibold text-rose-700">
+                                    <span className="inline-flex items-center gap-1 rounded-full border border-rose-500/20 bg-rose-950/40 px-2.5 py-0.5 font-mono text-xs font-semibold text-rose-400">
                                         Habis (0)
                                     </span>
                                 ) : product.stock_status === 'low_stock' ? (
-                                    <span className="inline-flex items-center gap-1 rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-xs font-semibold text-amber-700">
+                                    <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/20 bg-amber-950/40 px-2.5 py-0.5 font-mono text-xs font-semibold text-amber-400">
                                         Stok Menipis
                                     </span>
                                 ) : (
-                                    <span className="inline-flex items-center gap-1 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">
+                                    <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/20 bg-emerald-950/40 px-2.5 py-0.5 font-mono text-xs font-semibold text-emerald-400">
                                         Stok Aman
                                     </span>
                                 )}
                             </div>
 
                             <div className="flex items-baseline gap-2">
-                                <span className="font-mono text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+                                <span className="font-mono text-4xl font-extrabold tracking-tight text-[#F5F2EB] sm:text-5xl">
                                     {product.stock}
                                 </span>
-                                <span className="text-sm font-medium text-slate-500">
+                                <span className="font-mono text-xs text-[#737373]">
                                     unit fisik tersedia
                                 </span>
                             </div>
 
-                            <div className="flex items-center gap-1.5 border-t border-slate-100 pt-2 text-xs text-slate-400">
+                            <div className="flex items-center gap-1.5 border-t border-[#1F1F1F] pt-2 font-mono text-[11px] text-[#525252]">
                                 <Clock className="h-3.5 w-3.5" />
                                 <span>
                                     Terakhir diperbarui:{' '}
@@ -381,16 +381,16 @@ export default function CooperativeInventoryShow({
                         </div>
 
                         {/* Manual Stock Operation Form */}
-                        <div className="space-y-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-                            <div className="flex items-center gap-2 text-xs font-semibold tracking-wider text-slate-700 uppercase">
-                                <Sliders className="h-4 w-4 text-emerald-600" />
+                        <div className="space-y-4 rounded-2xl border border-[#262626] bg-[#121212] p-5 shadow-xs">
+                            <div className="flex items-center gap-2 font-mono text-[11px] font-semibold tracking-wider text-[#A3A3A3] uppercase">
+                                <Sliders className="h-4 w-4 text-[#E34A27]" />
                                 <span>Operasi Mutasi Stok Fisik</span>
                             </div>
 
                             <form onSubmit={handleSubmit} className="space-y-4">
                                 {/* Operation Type Selector */}
                                 <div>
-                                    <label className="mb-1.5 block text-xs font-medium text-slate-700">
+                                    <label className="mb-1.5 block font-mono text-xs font-medium text-[#A3A3A3]">
                                         Jenis Mutasi
                                     </label>
                                     <div className="grid grid-cols-2 gap-2">
@@ -399,10 +399,10 @@ export default function CooperativeInventoryShow({
                                             onClick={() =>
                                                 handleTypeChange('restock')
                                             }
-                                            className={`rounded-lg border px-3 py-2 text-center text-xs font-semibold transition-all ${
+                                            className={`rounded-xl border px-3 py-2 text-center font-mono text-xs font-semibold transition-all ${
                                                 operationType === 'restock'
-                                                    ? 'border-emerald-500 bg-emerald-50 text-emerald-700 shadow-sm'
-                                                    : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
+                                                    ? 'border-emerald-500/30 bg-emerald-950/40 text-emerald-400 shadow-xs'
+                                                    : 'border-[#262626] bg-[#161616] text-[#A3A3A3] hover:border-[#383838]'
                                             }`}
                                         >
                                             Restock Masuk (+)
@@ -412,17 +412,17 @@ export default function CooperativeInventoryShow({
                                             onClick={() =>
                                                 handleTypeChange('adjustment')
                                             }
-                                            className={`rounded-lg border px-3 py-2 text-center text-xs font-semibold transition-all ${
+                                            className={`rounded-xl border px-3 py-2 text-center font-mono text-xs font-semibold transition-all ${
                                                 operationType === 'adjustment'
-                                                    ? 'border-amber-500 bg-amber-50 text-amber-700 shadow-sm'
-                                                    : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
+                                                    ? 'border-amber-500/30 bg-amber-950/40 text-amber-400 shadow-xs'
+                                                    : 'border-[#262626] bg-[#161616] text-[#A3A3A3] hover:border-[#383838]'
                                             }`}
                                         >
                                             Penyesuaian Opname
                                         </button>
                                     </div>
                                     {errors.type && (
-                                        <p className="mt-1 text-xs text-rose-600">
+                                        <p className="mt-1 font-mono text-xs text-rose-400">
                                             {errors.type}
                                         </p>
                                     )}
@@ -430,8 +430,8 @@ export default function CooperativeInventoryShow({
 
                                 {/* Adjustment Direction Selector (only shown if type is adjustment) */}
                                 {operationType === 'adjustment' && (
-                                    <div className="space-y-2 rounded-lg border border-amber-100 bg-amber-50/50 p-3">
-                                        <label className="block text-xs font-medium text-slate-700">
+                                    <div className="space-y-2 rounded-xl border border-amber-500/20 bg-amber-950/20 p-3">
+                                        <label className="block font-mono text-xs font-medium text-[#A3A3A3]">
                                             Arah Penyesuaian Fisik
                                         </label>
                                         <div className="grid grid-cols-2 gap-2">
@@ -442,11 +442,11 @@ export default function CooperativeInventoryShow({
                                                         'addition',
                                                     )
                                                 }
-                                                className={`rounded border px-2.5 py-1.5 text-center text-xs font-medium transition-colors ${
+                                                className={`rounded-xl border px-2.5 py-1.5 text-center font-mono text-xs font-medium transition-colors ${
                                                     adjustmentDirection ===
                                                     'addition'
-                                                        ? 'border-amber-500 bg-white font-semibold text-amber-900 shadow-xs'
-                                                        : 'border-amber-200 text-amber-800 hover:bg-white'
+                                                        ? 'border-amber-500/40 bg-amber-950/40 font-semibold text-amber-400 shadow-xs'
+                                                        : 'border-[#262626] text-[#737373] hover:text-[#A3A3A3]'
                                                 }`}
                                             >
                                                 + Tambah Fisik
@@ -458,18 +458,18 @@ export default function CooperativeInventoryShow({
                                                         'subtraction',
                                                     )
                                                 }
-                                                className={`rounded border px-2.5 py-1.5 text-center text-xs font-medium transition-colors ${
+                                                className={`rounded-xl border px-2.5 py-1.5 text-center font-mono text-xs font-medium transition-colors ${
                                                     adjustmentDirection ===
                                                     'subtraction'
-                                                        ? 'border-amber-500 bg-white font-semibold text-rose-700 shadow-xs'
-                                                        : 'border-amber-200 text-amber-800 hover:bg-white'
+                                                        ? 'border-rose-500/40 bg-rose-950/40 font-semibold text-rose-400 shadow-xs'
+                                                        : 'border-[#262626] text-[#737373] hover:text-[#A3A3A3]'
                                                 }`}
                                             >
                                                 - Kurang (Rusak/Hilang)
                                             </button>
                                         </div>
                                         {errors.adjustment_direction && (
-                                            <p className="text-xs text-rose-600">
+                                            <p className="font-mono text-xs text-rose-400">
                                                 {errors.adjustment_direction}
                                             </p>
                                         )}
@@ -481,11 +481,11 @@ export default function CooperativeInventoryShow({
                                     <div className="mb-1.5 flex items-center justify-between">
                                         <label
                                             htmlFor="quantity"
-                                            className="block text-xs font-medium text-slate-700"
+                                            className="block font-mono text-xs font-medium text-[#A3A3A3]"
                                         >
                                             Jumlah Unit
                                         </label>
-                                        <span className="text-[11px] text-slate-400">
+                                        <span className="font-mono text-[11px] text-[#737373]">
                                             Efek:{' '}
                                             {delta >= 0 ? `+${delta}` : delta}{' '}
                                             unit
@@ -504,12 +504,12 @@ export default function CooperativeInventoryShow({
                                                     0,
                                             )
                                         }
-                                        className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none"
+                                        className="w-full rounded-xl border border-[#262626] bg-[#161616] px-3.5 py-2.5 font-mono text-sm text-[#F5F2EB] focus:border-[#E34A27] focus:outline-hidden"
                                         placeholder="Contoh: 10"
                                         required
                                     />
                                     {errors.quantity && (
-                                        <p className="mt-1 text-xs text-rose-600">
+                                        <p className="mt-1 font-mono text-xs text-rose-400">
                                             {errors.quantity}
                                         </p>
                                     )}
@@ -519,7 +519,7 @@ export default function CooperativeInventoryShow({
                                 <div>
                                     <label
                                         htmlFor="reason"
-                                        className="mb-1.5 block text-xs font-medium text-slate-700"
+                                        className="mb-1.5 block font-mono text-xs font-medium text-[#A3A3A3]"
                                     >
                                         Keterangan / Alasan Mutasi
                                     </label>
@@ -530,7 +530,7 @@ export default function CooperativeInventoryShow({
                                         onChange={(e) =>
                                             setData('reason', e.target.value)
                                         }
-                                        className="w-full rounded-lg border border-slate-200 px-3 py-2 text-xs focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none"
+                                        className="w-full rounded-xl border border-[#262626] bg-[#161616] px-3.5 py-2.5 text-xs text-[#F5F2EB] placeholder:text-[#525252] focus:border-[#E34A27] focus:outline-hidden"
                                         placeholder={
                                             operationType === 'restock'
                                                 ? 'Contoh: Penerimaan stok tambahan dari siswa / pemasok'
@@ -539,7 +539,7 @@ export default function CooperativeInventoryShow({
                                         required
                                     />
                                     {errors.reason && (
-                                        <p className="mt-1 text-xs text-rose-600">
+                                        <p className="mt-1 font-mono text-xs text-rose-400">
                                             {errors.reason}
                                         </p>
                                     )}
@@ -547,25 +547,25 @@ export default function CooperativeInventoryShow({
 
                                 {/* Live Resulting Stock Preview Card */}
                                 <div
-                                    className={`flex items-center justify-between rounded-lg border p-3 text-xs ${
+                                    className={`flex items-center justify-between rounded-xl border p-3 font-mono text-xs ${
                                         isSubtractionInvalid
-                                            ? 'border-rose-200 bg-rose-50 text-rose-800'
-                                            : 'border-slate-200 bg-slate-50 text-slate-700'
+                                            ? 'border-rose-500/20 bg-rose-950/30 text-rose-400'
+                                            : 'border-[#262626] bg-[#161616] text-[#A3A3A3]'
                                     }`}
                                 >
                                     <span>Perkiraan Stok Akhir:</span>
                                     <div className="flex items-center gap-2">
-                                        <span className="font-mono text-slate-400 line-through">
+                                        <span className="text-[#525252] line-through">
                                             {product.stock}
                                         </span>
-                                        <span className="font-mono text-sm font-bold">
+                                        <span className="text-sm font-bold text-[#F5F2EB]">
                                             &rarr; {resultingStock} unit
                                         </span>
                                     </div>
                                 </div>
 
                                 {isSubtractionInvalid && (
-                                    <div className="flex items-start gap-1.5 text-xs text-rose-600">
+                                    <div className="flex items-start gap-1.5 font-mono text-xs text-rose-400">
                                         <AlertCircle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
                                         <span>
                                             Jumlah pengurangan melebihi saldo
@@ -583,7 +583,7 @@ export default function CooperativeInventoryShow({
                                         isSubtractionInvalid ||
                                         qty <= 0
                                     }
-                                    className="w-full rounded-lg bg-emerald-700 px-4 py-2.5 text-xs font-semibold text-white shadow-sm transition-all hover:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-50"
+                                    className="w-full rounded-xl bg-[#E34A27] px-4 py-3 font-mono text-xs font-semibold text-white shadow-xs transition-all hover:bg-[#cf3e1d] disabled:cursor-not-allowed disabled:opacity-50"
                                 >
                                     {processing
                                         ? 'Menyimpan Mutasi...'
@@ -595,64 +595,64 @@ export default function CooperativeInventoryShow({
                 </div>
 
                 {/* Bottom Section: Stock Movement History Ledger */}
-                <div className="space-y-4 overflow-hidden rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-                    <div className="flex flex-col gap-2 border-b border-slate-200 pb-3 sm:flex-row sm:items-center sm:justify-between">
-                        <div className="flex items-center gap-2">
-                            <History className="h-5 w-5 text-emerald-600" />
+                <div className="space-y-4 overflow-hidden rounded-2xl border border-[#262626] bg-[#121212] p-5 shadow-xs">
+                    <div className="flex flex-col gap-2 border-b border-[#262626] pb-3 sm:flex-row sm:items-center sm:justify-between">
+                        <div className="flex items-center gap-2.5">
+                            <History className="h-5 w-5 text-[#E34A27]" />
                             <div>
-                                <h3 className="text-base font-bold text-slate-900">
+                                <h3 className="font-heading text-base font-bold text-[#F5F2EB]">
                                     Buku Riwayat Mutasi Inventaris
                                 </h3>
-                                <p className="text-xs text-slate-500">
+                                <p className="text-xs text-[#737373]">
                                     Catatan audit permanen seluruh pergerakan
                                     stok (restock, penjualan, dan penyesuaian).
                                 </p>
                             </div>
                         </div>
 
-                        <div className="text-xs text-slate-400">
-                            Total {movements.total} catatan mutasi
+                        <div className="font-mono text-xs text-[#525252]">
+                            Total {movements.total} catatan
                         </div>
                     </div>
 
                     {movements.data.length === 0 ? (
-                        <div className="p-10 text-center text-slate-500">
-                            <Boxes className="mx-auto mb-2 h-10 w-10 text-slate-300" />
-                            <div className="text-sm font-medium text-slate-800">
+                        <div className="p-10 text-center text-[#737373]">
+                            <Boxes className="mx-auto mb-2 h-10 w-10 text-[#525252]" />
+                            <div className="text-sm font-medium text-[#F5F2EB]">
                                 Belum ada riwayat mutasi
                             </div>
-                            <div className="mt-0.5 text-xs text-slate-400">
+                            <div className="mt-0.5 text-xs text-[#525252]">
                                 Seluruh aktivitas penjualan dan penyesuaian stok
                                 akan tercatat otomatis di sini.
                             </div>
                         </div>
                     ) : (
                         <div className="overflow-x-auto">
-                            <table className="w-full border-collapse text-left text-sm text-slate-600">
-                                <thead className="border-b border-slate-200 bg-slate-50 text-xs font-semibold tracking-wider text-slate-600 uppercase">
+                            <table className="w-full border-collapse text-left text-sm text-[#A3A3A3]">
+                                <thead className="border-b border-[#262626] bg-[#161616] font-mono text-[10px] font-semibold tracking-wider text-[#737373] uppercase">
                                     <tr>
-                                        <th className="px-4 py-3">Waktu</th>
-                                        <th className="px-4 py-3">
+                                        <th className="px-5 py-3">Waktu</th>
+                                        <th className="px-5 py-3">
                                             Jenis Mutasi
                                         </th>
-                                        <th className="px-4 py-3 text-center">
+                                        <th className="px-5 py-3 text-center">
                                             Perubahan Unit
                                         </th>
-                                        <th className="px-4 py-3">
+                                        <th className="px-5 py-3">
                                             Alasan & Referensi
                                         </th>
-                                        <th className="px-4 py-3 text-right">
+                                        <th className="px-5 py-3 text-right">
                                             Operator / Sistem
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y divide-slate-100">
+                                <tbody className="divide-y divide-[#1F1F1F]">
                                     {movements.data.map((movement) => (
                                         <tr
                                             key={movement.id}
-                                            className="transition-colors hover:bg-slate-50/60"
+                                            className="transition-colors hover:bg-[#161616]/60"
                                         >
-                                            <td className="px-4 py-3 font-mono text-xs whitespace-nowrap text-slate-500">
+                                            <td className="px-5 py-3.5 font-mono text-xs whitespace-nowrap text-[#737373]">
                                                 {new Date(
                                                     movement.created_at,
                                                 ).toLocaleString('id-ID', {
@@ -664,34 +664,34 @@ export default function CooperativeInventoryShow({
                                                 })}
                                             </td>
 
-                                            <td className="px-4 py-3">
+                                            <td className="px-5 py-3.5">
                                                 {getMovementBadge(
                                                     movement.type,
                                                     movement.type_label,
                                                 )}
                                             </td>
 
-                                            <td className="px-4 py-3 text-center font-mono">
+                                            <td className="px-5 py-3.5 text-center font-mono">
                                                 {movement.quantity > 0 ? (
-                                                    <span className="inline-flex items-center gap-0.5 rounded border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-xs font-bold text-emerald-700">
+                                                    <span className="inline-flex items-center gap-0.5 rounded-full border border-emerald-500/20 bg-emerald-950/40 px-2.5 py-0.5 font-mono text-xs font-bold text-emerald-400">
                                                         <ArrowUpRight className="h-3.5 w-3.5" />
                                                         +{movement.quantity}
                                                     </span>
                                                 ) : (
-                                                    <span className="inline-flex items-center gap-0.5 rounded border border-rose-200 bg-rose-50 px-2 py-0.5 text-xs font-bold text-rose-700">
+                                                    <span className="inline-flex items-center gap-0.5 rounded-full border border-rose-500/20 bg-rose-950/40 px-2.5 py-0.5 font-mono text-xs font-bold text-rose-400">
                                                         <ArrowDownRight className="h-3.5 w-3.5" />
                                                         {movement.quantity}
                                                     </span>
                                                 )}
                                             </td>
 
-                                            <td className="px-4 py-3 text-xs">
-                                                <div className="font-medium text-slate-800">
+                                            <td className="px-5 py-3.5 text-xs">
+                                                <div className="font-medium text-[#F5F2EB]">
                                                     {movement.reason ||
                                                         'Mutasi sistem'}
                                                 </div>
                                                 {movement.reference_type && (
-                                                    <div className="mt-0.5 text-[11px] text-slate-400">
+                                                    <div className="mt-0.5 font-mono text-[11px] text-[#737373]">
                                                         Ref:{' '}
                                                         {
                                                             movement.reference_type
@@ -703,8 +703,8 @@ export default function CooperativeInventoryShow({
                                                 )}
                                             </td>
 
-                                            <td className="px-4 py-3 text-right text-xs">
-                                                <span className="font-medium text-slate-700">
+                                            <td className="px-5 py-3.5 text-right font-mono text-xs">
+                                                <span className="text-[#A3A3A3]">
                                                     {movement.creator_name}
                                                 </span>
                                             </td>
@@ -717,18 +717,18 @@ export default function CooperativeInventoryShow({
 
                     {/* Pagination for movements */}
                     {movements.links.length > 3 && (
-                        <div className="flex items-center justify-between gap-4 border-t border-slate-200 pt-4">
-                            <div className="text-xs text-slate-500">
+                        <div className="flex items-center justify-between gap-4 border-t border-[#262626] pt-4">
+                            <div className="font-mono text-xs text-[#737373]">
                                 Halaman{' '}
-                                <span className="font-medium">
+                                <span className="font-medium text-[#F5F2EB]">
                                     {movements.current_page}
                                 </span>{' '}
                                 dari{' '}
-                                <span className="font-medium">
+                                <span className="font-medium text-[#F5F2EB]">
                                     {movements.last_page}
                                 </span>
                             </div>
-                            <div className="flex items-center gap-1">
+                            <div className="flex items-center gap-1.5">
                                 {movements.links.map((link, idx) => {
                                     if (!link.url) {
                                         return (
@@ -737,7 +737,7 @@ export default function CooperativeInventoryShow({
                                                 dangerouslySetInnerHTML={{
                                                     __html: link.label,
                                                 }}
-                                                className="rounded border border-slate-100 px-3 py-1.5 text-xs text-slate-300"
+                                                className="rounded-xl border border-[#262626]/40 bg-transparent px-3 py-1.5 font-mono text-xs text-[#525252]"
                                             />
                                         );
                                     }
@@ -749,10 +749,10 @@ export default function CooperativeInventoryShow({
                                             dangerouslySetInnerHTML={{
                                                 __html: link.label,
                                             }}
-                                            className={`rounded border px-3 py-1.5 text-xs transition-colors ${
+                                            className={`rounded-xl border px-3 py-1.5 font-mono text-xs transition-colors ${
                                                 link.active
-                                                    ? 'border-emerald-700 bg-emerald-700 font-semibold text-white'
-                                                    : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
+                                                    ? 'border-[#E34A27] bg-[#E34A27] font-semibold text-white'
+                                                    : 'border-[#262626] bg-[#141414] text-[#A3A3A3] hover:border-[#383838] hover:text-[#F5F2EB]'
                                             }`}
                                         />
                                     );

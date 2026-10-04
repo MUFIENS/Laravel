@@ -22,17 +22,17 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
     className = '',
 }) => {
     const variantStyles: Record<StatusBadgeVariant, string> = {
-        default: 'bg-primary-soft text-primary border-[#D0E2D8]',
-        success: 'bg-[#EBF7F1] text-success border-[#C3E8D6]',
-        warning: 'bg-[#FDF6EB] text-warning border-[#F6E1C3]',
-        danger: 'bg-[#FDF0F0] text-danger border-[#F6D0D0]',
-        info: 'bg-[#EEF5F9] text-info border-[#D2E4EF]',
-        accent: 'bg-[#FCF7ED] text-[#8C6212] border-[#F2DEBA]',
+        default: 'bg-[#181818] text-[#A3A3A3] border-[#262626]',
+        success: 'bg-emerald-950/40 text-emerald-400 border-emerald-500/20',
+        warning: 'bg-amber-950/40 text-amber-400 border-amber-500/20',
+        danger: 'bg-rose-950/40 text-rose-400 border-rose-500/20',
+        info: 'bg-sky-950/40 text-sky-400 border-sky-500/20',
+        accent: 'bg-[#E34A27]/10 text-[#E34A27] border-[#E34A27]/20',
     };
 
     return (
         <span
-            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium border ${variantStyles[variant]} ${className}`}
+            className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono font-medium border ${variantStyles[variant]} ${className}`}
         >
             {icon && <span className="shrink-0">{icon}</span>}
             <span>{children}</span>

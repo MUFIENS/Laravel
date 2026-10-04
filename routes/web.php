@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\Cooperative\CashPaymentVerificationController;
 use App\Http\Controllers\Cooperative\ConsignmentReviewController;
 use App\Http\Controllers\Cooperative\CooperativeWorkspaceController;
 use App\Http\Controllers\Cooperative\InventoryController as CooperativeInventoryController;
@@ -11,10 +12,8 @@ use App\Http\Controllers\Cooperative\ProductController as CooperativeProductCont
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MarketplaceController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Student\ConsignmentController;
-use App\Http\Controllers\Webhooks\MidtransWebhookController;
 use Illuminate\Support\Facades\Route;
 
 // Public marketplace discovery and product detail entry points
@@ -44,14 +43,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 });
-
-// Student Payment Initialization
-Route::middleware(['auth', 'role:student'])->group(function () {
-    Route::post('orders/{order}/payment', [PaymentController::class, 'store'])->name('orders.payment.store');
-});
-
-// Midtrans Sandbox Webhook Notification (CSRF-exempt)
-Route::post('webhooks/midtrans', [MidtransWebhookController::class, 'handle'])->name('webhooks.midtrans');
 
 // Authenticated entry point (routes by role)
 Route::get('dashboard', DashboardController::class)
@@ -99,6 +90,14 @@ Route::middleware(['auth', 'role:cooperative'])
         Route::get('pickup', [PickupVerificationController::class, 'index'])->name('pickup.index');
         Route::post('pickup/verify', [PickupVerificationController::class, 'verify'])->name('pickup.verify');
         Route::post('pickup/complete', [PickupVerificationController::class, 'complete'])->name('pickup.complete');
+
+        // Operational Cash Payment Verification & QR Scanner Console
+        Route::get('payments', [CashPaymentVerificationController::class, 'index'])->name('payments.index');
+        Route::get('payments/verify', [CashPaymentVerificationController::class, 'index'])->name('payments.verify.page');
+        Route::post('payments/verify', [CashPaymentVerificationController::class, 'verify'])->name('payments.verify');
+        Route::post('payments/verify/scan', [CashPaymentVerificationController::class, 'verify'])->name('payments.verify.scan');
+        Route::post('payments/confirm', [CashPaymentVerificationController::class, 'confirm'])->name('payments.confirm');
+        Route::post('payments/verify/confirm', [CashPaymentVerificationController::class, 'confirm'])->name('payments.verify.confirm');
     });
 
 require __DIR__.'/settings.php';
