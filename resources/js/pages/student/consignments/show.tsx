@@ -7,6 +7,7 @@ import {
     Clock,
     Edit3,
     ExternalLink,
+    Package,
     ShieldCheck,
 } from 'lucide-react';
 import { formatRupiah } from '@/components/commerce/PriceDisplay';
@@ -215,21 +216,50 @@ export default function StudentConsignmentShow({ submission }: Props) {
                 {/* Main Card Header */}
                 <div className="overflow-hidden rounded-2xl border border-[#262626] bg-[#141414] p-5 shadow-2xl sm:p-8">
                     <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-                        <div className="max-w-2xl">
-                            <div className="flex flex-wrap items-center gap-2">
-                                <span className="rounded-md border border-[#262626] bg-[#0A0A0A] px-2 py-0.5 font-mono text-[10px] font-semibold tracking-wider text-[#A3A3A3] uppercase">
-                                    {submission.category?.name ?? 'Kategori'}
-                                </span>
-                                {statusDisplay.badge}
+                        <div className="flex max-w-2xl flex-col gap-5 sm:flex-row sm:items-start">
+                            <div className="size-24 shrink-0 overflow-hidden rounded-2xl border border-[#262626] bg-[#181818] sm:size-28">
+                                {submission.image_path ? (
+                                    <img
+                                        src={
+                                            submission.image_path.startsWith(
+                                                'http',
+                                            ) ||
+                                            submission.image_path.startsWith(
+                                                '/',
+                                            )
+                                                ? submission.image_path
+                                                : `/storage/${submission.image_path}`
+                                        }
+                                        alt={submission.name}
+                                        className="size-full object-cover"
+                                    />
+                                ) : (
+                                    <div className="flex size-full items-center justify-center text-[#737373]">
+                                        <Package
+                                            className="size-8"
+                                            aria-hidden="true"
+                                        />
+                                    </div>
+                                )}
                             </div>
 
-                            <h1 className="mt-3 font-heading text-2xl font-bold tracking-tight text-[#F5F2EB] sm:text-3xl">
-                                {submission.name}
-                            </h1>
+                            <div className="min-w-0 flex-1">
+                                <div className="flex flex-wrap items-center gap-2">
+                                    <span className="rounded-md border border-[#262626] bg-[#0A0A0A] px-2 py-0.5 font-mono text-[10px] font-semibold tracking-wider text-[#A3A3A3] uppercase">
+                                        {submission.category?.name ??
+                                            'Kategori'}
+                                    </span>
+                                    {statusDisplay.badge}
+                                </div>
 
-                            <p className="mt-3 text-xs leading-relaxed text-[#A3A3A3] sm:text-sm">
-                                {submission.description}
-                            </p>
+                                <h1 className="mt-3 font-heading text-2xl font-bold tracking-tight text-[#F5F2EB] sm:text-3xl">
+                                    {submission.name}
+                                </h1>
+
+                                <p className="mt-3 text-xs leading-relaxed text-[#A3A3A3] sm:text-sm">
+                                    {submission.description}
+                                </p>
+                            </div>
                         </div>
 
                         {/* Approved Link CTA */}

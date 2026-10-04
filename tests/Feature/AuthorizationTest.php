@@ -12,6 +12,8 @@ use App\Models\Product;
 use App\Models\ProductSubmission;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class AuthorizationTest extends TestCase
@@ -104,6 +106,7 @@ class AuthorizationTest extends TestCase
      */
     public function test_student_can_create_a_consignment_submission(): void
     {
+        Storage::fake('public');
         $student = User::factory()->student()->create();
 
         $payload = [
@@ -112,7 +115,10 @@ class AuthorizationTest extends TestCase
             'description' => 'Risoles isi smoked beef, mayo, dan keju lumer renyah gurih.',
             'base_price' => 3500,
             'proposed_stock' => 15,
-            'image_path' => 'submissions/risoles.jpg',
+            'image' => UploadedFile::fake()->createWithContent(
+                'risoles.jpg',
+                base64_decode('/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=')
+            ),
         ];
 
         $response = $this->actingAs($student)->post(route('student.consignments.store'), $payload);
@@ -127,6 +133,7 @@ class AuthorizationTest extends TestCase
         ]);
 
         $submission = ProductSubmission::where('name', 'Risoles Mayo Keju')->firstOrFail();
+        Storage::disk('public')->assertExists($submission->image_path);
         $response->assertRedirect(route('student.consignments.show', $submission));
     }
 

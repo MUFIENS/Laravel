@@ -311,7 +311,16 @@ export default function CooperativeConsignmentShow({ submission }: Props) {
                                     <div className="size-20 shrink-0 overflow-hidden rounded-xl border border-[#262626] bg-[#181818]">
                                         {submission.image_path ? (
                                             <img
-                                                src={submission.image_path}
+                                                src={
+                                                    submission.image_path.startsWith(
+                                                        'http',
+                                                    ) ||
+                                                    submission.image_path.startsWith(
+                                                        '/',
+                                                    )
+                                                        ? submission.image_path
+                                                        : `/storage/${submission.image_path}`
+                                                }
                                                 alt={submission.name}
                                                 className="size-full object-cover"
                                                 onError={(e) => {

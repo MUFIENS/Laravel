@@ -9,6 +9,8 @@ use App\Models\ProductSubmission;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -69,18 +71,35 @@ class ConsignmentController extends Controller
             'description' => ['required', 'string', 'max:2000'],
             'base_price' => ['required', 'integer', 'min:500', 'max:10000000'],
             'proposed_stock' => ['required', 'integer', 'min:1', 'max:500'],
-            'image_path' => ['nullable', 'string', 'max:255'],
+            'image' => ['required', 'file', 'image', 'mimes:jpeg,png,webp', 'max:2048'],
+        ], [
+            'image.required' => 'Foto produk wajib diunggah.',
+            'image.file' => 'Berkas foto tidak valid.',
+            'image.image' => 'Berkas harus berupa gambar valid.',
+            'image.mimes' => 'Format gambar yang diperbolehkan hanya JPEG, PNG, dan WebP.',
+            'image.max' => 'Ukuran gambar maksimal adalah 2 MB (2048 KB).',
         ]);
 
-        $submission = $request->user()->productSubmissions()->create([
-            'category_id' => $validated['category_id'],
-            'name' => $validated['name'],
-            'description' => $validated['description'],
-            'image_path' => $validated['image_path'] ?? 'submissions/default-product.jpg',
-            'base_price' => $validated['base_price'],
-            'proposed_stock' => $validated['proposed_stock'],
-            'status' => ProductSubmissionStatus::Submitted,
-        ]);
+        /** @var UploadedFile $file */
+        $file = $request->file('image');
+        $storedPath = $file->store('submissions', 'public');
+
+        try {
+            $submission = $request->user()->productSubmissions()->create([
+                'category_id' => $validated['category_id'],
+                'name' => $validated['name'],
+                'description' => $validated['description'],
+                'image_path' => $storedPath,
+                'base_price' => $validated['base_price'],
+                'proposed_stock' => $validated['proposed_stock'],
+                'status' => ProductSubmissionStatus::Submitted,
+            ]);
+        } catch (\Throwable $e) {
+            if ($storedPath && Storage::disk('public')->exists($storedPath)) {
+                Storage::disk('public')->delete($storedPath);
+            }
+            throw $e;
+        }
 
         return redirect()
             ->route('student.consignments.show', $submission)
@@ -132,10 +151,36 @@ class ConsignmentController extends Controller
             'description' => ['required', 'string', 'max:2000'],
             'base_price' => ['required', 'integer', 'min:500', 'max:10000000'],
             'proposed_stock' => ['required', 'integer', 'min:1', 'max:500'],
-            'image_path' => ['nullable', 'string', 'max:255'],
+            'image' => ['nullable', 'file', 'image', 'mimes:jpeg,png,webp', 'max:2048'],
+        ], [
+            'image.file' => 'Berkas foto tidak valid.',
+            'image.image' => 'Berkas harus berupa gambar valid.',
+            'image.mimes' => 'Format gambar yang diperbolehkan hanya JPEG, PNG, dan WebP.',
+            'image.max' => 'Ukuran gambar maksimal adalah 2 MB (2048 KB).',
         ]);
 
-        $submission->update($validated);
+        $updateData = [
+            'name' => $validated['name'],
+            'category_id' => $validated['category_id'],
+            'description' => $validated['description'],
+            'base_price' => $validated['base_price'],
+            'proposed_stock' => $validated['proposed_stock'],
+        ];
+
+        if ($request->hasFile('image')) {
+            /** @var UploadedFile $file */
+            $file = $request->file('image');
+            $newPath = $file->store('submissions', 'public');
+            $oldPath = $submission->image_path;
+
+            $updateData['image_path'] = $newPath;
+
+            if ($oldPath && ! str_starts_with($oldPath, 'submissions/default-') && ! str_starts_with($oldPath, 'submissions/sample') && Storage::disk('public')->exists($oldPath)) {
+                Storage::disk('public')->delete($oldPath);
+            }
+        }
+
+        $submission->update($updateData);
 
         return redirect()
             ->route('student.consignments.show', $submission)
@@ -148,6 +193,11 @@ class ConsignmentController extends Controller
     public function destroy(ProductSubmission $submission): RedirectResponse
     {
         $this->authorize('delete', $submission);
+
+        $imagePath = $submission->image_path;
+        if ($imagePath && ! str_starts_with($imagePath, 'submissions/default-') && ! str_starts_with($imagePath, 'submissions/sample') && Storage::disk('public')->exists($imagePath)) {
+            Storage::disk('public')->delete($imagePath);
+        }
 
         $submission->delete();
 

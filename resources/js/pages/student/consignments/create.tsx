@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Head, Link, useForm } from '@inertiajs/react';
 import {
     ArrowLeft,
     ArrowRight,
+    CheckCircle2,
     FileText,
     HelpCircle,
+    ImageIcon,
     Package,
+    RefreshCw,
     ShieldCheck,
     Sparkles,
     Store,
     Tag,
+    UploadCloud,
+    X,
 } from 'lucide-react';
 import InputError from '@/components/input-error';
 import { formatRupiah } from '@/components/commerce/PriceDisplay';
@@ -23,19 +28,106 @@ interface Props {
 export default function StudentConsignmentCreate({ categories }: Props) {
     const defaultCategoryId = categories[0]?.id ? String(categories[0].id) : '';
 
-    const { data, setData, post, processing, errors } = useForm({
+    const { data, setData, post, processing, errors } = useForm<{
+        name: string;
+        category_id: string;
+        description: string;
+        base_price: string;
+        proposed_stock: string;
+        image: File | null;
+    }>({
         name: '',
         category_id: defaultCategoryId,
         description: '',
         base_price: '',
         proposed_stock: '10',
+        image: null,
     });
+
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+    const [clientError, setClientError] = useState<string | null>(null);
+    const [isDragging, setIsDragging] = useState<boolean>(false);
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     const [agreed, setAgreed] = useState(true);
 
+    useEffect(() => {
+        return () => {
+            if (previewUrl) {
+                URL.revokeObjectURL(previewUrl);
+            }
+        };
+    }, [previewUrl]);
+
+    const handleFileChange = (file: File | null) => {
+        setClientError(null);
+
+        if (!file) {
+            if (previewUrl) {
+                URL.revokeObjectURL(previewUrl);
+            }
+            setPreviewUrl(null);
+            setData('image', null);
+            if (fileInputRef.current) {
+                fileInputRef.current.value = '';
+            }
+            return;
+        }
+
+        const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
+        if (!validTypes.includes(file.type)) {
+            setClientError(
+                'Format gambar tidak didukung. Harap pilih berkas JPEG, PNG, atau WebP.',
+            );
+            return;
+        }
+
+        const maxSize = 2 * 1024 * 1024; // 2 MB
+        if (file.size > maxSize) {
+            setClientError('Ukuran gambar melebihi batas maksimal 2 MB.');
+            return;
+        }
+
+        if (previewUrl) {
+            URL.revokeObjectURL(previewUrl);
+        }
+
+        const objectUrl = URL.createObjectURL(file);
+        setPreviewUrl(objectUrl);
+        setData('image', file);
+    };
+
+    const handleDragOver = (e: React.DragEvent) => {
+        e.preventDefault();
+        setIsDragging(true);
+    };
+
+    const handleDragLeave = (e: React.DragEvent) => {
+        e.preventDefault();
+        setIsDragging(false);
+    };
+
+    const handleDrop = (e: React.DragEvent) => {
+        e.preventDefault();
+        setIsDragging(false);
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+            handleFileChange(e.dataTransfer.files[0]);
+        }
+    };
+
+    const handleRemoveImage = () => {
+        handleFileChange(null);
+    };
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        post('/student/consignments');
+        if (!data.image) {
+            setClientError('Foto produk wajib diunggah.');
+            return;
+        }
+        post('/student/consignments', {
+            forceFormData: true,
+        });
     };
 
     // Calculate live estimations
@@ -208,6 +300,153 @@ export default function StudentConsignmentCreate({ categories }: Props) {
                                         </select>
                                         <InputError
                                             message={errors.category_id}
+                                            className="mt-1"
+                                        />
+                                    </div>
+
+                                    {/* Foto Produk */}
+                                    <div>
+                                        <div className="flex items-center justify-between">
+                                            <label
+                                                htmlFor="product-image"
+                                                className="block font-heading text-xs font-semibold text-[#A3A3A3]"
+                                            >
+                                                Foto Utama Produk{' '}
+                                                <span className="text-[#E34A27]">
+                                                    *
+                                                </span>
+                                            </label>
+                                            <span className="font-mono text-[10px] text-[#737373]">
+                                                Maks. 2 MB
+                                            </span>
+                                        </div>
+
+                                        {!previewUrl ? (
+                                            <div
+                                                onDragOver={handleDragOver}
+                                                onDragLeave={handleDragLeave}
+                                                onDrop={handleDrop}
+                                                onClick={() =>
+                                                    fileInputRef.current?.click()
+                                                }
+                                                className={`group mt-1.5 flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed p-6 text-center transition-all ${
+                                                    isDragging
+                                                        ? 'border-[#E34A27] bg-[#E34A27]/10'
+                                                        : 'border-[#262626] bg-[#0A0A0A] hover:border-[#383838] hover:bg-[#111111]'
+                                                }`}
+                                                role="button"
+                                                tabIndex={0}
+                                                onKeyDown={(e) => {
+                                                    if (
+                                                        e.key === 'Enter' ||
+                                                        e.key === ' '
+                                                    ) {
+                                                        e.preventDefault();
+                                                        fileInputRef.current?.click();
+                                                    }
+                                                }}
+                                                aria-label="Pilih foto produk"
+                                            >
+                                                <div className="flex size-11 items-center justify-center rounded-xl border border-[#262626] bg-[#141414] text-[#A3A3A3] transition-colors group-hover:border-[#E34A27]/50 group-hover:text-[#E34A27]">
+                                                    <UploadCloud className="size-5" />
+                                                </div>
+                                                <p className="mt-3 font-heading text-xs font-semibold text-[#F5F2EB]">
+                                                    Klik untuk memilih foto atau
+                                                    seret ke sini
+                                                </p>
+                                                <p className="mt-1 text-[11px] text-[#737373]">
+                                                    Format yang didukung: JPEG,
+                                                    PNG, atau WebP (Maks. 2 MB)
+                                                </p>
+                                                <div className="mt-3 inline-flex min-h-[36px] items-center gap-1.5 rounded-lg border border-[#262626] bg-[#161616] px-3.5 py-1.5 font-mono text-[11px] font-semibold text-[#F5F2EB] transition-colors group-hover:border-[#E34A27] group-hover:text-[#E34A27]">
+                                                    <ImageIcon className="size-3.5" />
+                                                    <span>Pilih Foto</span>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <div className="mt-1.5 overflow-hidden rounded-xl border border-[#262626] bg-[#0A0A0A] p-3 sm:p-4">
+                                                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                                                    <div className="flex items-center gap-3">
+                                                        <div className="size-16 shrink-0 overflow-hidden rounded-lg border border-[#262626] bg-[#141414]">
+                                                            <img
+                                                                src={previewUrl}
+                                                                alt="Pratinjau foto produk"
+                                                                className="size-full object-cover"
+                                                            />
+                                                        </div>
+                                                        <div className="min-w-0 flex-1">
+                                                            <div className="flex items-center gap-1.5">
+                                                                <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-950/40 px-2 py-0.5 font-mono text-[9px] font-semibold text-emerald-400">
+                                                                    <CheckCircle2 className="size-3" />
+                                                                    Siap
+                                                                    Diunggah
+                                                                </span>
+                                                            </div>
+                                                            <p className="mt-1 truncate font-mono text-xs font-semibold text-[#F5F2EB]">
+                                                                {data.image
+                                                                    ?.name ||
+                                                                    'foto-produk'}
+                                                            </p>
+                                                            <p className="mt-0.5 font-mono text-[10px] text-[#737373]">
+                                                                {data.image
+                                                                    ? `${(data.image.size / 1024).toFixed(1)} KB`
+                                                                    : ''}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="flex items-center gap-2 border-t border-[#262626] pt-3 sm:border-0 sm:pt-0">
+                                                        <button
+                                                            type="button"
+                                                            onClick={() =>
+                                                                fileInputRef.current?.click()
+                                                            }
+                                                            className="inline-flex min-h-[38px] flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-lg border border-[#262626] bg-[#141414] px-3 py-1.5 text-xs font-medium text-[#F5F2EB] transition-colors hover:border-[#383838] hover:bg-[#1a1a1a] active:scale-95 sm:flex-initial"
+                                                        >
+                                                            <RefreshCw className="size-3.5 text-[#A3A3A3]" />
+                                                            <span>Ganti</span>
+                                                        </button>
+                                                        <button
+                                                            type="button"
+                                                            onClick={
+                                                                handleRemoveImage
+                                                            }
+                                                            className="inline-flex min-h-[38px] flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-lg border border-rose-900/40 bg-rose-950/20 px-3 py-1.5 text-xs font-medium text-rose-300 transition-colors hover:border-rose-800 hover:bg-rose-950/40 active:scale-95 sm:flex-initial"
+                                                        >
+                                                            <X className="size-3.5" />
+                                                            <span>Hapus</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {/* Hidden native file input */}
+                                        <input
+                                            ref={fileInputRef}
+                                            id="product-image"
+                                            type="file"
+                                            accept="image/jpeg,image/png,image/webp"
+                                            className="hidden"
+                                            onChange={(e) => {
+                                                if (
+                                                    e.target.files &&
+                                                    e.target.files[0]
+                                                ) {
+                                                    handleFileChange(
+                                                        e.target.files[0],
+                                                    );
+                                                }
+                                            }}
+                                        />
+
+                                        {clientError && (
+                                            <p className="mt-1 text-xs text-rose-400">
+                                                {clientError}
+                                            </p>
+                                        )}
+                                        <InputError
+                                            message={errors.image}
                                             className="mt-1"
                                         />
                                     </div>
@@ -403,7 +642,7 @@ export default function StudentConsignmentCreate({ categories }: Props) {
                                 >
                                     <span>
                                         {processing
-                                            ? 'Mengirim Pengajuan...'
+                                            ? 'Mengunggah & Mengirim...'
                                             : 'Kirim Pengajuan Produk'}
                                     </span>
                                     <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -427,6 +666,29 @@ export default function StudentConsignmentCreate({ categories }: Props) {
                             </div>
 
                             <div className="mt-4">
+                                {/* Live Product Photo Preview */}
+                                <div className="mb-3 overflow-hidden rounded-xl border border-[#262626] bg-[#0A0A0A]">
+                                    {previewUrl ? (
+                                        <div className="relative aspect-video w-full overflow-hidden bg-[#161616]">
+                                            <img
+                                                src={previewUrl}
+                                                alt="Pratinjau foto produk"
+                                                className="size-full object-cover"
+                                            />
+                                            <div className="absolute bottom-2 left-2 rounded-md bg-[#0A0A0A]/85 px-2 py-0.5 font-mono text-[9px] text-[#A3A3A3] backdrop-blur-xs">
+                                                Foto Utama
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <div className="flex aspect-video w-full flex-col items-center justify-center gap-1.5 p-4 text-center text-[#525252]">
+                                            <ImageIcon className="size-8 stroke-[1.25] text-[#525252]" />
+                                            <span className="font-mono text-[10px] text-[#737373]">
+                                                Belum ada foto produk dipilih
+                                            </span>
+                                        </div>
+                                    )}
+                                </div>
+
                                 <span className="font-mono text-[10px] tracking-wider text-[#737373] uppercase">
                                     {selectedCategory?.name ?? 'Pilih Kategori'}
                                 </span>

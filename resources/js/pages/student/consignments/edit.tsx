@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Head, Link, useForm } from '@inertiajs/react';
-import { ArrowLeft, Save, Sparkles, Trash2 } from 'lucide-react';
+import {
+    ArrowLeft,
+    CheckCircle2,
+    ImageIcon,
+    RefreshCw,
+    Save,
+    Sparkles,
+    Trash2,
+    X,
+} from 'lucide-react';
 import InputError from '@/components/input-error';
 import { safeNavigateBack } from '@/lib/navigation';
 import type { Category, ProductSubmission } from '@/types/consignment';
@@ -14,20 +23,92 @@ export default function StudentConsignmentEdit({
     submission,
     categories,
 }: Props) {
-    const { data, setData, put, processing, errors } = useForm({
+    const { data, setData, post, processing, errors } = useForm<{
+        _method: string;
+        name: string;
+        category_id: string;
+        description: string;
+        base_price: string;
+        proposed_stock: string;
+        image: File | null;
+    }>({
+        _method: 'put',
         name: submission.name,
         category_id: String(submission.category_id),
         description: submission.description,
         base_price: String(submission.base_price),
         proposed_stock: String(submission.proposed_stock),
+        image: null,
     });
+
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+    const [clientError, setClientError] = useState<string | null>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     const { delete: destroy, processing: deleting } = useForm({});
 
+    useEffect(() => {
+        return () => {
+            if (previewUrl) {
+                URL.revokeObjectURL(previewUrl);
+            }
+        };
+    }, [previewUrl]);
+
+    const handleFileChange = (file: File | null) => {
+        setClientError(null);
+
+        if (!file) {
+            if (previewUrl) {
+                URL.revokeObjectURL(previewUrl);
+            }
+            setPreviewUrl(null);
+            setData('image', null);
+            if (fileInputRef.current) {
+                fileInputRef.current.value = '';
+            }
+            return;
+        }
+
+        const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
+        if (!validTypes.includes(file.type)) {
+            setClientError(
+                'Format gambar tidak didukung. Harap pilih berkas JPEG, PNG, atau WebP.',
+            );
+            return;
+        }
+
+        const maxSize = 2 * 1024 * 1024;
+        if (file.size > maxSize) {
+            setClientError('Ukuran gambar melebihi batas maksimal 2 MB.');
+            return;
+        }
+
+        if (previewUrl) {
+            URL.revokeObjectURL(previewUrl);
+        }
+
+        const objectUrl = URL.createObjectURL(file);
+        setPreviewUrl(objectUrl);
+        setData('image', file);
+    };
+
+    const handleRemoveImage = () => {
+        handleFileChange(null);
+    };
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        put(`/student/consignments/${submission.id}`);
+        post(`/student/consignments/${submission.id}`, {
+            forceFormData: true,
+        });
     };
+
+    const currentImageUrl =
+        submission.image_path.startsWith('http') ||
+        submission.image_path.startsWith('/')
+            ? submission.image_path
+            : `/storage/${submission.image_path}`;
 
     const handleDelete = () => {
         if (
@@ -176,6 +257,114 @@ export default function StudentConsignmentEdit({
                             </select>
                             <InputError
                                 message={errors.category_id}
+                                className="mt-1"
+                            />
+                        </div>
+
+                        {/* Foto Produk */}
+                        <div>
+                            <div className="flex items-center justify-between">
+                                <label
+                                    htmlFor="product-image-edit"
+                                    className="block font-heading text-xs font-semibold text-[#A3A3A3]"
+                                >
+                                    Foto Produk
+                                </label>
+                                <span className="font-mono text-[10px] text-[#737373]">
+                                    Maks. 2 MB (Opsional bila tidak diubah)
+                                </span>
+                            </div>
+
+                            <div className="mt-1.5 overflow-hidden rounded-xl border border-[#262626] bg-[#0A0A0A] p-3.5">
+                                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                                    <div className="flex items-center gap-3">
+                                        <div className="size-16 shrink-0 overflow-hidden rounded-lg border border-[#262626] bg-[#141414]">
+                                            <img
+                                                src={
+                                                    previewUrl ||
+                                                    currentImageUrl
+                                                }
+                                                alt="Foto produk"
+                                                className="size-full object-cover"
+                                            />
+                                        </div>
+                                        <div className="min-w-0 flex-1">
+                                            <div className="flex items-center gap-1.5">
+                                                {previewUrl ? (
+                                                    <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-950/40 px-2 py-0.5 font-mono text-[9px] font-semibold text-emerald-400">
+                                                        <CheckCircle2 className="size-3" />
+                                                        Foto Baru Dipilih
+                                                    </span>
+                                                ) : (
+                                                    <span className="inline-flex items-center gap-1 rounded-full border border-[#383838] bg-[#141414] px-2 py-0.5 font-mono text-[9px] font-semibold text-[#A3A3A3]">
+                                                        <ImageIcon className="size-3 text-[#E34A27]" />
+                                                        Foto Saat Ini
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <p className="mt-1 truncate font-mono text-xs font-semibold text-[#F5F2EB]">
+                                                {previewUrl && data.image
+                                                    ? data.image.name
+                                                    : 'Foto aktif pengajuan'}
+                                            </p>
+                                            <p className="mt-0.5 text-[10px] text-[#737373]">
+                                                {previewUrl && data.image
+                                                    ? `${(data.image.size / 1024).toFixed(1)} KB`
+                                                    : 'Klik ganti jika ingin memperbarui foto'}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center gap-2 border-t border-[#262626] pt-3 sm:border-0 sm:pt-0">
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                fileInputRef.current?.click()
+                                            }
+                                            className="inline-flex min-h-[36px] flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-lg border border-[#262626] bg-[#141414] px-3 py-1.5 text-xs font-medium text-[#F5F2EB] transition-colors hover:border-[#383838] hover:bg-[#1a1a1a] active:scale-95 sm:flex-initial"
+                                        >
+                                            <RefreshCw className="size-3.5 text-[#A3A3A3]" />
+                                            <span>
+                                                {previewUrl
+                                                    ? 'Ganti Lainnya'
+                                                    : 'Ganti Foto'}
+                                            </span>
+                                        </button>
+                                        {previewUrl && (
+                                            <button
+                                                type="button"
+                                                onClick={handleRemoveImage}
+                                                className="inline-flex min-h-[36px] flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-lg border border-rose-900/40 bg-rose-950/20 px-3 py-1.5 text-xs font-medium text-rose-300 transition-colors hover:border-rose-800 hover:bg-rose-950/40 active:scale-95 sm:flex-initial"
+                                            >
+                                                <X className="size-3.5" />
+                                                <span>Batal Ganti</span>
+                                            </button>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Hidden native file input */}
+                            <input
+                                ref={fileInputRef}
+                                id="product-image-edit"
+                                type="file"
+                                accept="image/jpeg,image/png,image/webp"
+                                className="hidden"
+                                onChange={(e) => {
+                                    if (e.target.files && e.target.files[0]) {
+                                        handleFileChange(e.target.files[0]);
+                                    }
+                                }}
+                            />
+
+                            {clientError && (
+                                <p className="mt-1 text-xs text-rose-400">
+                                    {clientError}
+                                </p>
+                            )}
+                            <InputError
+                                message={errors.image}
                                 className="mt-1"
                             />
                         </div>
