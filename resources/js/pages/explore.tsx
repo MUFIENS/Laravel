@@ -417,9 +417,11 @@ export default function Explore({
                         href={user ? '/explore' : '/'}
                         className="group flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-90"
                     >
-                        <div className="flex size-8 items-center justify-center bg-[#F5F2EB] font-heading text-xs font-black text-[#0A0A0A] transition-transform duration-300 group-hover:scale-95 group-hover:rotate-6">
-                            K
-                        </div>
+                        <img
+                            src="/images/logo.png"
+                            alt="Logo SMK Negeri 1 Ciomas - KOPDIG"
+                            className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-xs"
+                        />
                         <div className="hidden flex-col sm:flex">
                             <span className="font-heading text-sm leading-none font-bold tracking-tight text-[#F5F2EB]">
                                 KOPDIG

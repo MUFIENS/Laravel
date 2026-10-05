@@ -24,10 +24,14 @@ export default function AuthCardLayout({
             <div className="flex w-full max-w-md flex-col gap-6">
                 <Link
                     href={home()}
-                    className="flex items-center gap-2 self-center font-medium"
+                    className="flex flex-col items-center gap-2 self-center font-medium"
                 >
-                    <div className="flex h-9 w-9 items-center justify-center">
-                        <AppLogoIcon className="size-9 fill-current text-black dark:text-white" />
+                    <div className="flex items-center justify-center">
+                        <AppLogoIcon className="h-12 w-auto drop-shadow-md" />
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <span className="font-heading text-lg font-bold">KOPDIG</span>
+                        <span className="font-mono text-[10px] tracking-wider text-muted-foreground uppercase">SMK Negeri 1 Ciomas</span>
                     </div>
                 </Link>
 

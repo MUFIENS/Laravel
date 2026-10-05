@@ -63,15 +63,17 @@ export default function AuthSplitLayout({
                         href={home()}
                         className="group flex items-center gap-3 transition-opacity hover:opacity-90 active:scale-95"
                     >
-                        <div className="flex size-8 items-center justify-center bg-[#F5F2EB] font-heading text-xs font-black text-[#0A0A0A] transition-transform duration-300 group-hover:scale-95 group-hover:rotate-6">
-                            K
-                        </div>
+                        <img
+                            src="/images/logo.png"
+                            alt="Logo SMK Negeri 1 Ciomas - KOPDIG"
+                            className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-sm"
+                        />
                         <div className="flex flex-col">
                             <span className="font-heading text-sm leading-none font-bold tracking-tight text-[#F5F2EB]">
                                 KOPDIG
                             </span>
                             <span className="mt-0.5 font-mono text-[9px] tracking-wider text-[#737373] uppercase">
-                                Koperasi Digital Sekolah
+                                SMKN 1 Ciomas
                             </span>
                         </div>
                     </Link>

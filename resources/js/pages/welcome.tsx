@@ -350,6 +350,13 @@ export default function Welcome() {
                 ref={preloaderRef}
                 className="pointer-events-none fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0A0A0A] px-6"
             >
+                <div className="mb-4 overflow-hidden">
+                    <img
+                        src="/images/logo.png"
+                        alt="Logo SMK Negeri 1 Ciomas - KOPDIG"
+                        className="preloader-item translate-y-full h-20 w-auto object-contain drop-shadow-xl"
+                    />
+                </div>
                 <div className="overflow-hidden">
                     <div className="preloader-item translate-y-full font-heading text-4xl font-black tracking-tighter text-[#F5F2EB] sm:text-6xl">
                         KOPDIG
@@ -357,7 +364,7 @@ export default function Welcome() {
                 </div>
                 <div className="mt-3 overflow-hidden">
                     <div className="preloader-item translate-y-full text-[11px] font-semibold tracking-[0.25em] text-[#E34A27] uppercase">
-                        Koperasi Digital Sekolah
+                        SMKN 1 CIOMAS · KOPERASI DIGITAL
                     </div>
                 </div>
             </div>
@@ -371,12 +378,19 @@ export default function Welcome() {
                             href="/"
                             className="group flex items-center gap-3 transition-opacity hover:opacity-90 active:scale-95"
                         >
-                            <div className="flex size-9 items-center justify-center bg-[#F5F2EB] font-heading text-sm font-black text-[#0A0A0A] transition-transform duration-300 group-hover:scale-95 group-hover:rotate-6">
-                                K
+                            <img
+                                src="/images/logo.png"
+                                alt="Logo SMK Negeri 1 Ciomas - KOPDIG"
+                                className="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-md"
+                            />
+                            <div className="flex flex-col">
+                                <span className="font-heading text-base font-bold tracking-tight text-[#F5F2EB]">
+                                    KOPDIG
+                                </span>
+                                <span className="font-mono text-[9px] tracking-wider text-[#737373] uppercase">
+                                    SMKN 1 CIOMAS
+                                </span>
                             </div>
-                            <span className="font-heading text-base font-bold tracking-tight text-[#F5F2EB]">
-                                KOPDIG
-                            </span>
                         </Link>
                         <span className="hidden border-l border-[#262626] pl-4 text-[11px] font-medium tracking-wider text-[#737373] sm:inline-block">
                             Koperasi Digital Warga Sekolah
@@ -1253,12 +1267,19 @@ export default function Welcome() {
                         {/* Brand Column */}
                         <div className="space-y-4 md:col-span-6">
                             <div className="flex items-center gap-3">
-                                <div className="flex size-8 items-center justify-center bg-[#F5F2EB] font-heading text-xs font-black text-[#0A0A0A]">
-                                    K
+                                <img
+                                    src="/images/logo.png"
+                                    alt="Logo SMK Negeri 1 Ciomas - KOPDIG"
+                                    className="h-9 w-auto object-contain drop-shadow-md"
+                                />
+                                <div className="flex flex-col">
+                                    <span className="font-heading text-base font-bold tracking-tight text-[#F5F2EB]">
+                                        KOPDIG
+                                    </span>
+                                    <span className="font-mono text-[9px] tracking-wider text-[#737373] uppercase">
+                                        SMKN 1 CIOMAS
+                                    </span>
                                 </div>
-                                <span className="font-heading text-base font-bold tracking-tight text-[#F5F2EB]">
-                                    KOPDIG
-                                </span>
                             </div>
                             <p className="max-w-sm text-xs leading-relaxed text-[#737373]">
                                 Ekosistem niaga digital resmi warga sekolah.

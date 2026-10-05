@@ -156,9 +156,11 @@ export default function StudentConsignmentEdit({
                         href="/explore"
                         className="flex items-center gap-2.5 transition-opacity hover:opacity-90"
                     >
-                        <div className="flex size-7.5 items-center justify-center bg-[#F5F2EB] font-heading text-xs font-black text-[#0A0A0A] transition-transform duration-300 hover:rotate-3">
-                            K
-                        </div>
+                        <img
+                            src="/images/logo.png"
+                            alt="Logo SMK Negeri 1 Ciomas - KOPDIG"
+                            className="h-8 w-auto object-contain drop-shadow-xs transition-transform duration-300 hover:scale-105"
+                        />
                         <div className="flex flex-col">
                             <span className="font-heading text-sm leading-none font-bold tracking-tight text-[#F5F2EB]">
                                 KOPDIG

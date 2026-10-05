@@ -42,10 +42,12 @@ export const CooperativeHeader: React.FC<Props> = ({
                 </button>
 
                 {/* Mobile brand indicator */}
-                <div className="flex items-center gap-2 md:hidden">
-                    <div className="flex size-7 items-center justify-center bg-[#F5F2EB] font-heading text-xs font-black text-[#0A0A0A] shadow-xs">
-                        K
-                    </div>
+                <div className="flex items-center gap-2.5 md:hidden">
+                    <img
+                        src="/images/logo.png"
+                        alt="Logo SMK Negeri 1 Ciomas - KOPDIG"
+                        className="h-8 w-auto object-contain drop-shadow-xs"
+                    />
                     <span className="font-heading text-sm font-bold tracking-tight text-[#F5F2EB]">
                         KOPDIG
                     </span>

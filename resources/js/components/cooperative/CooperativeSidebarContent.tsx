@@ -34,9 +34,11 @@ export const CooperativeSidebarContent: React.FC<Props> = ({
                         className="group flex items-center gap-3"
                         onClick={onNavigate}
                     >
-                        <div className="flex size-9 items-center justify-center bg-[#F5F2EB] font-heading text-sm font-black text-[#0A0A0A] shadow-xs transition-transform duration-300 group-hover:scale-95 group-hover:rotate-6">
-                            K
-                        </div>
+                        <img
+                            src="/images/logo.png"
+                            alt="Logo SMK Negeri 1 Ciomas - KOPDIG"
+                            className="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-xs"
+                        />
                         <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-2">
                                 <span className="font-heading text-base font-bold tracking-tight text-[#F5F2EB]">
@@ -47,7 +49,7 @@ export const CooperativeSidebarContent: React.FC<Props> = ({
                                 </span>
                             </div>
                             <p className="truncate text-xs font-medium text-[#737373]">
-                                Ruang Niaga Warga Sekolah
+                                SMKN 1 Ciomas
                             </p>
                         </div>
                     </Link>
