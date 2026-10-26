@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { formatRupiah } from '@/components/commerce/PriceDisplay';
 import { safeNavigateBack } from '@/lib/navigation';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import type { Auth } from '@/types';
 import type { OrderData } from '@/types/order';
 
@@ -84,14 +85,18 @@ export default function OrdersIndex() {
                         </div>
                     </Link>
 
-                    {/* Right: Cart Link */}
-                    <Link
-                        href="/cart"
-                        className="inline-flex items-center gap-1.5 rounded-full border border-[#262626] bg-[#141414] px-3.5 py-1.5 text-xs font-medium text-[#A3A3A3] transition-colors hover:border-[#383838] hover:text-[#F5F2EB]"
-                    >
-                        <ShoppingBag className="size-3.5 text-[#E34A27]" />
-                        <span className="hidden sm:inline">Keranjang</span>
-                    </Link>
+                    {/* Right: Theme Toggle & Cart Link */}
+                    <div className="flex items-center gap-2">
+                        <ThemeToggle size="sm" />
+
+                        <Link
+                            href="/cart"
+                            className="inline-flex items-center gap-1.5 rounded-full border border-[#262626] bg-[#141414] px-3.5 py-1.5 text-xs font-medium text-[#A3A3A3] transition-colors hover:border-[#383838] hover:text-[#F5F2EB]"
+                        >
+                            <ShoppingBag className="size-3.5 text-[#E34A27]" />
+                            <span className="hidden sm:inline">Keranjang</span>
+                        </Link>
+                    </div>
                 </div>
             </header>
 

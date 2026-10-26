@@ -19,6 +19,7 @@ import {
 import { QRCodeSVG } from 'qrcode.react';
 import { formatRupiah } from '@/components/commerce/PriceDisplay';
 import { safeNavigateBack } from '@/lib/navigation';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import type { OrderData, OrderItemData } from '@/types/order';
 
 interface OrderShowProps {
@@ -117,14 +118,18 @@ export default function OrderShow() {
                         </div>
                     </Link>
 
-                    {/* Right: Catalog Link */}
-                    <Link
-                        href="/explore"
-                        className="inline-flex items-center gap-1.5 rounded-full border border-[#262626] bg-[#141414] px-3.5 py-1.5 text-xs font-medium text-[#A3A3A3] transition-colors hover:border-[#383838] hover:text-[#F5F2EB]"
-                    >
-                        <Store className="size-3.5 text-[#E34A27]" />
-                        <span className="hidden sm:inline">Katalog</span>
-                    </Link>
+                    {/* Right: Actions */}
+                    <div className="flex items-center gap-2 sm:gap-3">
+                        <ThemeToggle size="sm" />
+
+                        <Link
+                            href="/explore"
+                            className="inline-flex items-center gap-1.5 rounded-full border border-[#262626] bg-[#141414] px-3.5 py-1.5 text-xs font-medium text-[#A3A3A3] transition-colors hover:border-[#383838] hover:text-[#F5F2EB]"
+                        >
+                            <Store className="size-3.5 text-[#E34A27]" />
+                            <span className="hidden sm:inline">Katalog</span>
+                        </Link>
+                    </div>
                 </div>
             </header>
 

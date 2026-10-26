@@ -146,3 +146,729 @@
         transform: none !important;
     }
 }
+
+/* ============================================================
+   KOPDIG LANDING PAGE: THEME & LIGHT MODE STYLES
+   ============================================================ */
+.kopdig-landing {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Base Light Mode Container & Document */
+html:not(.dark) .kopdig-landing,
+html.light .kopdig-landing,
+html.light-mode .kopdig-landing {
+    background-color: #F8F9FA !important;
+    color: #111111 !important;
+}
+
+/* Header & Navigation in Light Mode */
+html:not(.dark) .kopdig-landing header,
+html.light .kopdig-landing header,
+html.light-mode .kopdig-landing header {
+    background-color: rgba(255, 255, 255, 0.92) !important;
+    border-color: #E5E7EB !important;
+}
+
+html:not(.dark) .kopdig-landing header .brand-title,
+html.light .kopdig-landing header .brand-title,
+html.light-mode .kopdig-landing header .brand-title {
+    color: #111111 !important;
+}
+
+html:not(.dark) .kopdig-landing header .brand-subtitle,
+html.light .kopdig-landing header .brand-subtitle,
+html.light-mode .kopdig-landing header .brand-subtitle {
+    color: #6B7280 !important;
+}
+
+html:not(.dark) .kopdig-landing header nav a,
+html.light .kopdig-landing header nav a,
+html.light-mode .kopdig-landing header nav a {
+    color: #4B5563 !important;
+}
+
+html:not(.dark) .kopdig-landing header nav a:hover,
+html.light .kopdig-landing header nav a:hover,
+html.light-mode .kopdig-landing header nav a:hover {
+    color: #111111 !important;
+}
+
+html:not(.dark) .kopdig-landing .mobile-nav-trigger,
+html.light .kopdig-landing .mobile-nav-trigger,
+html.light-mode .kopdig-landing .mobile-nav-trigger {
+    color: #111111 !important;
+}
+
+html:not(.dark) .kopdig-landing .mobile-menu-drawer,
+html.light .kopdig-landing .mobile-menu-drawer,
+html.light-mode .kopdig-landing .mobile-menu-drawer {
+    background-color: #FFFFFF !important;
+    border-color: #E5E7EB !important;
+}
+
+html:not(.dark) .kopdig-landing .mobile-menu-drawer a,
+html.light .kopdig-landing .mobile-menu-drawer a,
+html.light-mode .kopdig-landing .mobile-menu-drawer a {
+    color: #374151 !important;
+}
+
+/* Theme Toggle Button Styling */
+.theme-toggle-btn {
+    transition: all 0.25s ease;
+}
+
+html:not(.dark) .kopdig-landing .theme-toggle-btn,
+html.light .kopdig-landing .theme-toggle-btn,
+html.light-mode .kopdig-landing .theme-toggle-btn {
+    background-color: #FFFFFF !important;
+    border-color: #E5E7EB !important;
+    color: #1F2937 !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+html:not(.dark) .kopdig-landing .theme-toggle-btn:hover,
+html.light .kopdig-landing .theme-toggle-btn:hover,
+html.light-mode .kopdig-landing .theme-toggle-btn:hover {
+    border-color: #E34A27 !important;
+    color: #E34A27 !important;
+}
+
+/* Headings in Light Mode */
+html:not(.dark) .kopdig-landing h1,
+html:not(.dark) .kopdig-landing h2,
+html:not(.dark) .kopdig-landing h3,
+html:not(.dark) .kopdig-landing h4,
+html:not(.dark) .kopdig-landing h5,
+html.light .kopdig-landing h1,
+html.light .kopdig-landing h2,
+html.light .kopdig-landing h3,
+html.light .kopdig-landing h4,
+html.light .kopdig-landing h5,
+html.light-mode .kopdig-landing h1,
+html.light-mode .kopdig-landing h2,
+html.light-mode .kopdig-landing h3,
+html.light-mode .kopdig-landing h4,
+html.light-mode .kopdig-landing h5 {
+    color: #111111 !important;
+}
+
+/* Paragraphs in Light Mode */
+html:not(.dark) .kopdig-landing p,
+html.light .kopdig-landing p,
+html.light-mode .kopdig-landing p {
+    color: #4B5563 !important;
+}
+
+/* Section Backgrounds & Borders in Light Mode */
+html:not(.dark) .kopdig-landing section,
+html.light .kopdig-landing section,
+html.light-mode .kopdig-landing section {
+    border-color: #E5E7EB !important;
+}
+
+html:not(.dark) .kopdig-landing .scene-philosophy,
+html:not(.dark) .kopdig-landing .scene-student-craft,
+html.light .kopdig-landing .scene-philosophy,
+html.light .kopdig-landing .scene-student-craft,
+html.light-mode .kopdig-landing .scene-philosophy,
+html.light-mode .kopdig-landing .scene-student-craft {
+    background-color: #F1F3F5 !important;
+}
+
+html:not(.dark) .kopdig-landing .scene-ecosystem,
+html:not(.dark) .kopdig-landing .scene-showcase,
+html.light .kopdig-landing .scene-ecosystem,
+html.light .kopdig-landing .scene-showcase,
+html.light-mode .kopdig-landing .scene-ecosystem,
+html.light-mode .kopdig-landing .scene-showcase {
+    background-color: #F8F9FA !important;
+}
+
+/* Cards & Surface Containers in Light Mode */
+html:not(.dark) .kopdig-landing .surface-card,
+html.light .kopdig-landing .surface-card,
+html.light-mode .kopdig-landing .surface-card {
+    background-color: #FFFFFF !important;
+    border-color: #E5E7EB !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* Tactical Corner Descriptors and badges */
+html:not(.dark) .kopdig-landing .tactile-badge,
+html.light .kopdig-landing .tactile-badge,
+html.light-mode .kopdig-landing .tactile-badge {
+    background-color: rgba(255, 255, 255, 0.92) !important;
+    border-color: #E5E7EB !important;
+    color: #111111 !important;
+}
+
+/* Sub-hero CTA button */
+html:not(.dark) .kopdig-landing .btn-secondary-dark,
+html.light .kopdig-landing .btn-secondary-dark,
+html.light-mode .kopdig-landing .btn-secondary-dark {
+    background-color: #111111 !important;
+    color: #FFFFFF !important;
+}
+html:not(.dark) .kopdig-landing .btn-secondary-dark:hover,
+html.light .kopdig-landing .btn-secondary-dark:hover,
+html.light-mode .kopdig-landing .btn-secondary-dark:hover {
+    background-color: #E34A27 !important;
+    color: #FFFFFF !important;
+}
+
+/* Operational Pillars */
+html:not(.dark) .kopdig-landing .pillar-title,
+html.light .kopdig-landing .pillar-title,
+html.light-mode .kopdig-landing .pillar-title {
+    color: #111111 !important;
+}
+
+html:not(.dark) .kopdig-landing .pillar-desc,
+html.light .kopdig-landing .pillar-desc,
+html.light-mode .kopdig-landing .pillar-desc {
+    color: #6B7280 !important;
+}
+
+/* Step quick selector */
+html:not(.dark) .kopdig-landing .step-selector-box,
+html.light .kopdig-landing .step-selector-box,
+html.light-mode .kopdig-landing .step-selector-box {
+    background-color: #FFFFFF !important;
+    border-color: #E5E7EB !important;
+}
+
+html:not(.dark) .kopdig-landing .step-inactive-num,
+html.light .kopdig-landing .step-inactive-num,
+html.light-mode .kopdig-landing .step-inactive-num {
+    color: #E5E7EB !important;
+}
+
+html:not(.dark) .kopdig-landing .progress-line-track,
+html.light .kopdig-landing .progress-line-track,
+html.light-mode .kopdig-landing .progress-line-track {
+    background-color: #E5E7EB !important;
+}
+
+/* Mockup UI Browser Chrome */
+html:not(.dark) .kopdig-landing .browser-chrome,
+html.light .kopdig-landing .browser-chrome,
+html.light-mode .kopdig-landing .browser-chrome {
+    background-color: #F1F3F5 !important;
+    border-color: #E5E7EB !important;
+}
+
+html:not(.dark) .kopdig-landing .browser-dot,
+html.light .kopdig-landing .browser-dot,
+html.light-mode .kopdig-landing .browser-dot {
+    background-color: #D1D5DB !important;
+}
+
+html:not(.dark) .kopdig-landing .browser-canvas,
+html.light .kopdig-landing .browser-canvas,
+html.light-mode .kopdig-landing .browser-canvas {
+    background-color: #F8F9FA !important;
+}
+
+html:not(.dark) .kopdig-landing .voucher-item-row:hover,
+html.light .kopdig-landing .voucher-item-row:hover,
+html.light-mode .kopdig-landing .voucher-item-row:hover {
+    background-color: #F1F3F5 !important;
+}
+
+/* Scene Closing CTA */
+html:not(.dark) .kopdig-landing .scene-closing-cta,
+html.light .kopdig-landing .scene-closing-cta,
+html.light-mode .kopdig-landing .scene-closing-cta {
+    background-color: #F1F3F5 !important;
+}
+
+html:not(.dark) .kopdig-landing .cta-scrim,
+html.light .kopdig-landing .cta-scrim,
+html.light-mode .kopdig-landing .cta-scrim {
+    background: linear-gradient(to top, #F1F3F5 0%, rgba(241, 243, 245, 0.9) 60%, #F1F3F5 100%) !important;
+}
+
+/* Footer in Light Mode */
+html:not(.dark) .kopdig-landing footer,
+html.light .kopdig-landing footer,
+html.light-mode .kopdig-landing footer {
+    background-color: #E9ECEF !important;
+    border-color: #DEE2E6 !important;
+}
+
+html:not(.dark) .kopdig-landing footer h5,
+html.light .kopdig-landing footer h5,
+html.light-mode .kopdig-landing footer h5 {
+    color: #111111 !important;
+}
+
+html:not(.dark) .kopdig-landing footer a,
+html:not(.dark) .kopdig-landing footer li,
+html.light .kopdig-landing footer a,
+html.light .kopdig-landing footer li,
+html.light-mode .kopdig-landing footer a,
+html.light-mode .kopdig-landing footer li {
+    color: #4B5563 !important;
+}
+
+html:not(.dark) .kopdig-landing footer a:hover,
+html.light .kopdig-landing footer a:hover,
+html.light-mode .kopdig-landing footer a:hover {
+    color: #E34A27 !important;
+}
+
+html:not(.dark) .kopdig-landing footer p,
+html.light .kopdig-landing footer p,
+html.light-mode .kopdig-landing footer p {
+    color: #6B7280 !important;
+}
+
+/* ============================================================
+   UNIVERSAL LIGHT THEME (WARNA PUTIH) FOR ALL APPLICATION PAGES
+   When html is in Light Mode (not .dark, or has .light / .light-mode)
+   Berlaku untuk /explore, /cart, /orders, /checkout, /products,
+   /cooperative, /student, /settings, /auth, dsb.
+   ============================================================ */
+
+/* 1. Global Document & Canvas Body */
+html:not(.dark) body,
+html.light body,
+html.light-mode body {
+    background-color: #F8F9FA !important;
+    color: #111111 !important;
+}
+
+/* 2. Main Page Background Overrides */
+html:not(.dark) [class*="bg-[#0A0A0A]"]:not(button):not(a):not(.auth-editorial-aside *):not(.explore-hero-banner *),
+html:not(.dark) [class*="bg-[#000000]"]:not(button):not(a):not(.auth-editorial-aside *):not(.explore-hero-banner *),
+html:not(.dark) [class*="bg-[#0D0D0D]"]:not(button):not(a):not(.auth-editorial-aside *):not(.explore-hero-banner *),
+html.light [class*="bg-[#0A0A0A]"]:not(button):not(a):not(.auth-editorial-aside *):not(.explore-hero-banner *),
+html.light-mode [class*="bg-[#0A0A0A]"]:not(button):not(a):not(.auth-editorial-aside *):not(.explore-hero-banner *) {
+    background-color: #F8F9FA !important;
+}
+
+/* 3. Surface Cards, Panels, Modals, Drawers & Containers */
+html:not(.dark) [class*="bg-[#121212]"]:not(button):not(a):not([class*="bg-[#E34A27]"]):not(.auth-editorial-aside *),
+html:not(.dark) [class*="bg-[#141414]"]:not(button):not(a):not([class*="bg-[#E34A27]"]):not(.auth-editorial-aside *):not(.explore-hero-banner):not(.spotlight-card-amber):not(.spotlight-card-blue),
+html:not(.dark) [class*="bg-[#171717]"]:not(button):not(a):not([class*="bg-[#E34A27]"]):not(.auth-editorial-aside *),
+html:not(.dark) [class*="bg-[#181818]"]:not(button):not(a):not([class*="bg-[#E34A27]"]):not(.auth-editorial-aside *),
+html:not(.dark) [class*="bg-[#1a1a1a]"]:not(button):not(a):not([class*="bg-[#E34A27]"]):not(.auth-editorial-aside *),
+html:not(.dark) [class*="bg-[#1A1A1A]"]:not(button):not(a):not([class*="bg-[#E34A27]"]):not(.auth-editorial-aside *),
+html:not(.dark) [class*="bg-[#1F1F1F]"]:not(button):not(a):not([class*="bg-[#E34A27]"]):not(.auth-editorial-aside *),
+html.light [class*="bg-[#121212]"]:not(button):not(a):not(.auth-editorial-aside *),
+html.light [class*="bg-[#141414]"]:not(button):not(a):not(.auth-editorial-aside *):not(.explore-hero-banner):not(.spotlight-card-amber):not(.spotlight-card-blue),
+html.light [class*="bg-[#181818]"]:not(button):not(a):not(.auth-editorial-aside *),
+html.light-mode [class*="bg-[#121212]"]:not(button):not(a):not(.auth-editorial-aside *),
+html.light-mode [class*="bg-[#141414]"]:not(button):not(a):not(.auth-editorial-aside *):not(.explore-hero-banner):not(.spotlight-card-amber):not(.spotlight-card-blue),
+html.light-mode [class*="bg-[#181818]"]:not(button):not(a):not(.auth-editorial-aside *) {
+    background-color: #FFFFFF !important;
+}
+
+/* 4. Frosted Glass Sticky Headers & Bars */
+html:not(.dark) header,
+html:not(.dark) [class*="bg-[#0A0A0A]/"]:not(.auth-editorial-aside *):not(.explore-hero-banner *),
+html:not(.dark) [class*="bg-[#141414]/"]:not(.auth-editorial-aside *),
+html:not(.dark) [class*="bg-[#121212]/"]:not(.auth-editorial-aside *),
+html.light header,
+html.light-mode header {
+    background-color: rgba(255, 255, 255, 0.94) !important;
+    border-color: #E5E7EB !important;
+}
+
+/* 5. Universal Borders in Light Mode */
+html:not(.dark) [class*="border-[#262626]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.explore-hero-banner),
+html:not(.dark) [class*="border-[#1F1F1F]"]:not(.auth-editorial-aside *),
+html:not(.dark) [class*="border-[#1C1C1C]"]:not(.auth-editorial-aside *),
+html:not(.dark) [class*="border-[#333]"]:not(.auth-editorial-aside *),
+html:not(.dark) [class*="border-[#383838]"]:not(.auth-editorial-aside *),
+html:not(.dark) [class*="border-[#181818]"]:not(.auth-editorial-aside *),
+html:not(.dark) [class*="border-[#141414]"]:not(.auth-editorial-aside *),
+html.light [class*="border-[#262626]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.explore-hero-banner),
+html.light-mode [class*="border-[#262626]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.explore-hero-banner) {
+    border-color: #E5E7EB !important;
+}
+
+/* 6. Typography: Headings and Primary Dark Text */
+html:not(.dark) h1:not(.auth-editorial-aside h1):not(.explore-hero-banner h1),
+html:not(.dark) h2:not(.auth-editorial-aside h2),
+html:not(.dark) h3:not(.auth-editorial-aside h3):not(.spotlight-card-amber h3):not(.spotlight-card-blue h3),
+html:not(.dark) h4:not(.auth-editorial-aside h4),
+html:not(.dark) h5:not(.auth-editorial-aside h5),
+html:not(.dark) h6:not(.auth-editorial-aside h6),
+html.light h1:not(.auth-editorial-aside h1):not(.explore-hero-banner h1),
+html.light h2:not(.auth-editorial-aside h2),
+html.light h3:not(.auth-editorial-aside h3):not(.spotlight-card-amber h3):not(.spotlight-card-blue h3),
+html.light-mode h1:not(.auth-editorial-aside h1):not(.explore-hero-banner h1),
+html.light-mode h2:not(.auth-editorial-aside h2),
+html.light-mode h3:not(.auth-editorial-aside h3):not(.spotlight-card-amber h3):not(.spotlight-card-blue h3) {
+    color: #111111 !important;
+}
+
+html:not(.dark) [class*="text-[#F5F2EB]"]:not([class*="bg-[#E34A27]"]):not([class*="text-white"]):not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.spotlight-card-amber *):not(.spotlight-card-blue *),
+html.light [class*="text-[#F5F2EB]"]:not([class*="bg-[#E34A27]"]):not([class*="text-white"]):not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.spotlight-card-amber *):not(.spotlight-card-blue *),
+html.light-mode [class*="text-[#F5F2EB]"]:not([class*="bg-[#E34A27]"]):not([class*="text-white"]):not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.spotlight-card-amber *):not(.spotlight-card-blue *) {
+    color: #111111 !important;
+}
+
+/* 7. Secondary and Muted Text */
+html:not(.dark) [class*="text-[#D4D4D4]"]:not([class*="bg-[#E34A27]"]):not([class*="text-white"]):not(.auth-editorial-aside *):not(.explore-hero-banner *),
+html:not(.dark) [class*="text-[#A3A3A3]"]:not([class*="bg-[#E34A27]"]):not([class*="text-white"]):not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.spotlight-card-amber *):not(.spotlight-card-blue *),
+html.light [class*="text-[#D4D4D4]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *),
+html.light [class*="text-[#A3A3A3]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.spotlight-card-amber *):not(.spotlight-card-blue *),
+html.light-mode [class*="text-[#D4D4D4]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *),
+html.light-mode [class*="text-[#A3A3A3]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.spotlight-card-amber *):not(.spotlight-card-blue *) {
+    color: #4B5563 !important;
+}
+
+html:not(.dark) [class*="text-[#737373]"]:not([class*="bg-[#E34A27]"]):not([class*="text-white"]):not(.auth-editorial-aside *):not(.explore-hero-banner *),
+html:not(.dark) [class*="text-[#525252]"]:not([class*="bg-[#E34A27]"]):not([class*="text-white"]):not(.auth-editorial-aside *),
+html:not(.dark) [class*="text-[#555]"]:not([class*="bg-[#E34A27]"]):not([class*="text-white"]):not(.auth-editorial-aside *),
+html.light [class*="text-[#737373]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *),
+html.light-mode [class*="text-[#737373]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *) {
+    color: #6B7280 !important;
+}
+
+/* 8. Inputs, Search Bars, Omnibox, Textarea & Select */
+html:not(.dark) input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]),
+html:not(.dark) textarea,
+html:not(.dark) select,
+html.light input:not([type="submit"]):not([type="button"]),
+html.light textarea,
+html.light-mode input:not([type="submit"]):not([type="button"]),
+html.light-mode textarea {
+    background-color: #FFFFFF !important;
+    border-color: #D1D5DB !important;
+    color: #111111 !important;
+}
+
+html:not(.dark) input::placeholder,
+html:not(.dark) textarea::placeholder,
+html.light input::placeholder,
+html.light-mode input::placeholder {
+    color: #9CA3AF !important;
+}
+
+/* 9. Product Cards & Content Elevating Shadows */
+html:not(.dark) article,
+html.light article,
+html.light-mode article {
+    background-color: #FFFFFF !important;
+    border-color: #E5E7EB !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+}
+
+html:not(.dark) article:hover,
+html.light article:hover,
+html.light-mode article:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* 10. Secondary Action Buttons & Pills in Light Mode */
+html:not(.dark) [class*="border-[#262626]"][class*="bg-[#141414]"]:not(article):not(.auth-editorial-aside *),
+html:not(.dark) [class*="border-[#262626]"][class*="bg-[#121212]"]:not(article):not(.auth-editorial-aside *),
+html.light [class*="border-[#262626]"][class*="bg-[#141414]"]:not(.auth-editorial-aside *),
+html.light-mode [class*="border-[#262626]"][class*="bg-[#141414]"]:not(.auth-editorial-aside *) {
+    background-color: #FFFFFF !important;
+    border-color: #E5E7EB !important;
+    color: #1F2937 !important;
+}
+
+html:not(.dark) [class*="border-[#262626]"][class*="bg-[#141414]"] span,
+html.light-mode [class*="border-[#262626]"][class*="bg-[#141414]"] span {
+    color: #1F2937 !important;
+}
+
+/* Active Category Pill */
+html:not(.dark) button[class~="bg-[#E34A27]"] span,
+html.light-mode button[class~="bg-[#E34A27]"] span {
+    color: #FFFFFF !important;
+}
+
+/* 11. Explicit Icon Colors & Visibility in Light Mode */
+html:not(.dark) .theme-toggle-btn svg,
+html.light-mode .theme-toggle-btn svg,
+html:not(.dark) #theme-toggle svg,
+html.light-mode #theme-toggle svg {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+html:not(.dark) #theme-toggle svg.lucide-moon,
+html.light-mode #theme-toggle svg.lucide-moon {
+    color: #1F2937 !important;
+    stroke: #1F2937 !important;
+}
+
+html.dark #theme-toggle svg.lucide-sun {
+    color: #F59E0B !important;
+    stroke: #F59E0B !important;
+}
+
+/* Header Action Icons in Light Mode */
+html:not(.dark) header a[href="/cart"] svg,
+html.light-mode header a[href="/cart"] svg {
+    color: #1F2937 !important;
+    stroke: #1F2937 !important;
+}
+
+html:not(.dark) header a[href="/login"] svg,
+html.light-mode header a[href="/login"] svg {
+    color: #1F2937 !important;
+    stroke: #1F2937 !important;
+}
+
+/* Quick View eye icon on product cards in Light Mode */
+html:not(.dark) article button svg.lucide-eye,
+html.light-mode article button svg.lucide-eye {
+    color: #1F2937 !important;
+    stroke: #1F2937 !important;
+}
+
+html:not(.dark) article button[title="Pratinjau Cepat"],
+html.light-mode article button[title="Pratinjau Cepat"] {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border-color: #E5E7EB !important;
+    color: #1F2937 !important;
+}
+
+/* Category semantic icon colors */
+html:not(.dark) .text-amber-400 { color: #D97706 !important; stroke: #D97706 !important; }
+html:not(.dark) .text-cyan-400 { color: #0891B2 !important; stroke: #0891B2 !important; }
+html:not(.dark) .text-blue-400 { color: #2563EB !important; stroke: #2563EB !important; }
+html:not(.dark) .text-emerald-400 { color: #059669 !important; stroke: #059669 !important; }
+html:not(.dark) .text-purple-400 { color: #9333EA !important; stroke: #9333EA !important; }
+
+/* 12. Soft Status Badges (Emerald, Amber, Red, Blue) */
+html:not(.dark) [class*="bg-emerald-950"]:not(.auth-editorial-aside *),
+html.light [class*="bg-emerald-950"]:not(.auth-editorial-aside *),
+html.light-mode [class*="bg-emerald-950"]:not(.auth-editorial-aside *) {
+    background-color: #ECFDF5 !important;
+    border-color: #A7F3D0 !important;
+    color: #065F46 !important;
+}
+
+html:not(.dark) [class*="bg-amber-950"]:not(.auth-editorial-aside *),
+html.light [class*="bg-amber-950"]:not(.auth-editorial-aside *),
+html.light-mode [class*="bg-amber-950"]:not(.auth-editorial-aside *) {
+    background-color: #FFFBEB !important;
+    border-color: #FDE68A !important;
+    color: #92400E !important;
+}
+
+html:not(.dark) [class*="bg-red-950"]:not(.auth-editorial-aside *),
+html.light [class*="bg-red-950"]:not(.auth-editorial-aside *),
+html.light-mode [class*="bg-red-950"]:not(.auth-editorial-aside *) {
+    background-color: #FEF2F2 !important;
+    border-color: #FECACA !important;
+    color: #991B1B !important;
+}
+
+html:not(.dark) [class*="bg-blue-950"]:not(.auth-editorial-aside *),
+html.light [class*="bg-blue-950"]:not(.auth-editorial-aside *),
+html.light-mode [class*="bg-blue-950"]:not(.auth-editorial-aside *) {
+    background-color: #EFF6FF !important;
+    border-color: #BFDBFE !important;
+    color: #1E40AF !important;
+}
+
+/* 13. Brand Accent Primary Buttons (White Text & Icons) */
+html:not(.dark) button[class*="bg-[#E34A27]"],
+html:not(.dark) a[class*="bg-[#E34A27]"],
+html.light button[class*="bg-[#E34A27]"],
+html.light a[class*="bg-[#E34A27]"],
+html.light-mode button[class*="bg-[#E34A27]"],
+html.light-mode a[class*="bg-[#E34A27]"] {
+    color: #FFFFFF !important;
+}
+
+html:not(.dark) button[class*="bg-[#E34A27]"] svg,
+html:not(.dark) a[class*="bg-[#E34A27]"] svg,
+html.light button[class*="bg-[#E34A27]"] svg,
+html.light a[class*="bg-[#E34A27]"] svg,
+html.light-mode button[class*="bg-[#E34A27]"] svg,
+html.light-mode a[class*="bg-[#E34A27]"] svg {
+    color: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+}
+
+/* 14. Keep Editorial Aside on Auth Pages Dark & High Contrast */
+html:not(.dark) .auth-editorial-aside h2,
+html.light-mode .auth-editorial-aside h2 {
+    color: #F5F2EB !important;
+}
+
+html:not(.dark) .auth-editorial-aside p,
+html.light-mode .auth-editorial-aside p {
+    color: #A3A3A3 !important;
+}
+
+html:not(.dark) .auth-editorial-aside [class*="bg-[#0A0A0A]"],
+html.light-mode .auth-editorial-aside [class*="bg-[#0A0A0A]"] {
+    background-color: rgba(10, 10, 10, 0.85) !important;
+    border-color: #262626 !important;
+}
+
+/* 15. Ensure Brand Logo Images & Text Never Disappear */
+img[src*="logo.png"] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
+}
+
+/* 16. Explore Hero Banner: Dark Photographic Cinematic Contrast in All Modes */
+html:not(.dark) .explore-hero-banner,
+html.light-mode .explore-hero-banner {
+    background-color: #141414 !important;
+    border-color: #262626 !important;
+}
+
+html:not(.dark) .explore-hero-banner h1,
+html.light-mode .explore-hero-banner h1 {
+    color: #F5F2EB !important;
+}
+
+html:not(.dark) .explore-hero-banner p,
+html.light-mode .explore-hero-banner p {
+    color: #D4D4D4 !important;
+}
+
+html:not(.dark) .explore-hero-banner .explore-badge,
+html.light-mode .explore-hero-banner .explore-badge {
+    background-color: rgba(10, 10, 10, 0.85) !important;
+    border-color: #262626 !important;
+    color: #A3A3A3 !important;
+}
+
+html:not(.dark) .explore-hero-banner button.suggestion-chip,
+html.light-mode .explore-hero-banner button.suggestion-chip {
+    background-color: rgba(10, 10, 10, 0.9) !important;
+    border-color: #262626 !important;
+    color: #D4D4D4 !important;
+}
+
+html:not(.dark) .explore-hero-banner button.suggestion-chip:hover,
+html.light-mode .explore-hero-banner button.suggestion-chip:hover {
+    border-color: #E34A27 !important;
+    color: #E34A27 !important;
+}
+
+/* 17. Spotlight Cards in Light Mode */
+html:not(.dark) .spotlight-card-amber,
+html.light-mode .spotlight-card-amber {
+    background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%) !important;
+    border-color: #FDE68A !important;
+}
+
+html:not(.dark) .spotlight-card-amber h3,
+html.light-mode .spotlight-card-amber h3 {
+    color: #78350F !important;
+}
+
+html:not(.dark) .spotlight-card-amber p,
+html.light-mode .spotlight-card-amber p {
+    color: #92400E !important;
+}
+
+html:not(.dark) .spotlight-card-amber .spotlight-icon-box,
+html.light-mode .spotlight-card-amber .spotlight-icon-box {
+    background-color: #FDE68A !important;
+    color: #B45309 !important;
+}
+
+html:not(.dark) .spotlight-card-amber button,
+html.light-mode .spotlight-card-amber button {
+    color: #B45309 !important;
+}
+
+html:not(.dark) .spotlight-card-blue,
+html.light-mode .spotlight-card-blue {
+    background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%) !important;
+    border-color: #BFDBFE !important;
+}
+
+html:not(.dark) .spotlight-card-blue h3,
+html.light-mode .spotlight-card-blue h3 {
+    color: #1E3A8A !important;
+}
+
+html:not(.dark) .spotlight-card-blue p,
+html.light-mode .spotlight-card-blue p {
+    color: #1E40AF !important;
+}
+
+html:not(.dark) .spotlight-card-blue .spotlight-icon-box,
+html.light-mode .spotlight-card-blue .spotlight-icon-box {
+    background-color: #BFDBFE !important;
+    color: #1D4ED8 !important;
+}
+
+html:not(.dark) .spotlight-card-blue button,
+html.light-mode .spotlight-card-blue button {
+    color: #1D4ED8 !important;
+}
+
+/* 18. Product Cards in Light Mode */
+html:not(.dark) article h3,
+html.light-mode article h3 {
+    color: #111111 !important;
+}
+
+html:not(.dark) article span.font-extrabold,
+html.light-mode article span.font-extrabold {
+    color: #111111 !important;
+}
+
+/* 19. Spotlight Cards in Dark Mode */
+html.dark .spotlight-card-amber {
+    background: linear-gradient(135deg, #1C140C 0%, #141414 100%) !important;
+    border-color: rgba(245, 158, 11, 0.2) !important;
+}
+
+html.dark .spotlight-card-amber h3,
+html.dark .spotlight-card-amber .spotlight-title {
+    color: #F5F2EB !important;
+}
+
+html.dark .spotlight-card-amber p,
+html.dark .spotlight-card-amber .spotlight-desc {
+    color: #A3A3A3 !important;
+}
+
+html.dark .spotlight-card-amber .spotlight-icon-box {
+    background-color: rgba(245, 158, 11, 0.2) !important;
+    color: #FBBF24 !important;
+}
+
+html.dark .spotlight-card-amber button {
+    color: #FBBF24 !important;
+}
+
+html.dark .spotlight-card-blue {
+    background: linear-gradient(135deg, #0C141C 0%, #141414 100%) !important;
+    border-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+html.dark .spotlight-card-blue h3,
+html.dark .spotlight-card-blue .spotlight-title {
+    color: #F5F2EB !important;
+}
+
+html.dark .spotlight-card-blue p,
+html.dark .spotlight-card-blue .spotlight-desc {
+    color: #A3A3A3 !important;
+}
+
+html.dark .spotlight-card-blue .spotlight-icon-box {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    color: #60A5FA !important;
+}
+
+html.dark .spotlight-card-blue button {
+    color: #60A5FA !important;
+}
+
+
+
+

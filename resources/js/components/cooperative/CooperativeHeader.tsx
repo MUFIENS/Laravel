@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, usePage } from '@inertiajs/react';
 import { LogOut, Menu } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import type { Auth } from '@/types/auth';
 
 interface Props {
@@ -100,7 +101,9 @@ export const CooperativeHeader: React.FC<Props> = ({
             </div>
 
             {/* Right side operational status & user context */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
+                <ThemeToggle size="sm" />
+
                 {/* Role badge */}
                 <div className="hidden items-center gap-1.5 rounded border border-[#E34A27]/30 bg-[#E34A27]/10 px-2.5 py-1 font-mono text-[11px] font-semibold text-[#E34A27] sm:flex">
                     <span

@@ -3,6 +3,7 @@ import { ArrowLeft, CheckCircle2, ShieldCheck } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { home } from '@/routes';
 import { safeNavigateBack } from '@/lib/navigation';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 import type { RouteDefinition } from '@/wayfinder';
 
@@ -78,15 +79,18 @@ export default function AuthSplitLayout({
                         </div>
                     </Link>
 
-                    {/* Desktop Switcher Action */}
-                    <div className="hidden items-center gap-1.5 text-xs text-[#737373] sm:flex">
-                        <span>{switchText}</span>
-                        <Link
-                            href={switchLinkHref}
-                            className="font-medium text-[#F5F2EB] underline-offset-4 transition-colors hover:text-[#E34A27] hover:underline"
-                        >
-                            {switchLinkText}
-                        </Link>
+                    {/* Desktop Switcher Action & Theme Toggle */}
+                    <div className="flex items-center gap-3">
+                        <ThemeToggle size="sm" />
+                        <div className="hidden items-center gap-1.5 text-xs text-[#737373] sm:flex">
+                            <span>{switchText}</span>
+                            <Link
+                                href={switchLinkHref}
+                                className="font-medium text-[#F5F2EB] underline-offset-4 transition-colors hover:text-[#E34A27] hover:underline"
+                            >
+                                {switchLinkText}
+                            </Link>
+                        </div>
                     </div>
                 </header>
 
@@ -136,7 +140,7 @@ export default function AuthSplitLayout({
             </div>
 
             {/* 2. VISUAL / BRAND COLUMN (58% on desktop, hidden on mobile) */}
-            <aside className="relative hidden min-h-screen flex-col justify-between overflow-hidden border-l border-[#262626] bg-[#141414] p-10 select-none lg:flex lg:w-[55%] xl:w-[58%] xl:p-14">
+            <aside className="auth-editorial-aside relative hidden min-h-screen flex-col justify-between overflow-hidden border-l border-[#262626] bg-[#141414] p-10 select-none lg:flex lg:w-[55%] xl:w-[58%] xl:p-14">
                 {/* High-Resolution Editorial Background Artwork */}
                 <img
                     src={visualImage}

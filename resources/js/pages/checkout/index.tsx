@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { formatRupiah } from '@/components/commerce/PriceDisplay';
 import { safeNavigateBack } from '@/lib/navigation';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import type { Auth } from '@/types';
 import type { PickupSessionData } from '@/types/pickup-session';
 import type { CartData, CartItemData } from '@/types/cart';
@@ -136,10 +137,14 @@ export default function CheckoutIndex() {
                         </div>
                     </Link>
 
-                    {/* Right: Quantity Badge */}
-                    <div className="inline-flex items-center gap-1.5 rounded-full border border-[#E34A27]/30 bg-[#E34A27]/10 px-3 py-1 font-mono text-xs font-semibold text-[#E34A27]">
-                        <ShoppingBag className="size-3.5" />
-                        <span>{cart.total_quantity} Unit</span>
+                    {/* Right: Actions & Quantity Badge */}
+                    <div className="flex items-center gap-2 sm:gap-3">
+                        <ThemeToggle size="sm" />
+
+                        <div className="inline-flex items-center gap-1.5 rounded-full border border-[#E34A27]/30 bg-[#E34A27]/10 px-3 py-1 font-mono text-xs font-semibold text-[#E34A27]">
+                            <ShoppingBag className="size-3.5" />
+                            <span>{cart.total_quantity} Unit</span>
+                        </div>
                     </div>
                 </div>
             </header>

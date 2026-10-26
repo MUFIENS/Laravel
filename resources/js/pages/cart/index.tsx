@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { safeNavigateBack } from '@/lib/navigation';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import type { CartData, CartItemData } from '@/types/cart';
 import type { Auth } from '@/types';
 
@@ -155,7 +156,9 @@ export default function CartIndex() {
                     </Link>
 
                     {/* Right: Cart Status & Quick Link to Orders */}
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                        <ThemeToggle size="sm" />
+
                         <Link
                             href="/orders"
                             className="hidden items-center gap-1.5 rounded-full border border-[#262626] bg-[#141414] px-3 py-1.5 text-xs text-[#A3A3A3] transition-colors hover:border-[#383838] hover:text-[#F5F2EB] md:inline-flex"

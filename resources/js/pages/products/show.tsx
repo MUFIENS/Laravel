@@ -23,6 +23,7 @@ import {
 import { toast } from 'sonner';
 import { formatRupiah } from '@/components/commerce/PriceDisplay';
 import { safeNavigateBack } from '@/lib/navigation';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import type { MarketplaceProduct } from '@/types/marketplace';
 import type { Auth } from '@/types';
 
@@ -272,6 +273,8 @@ export default function ProductDetail() {
 
                     {/* Right: Cart & Share Actions */}
                     <div className="flex items-center gap-2 sm:gap-3">
+                        <ThemeToggle size="sm" />
+
                         <button
                             type="button"
                             onClick={handleShare}

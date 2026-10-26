@@ -29,6 +29,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { BottomNavigation } from '@/components/layout/BottomNavigation';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import type { Auth } from '@/types';
 
 export interface CategoryItem {
@@ -464,6 +465,9 @@ export default function Explore({
 
                     {/* Header Action Badges */}
                     <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
+                        {/* Theme Toggle Button */}
+                        <ThemeToggle />
+
                         {/* Cart Button with Count Badge */}
                         <Link
                             href="/cart"
@@ -526,25 +530,31 @@ export default function Explore({
             <main className="mx-auto max-w-7xl px-4 py-5 sm:px-6 sm:py-8">
                 {/* 2A. COMPACT COMMERCE HERO BANNER */}
                 {!isFiltered && (
-                    <section className="relative mb-8 overflow-hidden rounded-2xl border border-[#262626] bg-[#141414] p-4.5 sm:p-8">
-                        <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/85 to-transparent" />
+                    <section className="explore-hero-banner relative mb-8 overflow-hidden rounded-2xl border border-neutral-200 bg-[#0A0A0A] p-4.5 sm:p-8 dark:border-[#262626] dark:bg-[#141414]">
+                        <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-black/95 via-black/85 to-black/35" />
                         <img
                             src="/images/campaign/hero-editorial.jpg"
                             alt="Suasana Koperasi Digital KOPDIG"
-                            className="absolute inset-0 h-full w-full object-cover opacity-35 contrast-125"
+                            className="absolute inset-0 h-full w-full object-cover opacity-45 contrast-125"
                             loading="eager"
                         />
                         <div className="relative z-20 max-w-2xl space-y-3">
-                            <div className="inline-flex items-center gap-2 border border-[#262626] bg-[#0A0A0A]/80 px-2.5 py-1">
+                            <div className="explore-badge inline-flex items-center gap-2 border border-white/20 bg-black/70 px-2.5 py-1 backdrop-blur-xs">
                                 <span className="size-1.5 rounded-full bg-[#E34A27]" />
-                                <span className="font-mono text-[10px] tracking-widest text-[#A3A3A3] uppercase">
+                                <span className="font-mono text-[10px] tracking-widest text-[#E5E5E5] uppercase">
                                     [ KATALOG RESMI KOPERASI SEKOLAH 2026 ]
                                 </span>
                             </div>
-                            <h1 className="font-heading text-2xl font-black tracking-tight text-[#F5F2EB] uppercase sm:text-3xl lg:text-4xl">
+                            <h1
+                                className="hero-headline font-heading text-2xl font-black tracking-tight text-white uppercase sm:text-3xl lg:text-4xl"
+                                style={{ color: '#FFFFFF' }}
+                            >
                                 KARYA SISWA & KEBUTUHAN SEKOLAH HARIAN.
                             </h1>
-                            <p className="text-xs leading-relaxed text-[#A3A3A3] sm:text-sm">
+                            <p
+                                className="hero-description text-xs leading-relaxed text-[#D4D4D4] sm:text-sm"
+                                style={{ color: '#D4D4D4' }}
+                            >
                                 Platform transaksi resmi koperasi sekolah:
                                 belanja jajanan istirahat, perlengkapan ATK,
                                 hingga produk konsinyasi karya kreatif siswa
@@ -553,7 +563,7 @@ export default function Explore({
 
                             {/* Quick Search Tag Suggestions */}
                             <div className="flex flex-wrap items-center gap-1.5 pt-1 text-xs">
-                                <span className="font-mono text-[11px] text-[#737373]">
+                                <span className="font-mono text-[11px] text-[#A3A3A3]">
                                     Pencarian Populer:
                                 </span>
                                 {quickSearchSuggestions.map((term) => (
@@ -564,7 +574,8 @@ export default function Explore({
                                             setSearchInput(term);
                                             applyFilters({ search: term });
                                         }}
-                                        className="cursor-pointer rounded-full border border-[#262626] bg-[#0A0A0A]/90 px-2.5 py-1 font-mono text-[10px] text-[#D4D4D4] transition-colors hover:border-[#E34A27] hover:text-[#E34A27]"
+                                        className="suggestion-chip cursor-pointer rounded-full border border-white/20 bg-black/75 px-2.5 py-1 font-mono text-[10px] text-[#F5F5F5] transition-colors hover:border-[#E34A27] hover:bg-[#E34A27] hover:text-white"
+                                        style={{ color: '#F5F5F5' }}
                                     >
                                         #{term}
                                     </button>
@@ -579,7 +590,7 @@ export default function Explore({
                     <div className="flex items-center justify-between pb-3">
                         <div className="flex items-center gap-2">
                             <span className="size-1.5 rounded-full bg-[#E34A27]" />
-                            <h2 className="font-mono text-xs tracking-wider text-[#A3A3A3] uppercase">
+                            <h2 className="font-mono text-xs tracking-wider text-neutral-500 uppercase dark:text-[#A3A3A3]">
                                 Kategori Belanja
                             </h2>
                         </div>
@@ -604,7 +615,7 @@ export default function Explore({
                             className={`flex shrink-0 cursor-pointer items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold transition-all select-none ${
                                 !filters.category || filters.category === 'all'
                                     ? 'border-transparent bg-[#E34A27] text-white shadow-md shadow-[#E34A27]/25'
-                                    : 'border-[#262626] bg-[#141414] text-[#A3A3A3] hover:border-[#E34A27]/40 hover:text-[#F5F2EB]'
+                                    : 'border-neutral-200 bg-white text-neutral-700 hover:border-[#E34A27]/40 hover:text-neutral-900 dark:border-[#262626] dark:bg-[#141414] dark:text-[#A3A3A3] dark:hover:border-[#E34A27]/40 dark:hover:text-[#F5F2EB]'
                             }`}
                         >
                             <Package className="size-3.5" />
@@ -640,25 +651,25 @@ export default function Explore({
                 {/* 2C. STUDENT CREATOR SPOTLIGHT & BULLETIN CARD (Engaging Context) */}
                 {!isFiltered && (
                     <section className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                        <div className="relative overflow-hidden rounded-2xl border border-amber-500/20 bg-gradient-to-br from-[#1C140C] to-[#141414] p-4.5 sm:p-5">
+                        <div className="spotlight-card-amber relative overflow-hidden rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50/70 p-4.5 sm:p-5 dark:border-amber-500/20 dark:from-[#1C140C] dark:to-[#141414]">
                             <div className="flex items-start justify-between">
                                 <div className="space-y-1">
-                                    <div className="flex items-center gap-1.5 text-amber-400">
+                                    <div className="flex items-center gap-1.5 text-amber-700 dark:text-amber-400">
                                         <Sparkles className="size-3.5" />
                                         <span className="font-mono text-[10px] font-bold tracking-wider uppercase">
                                             KREATOR SISWA MINGGU INI
                                         </span>
                                     </div>
-                                    <h3 className="font-heading text-base font-bold text-[#F5F2EB]">
+                                    <h3 className="spotlight-title font-heading text-base font-bold text-neutral-900 dark:text-[#F5F2EB]">
                                         Risol Mayo Siti (Tata Boga)
                                     </h3>
-                                    <p className="max-w-md text-xs leading-relaxed text-[#A3A3A3]">
+                                    <p className="spotlight-desc max-w-md text-xs leading-relaxed text-neutral-700 dark:text-[#A3A3A3]">
                                         Dibuat segar setiap pagi dengan isian
                                         smoked beef & keju lumer. Terjual habis
                                         tiap jam istirahat pertama!
                                     </p>
                                 </div>
-                                <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-amber-500/20 text-amber-400">
+                                <span className="spotlight-icon-box flex size-9 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-400">
                                     <UtensilsCrossed className="size-4.5" />
                                 </span>
                             </div>
@@ -668,7 +679,7 @@ export default function Explore({
                                     onClick={() =>
                                         applyFilters({ source: 'student' })
                                     }
-                                    className="flex cursor-pointer items-center gap-1 font-mono text-xs font-semibold text-amber-400 hover:text-amber-300"
+                                    className="flex cursor-pointer items-center gap-1 font-mono text-xs font-semibold text-amber-700 hover:text-amber-800 dark:text-amber-400 dark:hover:text-amber-300"
                                 >
                                     <span>Eksplor Produk Titipan Siswa</span>
                                     <ChevronRight className="size-3.5" />
@@ -676,25 +687,25 @@ export default function Explore({
                             </div>
                         </div>
 
-                        <div className="relative overflow-hidden rounded-2xl border border-blue-500/20 bg-gradient-to-br from-[#0C141C] to-[#141414] p-4.5 sm:p-5">
+                        <div className="spotlight-card-blue relative overflow-hidden rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-sky-50/70 p-4.5 sm:p-5 dark:border-blue-500/20 dark:from-[#0C141C] dark:to-[#141414]">
                             <div className="flex items-start justify-between">
                                 <div className="space-y-1">
-                                    <div className="flex items-center gap-1.5 text-blue-400">
+                                    <div className="flex items-center gap-1.5 text-blue-700 dark:text-blue-400">
                                         <BookOpen className="size-3.5" />
                                         <span className="font-mono text-[10px] font-bold tracking-wider uppercase">
                                             PERSIAPAN KELAS & UJIAN
                                         </span>
                                     </div>
-                                    <h3 className="font-heading text-base font-bold text-[#F5F2EB]">
+                                    <h3 className="spotlight-title font-heading text-base font-bold text-neutral-900 dark:text-[#F5F2EB]">
                                         Paket ATK Resmi Sekolah
                                     </h3>
-                                    <p className="max-w-md text-xs leading-relaxed text-[#A3A3A3]">
+                                    <p className="spotlight-desc max-w-md text-xs leading-relaxed text-neutral-700 dark:text-[#A3A3A3]">
                                         Pulpen Standard Gel 0.5mm & Buku Tulis
                                         standar siap pakai langsung di etalase
                                         koperasi.
                                     </p>
                                 </div>
-                                <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-blue-500/20 text-blue-400">
+                                <span className="spotlight-icon-box flex size-9 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-400">
                                     <BookOpen className="size-4.5" />
                                 </span>
                             </div>
@@ -704,7 +715,7 @@ export default function Explore({
                                     onClick={() =>
                                         applyFilters({ category: 'atk-buku' })
                                     }
-                                    className="flex cursor-pointer items-center gap-1 font-mono text-xs font-semibold text-blue-400 hover:text-blue-300"
+                                    className="flex cursor-pointer items-center gap-1 font-mono text-xs font-semibold text-blue-700 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
                                 >
                                     <span>Lihat Semua ATK & Buku</span>
                                     <ChevronRight className="size-3.5" />
@@ -716,21 +727,21 @@ export default function Explore({
 
                 {/* 2D. FEATURED PRODUCTS HORIZONTAL RAIL (When not searching) */}
                 {!isFiltered && featuredProducts.length > 0 && (
-                    <section className="mb-10 rounded-2xl border border-[#262626] bg-[#141414]/60 p-4 sm:p-6">
+                    <section className="mb-10 rounded-2xl border border-neutral-200 bg-white p-4 sm:p-6 dark:border-[#262626] dark:bg-[#141414]/60">
                         <div className="mb-4 flex items-center justify-between">
                             <div className="space-y-0.5">
                                 <div className="flex items-center gap-2">
                                     <span className="size-2 rounded-full bg-[#D5A84C]" />
-                                    <h2 className="font-heading text-base font-bold tracking-tight text-[#F5F2EB] uppercase sm:text-lg">
+                                    <h2 className="font-heading text-base font-bold tracking-tight text-neutral-900 uppercase sm:text-lg dark:text-[#F5F2EB]">
                                         Pilihan Unggulan Koperasi & Siswa
                                     </h2>
                                 </div>
-                                <p className="text-xs text-[#737373]">
+                                <p className="text-xs text-neutral-500 dark:text-[#737373]">
                                     Produk kurasi terbaik dengan permintaan
                                     tinggi minggu ini.
                                 </p>
                             </div>
-                            <span className="hidden font-mono text-[10px] tracking-wider text-[#A3A3A3] uppercase sm:inline">
+                            <span className="hidden font-mono text-[10px] tracking-wider text-neutral-500 uppercase sm:inline dark:text-[#A3A3A3]">
                                 [ KURASI MINGGU INI ]
                             </span>
                         </div>
@@ -1262,14 +1273,14 @@ function ProductCardItem({
     );
 
     return (
-        <article className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[#262626] bg-[#141414] transition-all duration-300 hover:border-[#E34A27]/40 hover:shadow-xl hover:shadow-black/60">
+        <article className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-neutral-200 bg-white transition-all duration-300 hover:border-[#E34A27]/40 hover:shadow-xl hover:shadow-black/5 dark:border-[#262626] dark:bg-[#141414] dark:hover:shadow-black/60">
             {/* Clickable Card Body */}
             <Link
                 href={productDetailHref}
                 className="flex flex-1 flex-col select-none"
             >
                 {/* 1. Square Image Container */}
-                <div className="relative aspect-square w-full overflow-hidden bg-[#1A1A1A]">
+                <div className="relative aspect-square w-full overflow-hidden bg-neutral-100 dark:bg-[#1A1A1A]">
                     {imageSrc && !imageFailed ? (
                         <img
                             src={imageSrc}
@@ -1319,7 +1330,7 @@ function ProductCardItem({
                                 e.stopPropagation();
                                 onQuickView();
                             }}
-                            className="flex size-7.5 cursor-pointer items-center justify-center rounded-full border border-[#333] bg-[#0A0A0A]/80 text-[#D4D4D4] backdrop-blur-md transition-all hover:border-[#E34A27] hover:bg-[#E34A27] hover:text-white active:scale-90"
+                            className="flex size-7.5 cursor-pointer items-center justify-center rounded-full border border-neutral-200 bg-white/90 text-neutral-700 backdrop-blur-md transition-all hover:border-[#E34A27] hover:bg-[#E34A27] hover:text-white active:scale-90 dark:border-[#333] dark:bg-[#0A0A0A]/80 dark:text-[#D4D4D4]"
                             title="Pratinjau Cepat"
                             aria-label="Pratinjau Cepat"
                         >
@@ -1357,14 +1368,14 @@ function ProductCardItem({
                         </div>
 
                         {/* Product Title */}
-                        <h3 className="line-clamp-2 font-heading text-xs leading-snug font-bold tracking-tight text-[#F5F2EB] transition-colors group-hover:text-[#E34A27] sm:text-sm">
+                        <h3 className="line-clamp-2 font-heading text-xs leading-snug font-bold tracking-tight text-neutral-900 transition-colors group-hover:text-[#E34A27] sm:text-sm dark:text-[#F5F2EB]">
                             {product.name}
                         </h3>
                     </div>
 
                     {/* 3. Price Display */}
-                    <div className="mt-3 border-t border-[#1F1F1F] pt-2">
-                        <span className="font-heading text-sm font-extrabold tracking-tight text-[#F5F2EB] sm:text-base">
+                    <div className="mt-3 border-t border-neutral-100 pt-2 dark:border-[#1F1F1F]">
+                        <span className="font-heading text-sm font-extrabold tracking-tight text-neutral-900 sm:text-base dark:text-[#F5F2EB]">
                             {formatRupiah(product.selling_price)}
                         </span>
                     </div>
