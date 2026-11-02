@@ -135,12 +135,12 @@ export default function Login({ status, canResetPassword }: Props) {
                             </Button>
                         </div>
 
-                        {/* Mobile Switcher Action */}
-                        <div className="mt-3 text-center text-xs text-[#737373] sm:hidden">
-                            Belum punya akun?{' '}
+                        {/* Switcher Action below Submit Button */}
+                        <div className="mt-4 text-center text-xs text-neutral-500 dark:text-[#A3A3A3]">
+                            <span>Belum punya akun?</span>{' '}
                             <Link
                                 href={register()}
-                                className="font-medium text-[#F5F2EB] underline-offset-4 transition-colors hover:text-[#E34A27] hover:underline"
+                                className="font-semibold text-neutral-900 underline-offset-4 transition-colors hover:text-[#E34A27] hover:underline dark:text-[#F5F2EB] dark:hover:text-[#E34A27]"
                                 tabIndex={6}
                             >
                                 Daftar sebagai Siswa

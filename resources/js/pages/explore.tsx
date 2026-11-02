@@ -541,7 +541,10 @@ export default function Explore({
                         <div className="relative z-20 max-w-2xl space-y-3">
                             <div className="explore-badge inline-flex items-center gap-2 border border-white/20 bg-black/70 px-2.5 py-1 backdrop-blur-xs">
                                 <span className="size-1.5 rounded-full bg-[#E34A27]" />
-                                <span className="font-mono text-[10px] tracking-widest text-[#E5E5E5] uppercase">
+                                <span
+                                    className="explore-badge-text font-mono text-[10px] tracking-widest text-[#E5E5E5] uppercase"
+                                    style={{ color: '#E5E5E5' }}
+                                >
                                     [ KATALOG RESMI KOPERASI SEKOLAH 2026 ]
                                 </span>
                             </div>
@@ -563,7 +566,10 @@ export default function Explore({
 
                             {/* Quick Search Tag Suggestions */}
                             <div className="flex flex-wrap items-center gap-1.5 pt-1 text-xs">
-                                <span className="font-mono text-[11px] text-[#A3A3A3]">
+                                <span
+                                    className="explore-popular-label font-mono text-[11px] text-[#D4D4D4]"
+                                    style={{ color: '#D4D4D4' }}
+                                >
                                     Pencarian Populer:
                                 </span>
                                 {quickSearchSuggestions.map((term) => (
@@ -574,8 +580,8 @@ export default function Explore({
                                             setSearchInput(term);
                                             applyFilters({ search: term });
                                         }}
-                                        className="suggestion-chip cursor-pointer rounded-full border border-white/20 bg-black/75 px-2.5 py-1 font-mono text-[10px] text-[#F5F5F5] transition-colors hover:border-[#E34A27] hover:bg-[#E34A27] hover:text-white"
-                                        style={{ color: '#F5F5F5' }}
+                                        className="suggestion-chip cursor-pointer rounded-full border border-white/20 bg-black/75 px-2.5 py-1 font-mono text-[10px] text-white transition-colors hover:border-[#E34A27] hover:bg-[#E34A27] hover:text-white"
+                                        style={{ color: '#FFFFFF' }}
                                     >
                                         #{term}
                                     </button>
@@ -766,21 +772,21 @@ export default function Explore({
                 )}
 
                 {/* 2E. MULTI-FACET FILTER & SORT CONTROLS */}
-                <section className="mb-6 flex flex-col gap-3 border-b border-[#1C1C1C] pb-4 sm:flex-row sm:items-center sm:justify-between">
+                <section className="mb-6 flex flex-col gap-3 border-b border-neutral-200 pb-4 sm:flex-row sm:items-center sm:justify-between dark:border-[#1C1C1C]">
                     {/* Left: Product Counts & Status */}
                     <div className="flex flex-wrap items-center gap-2">
                         <SlidersHorizontal className="size-4 text-[#E34A27]" />
-                        <span className="font-heading text-sm font-bold tracking-tight text-[#F5F2EB]">
+                        <span className="font-heading text-sm font-bold tracking-tight text-neutral-900 dark:text-[#F5F2EB]">
                             Katalog Produk
                         </span>
-                        <span className="rounded-md border border-[#262626] bg-[#141414] px-2 py-0.5 font-mono text-xs text-[#A3A3A3]">
+                        <span className="rounded-md border border-neutral-200 bg-neutral-100 px-2 py-0.5 font-mono text-xs text-neutral-600 dark:border-[#262626] dark:bg-[#141414] dark:text-[#A3A3A3]">
                             {displayedProducts.length} item
                         </span>
                         {isFiltered && (
                             <button
                                 type="button"
                                 onClick={handleResetAllFilters}
-                                className="flex cursor-pointer items-center gap-1 rounded-full border border-[#262626] bg-[#141414] px-2.5 py-0.5 font-mono text-[10px] text-[#E34A27] transition-colors hover:bg-[#E34A27] hover:text-white"
+                                className="flex cursor-pointer items-center gap-1 rounded-full border border-neutral-200 bg-white px-2.5 py-0.5 font-mono text-[10px] text-[#E34A27] transition-colors hover:bg-[#E34A27] hover:text-white dark:border-[#262626] dark:bg-[#141414]"
                             >
                                 <RefreshCw className="size-2.5" />
                                 <span>Reset Filter</span>
@@ -791,37 +797,37 @@ export default function Explore({
                     {/* Right: Facet Filters & Client Sorting */}
                     <div className="flex flex-wrap items-center gap-2">
                         {/* Instant Sort Menu */}
-                        <div className="flex items-center gap-1 rounded-full border border-[#262626] bg-[#141414] px-2.5 py-1 text-xs">
-                            <ArrowUpDown className="size-3 text-[#737373]" />
+                        <div className="flex items-center gap-1 rounded-full border border-neutral-200 bg-white px-2.5 py-1 text-xs dark:border-[#262626] dark:bg-[#141414]">
+                            <ArrowUpDown className="size-3 text-neutral-500 dark:text-[#737373]" />
                             <select
                                 value={sortBy}
                                 onChange={(e) =>
                                     setSortBy(e.target.value as any)
                                 }
-                                className="cursor-pointer bg-transparent text-[11px] font-medium text-[#F5F2EB] focus:outline-hidden"
+                                className="cursor-pointer bg-transparent text-[11px] font-medium text-neutral-800 focus:outline-hidden dark:text-[#F5F2EB]"
                                 aria-label="Urutkan Katalog"
                             >
                                 <option
                                     value="relevance"
-                                    className="bg-[#141414] text-[#F5F2EB]"
+                                    className="bg-white text-neutral-800 dark:bg-[#141414] dark:text-[#F5F2EB]"
                                 >
                                     Urutan: Rekomendasi
                                 </option>
                                 <option
                                     value="price_low"
-                                    className="bg-[#141414] text-[#F5F2EB]"
+                                    className="bg-white text-neutral-800 dark:bg-[#141414] dark:text-[#F5F2EB]"
                                 >
                                     Harga: Termurah
                                 </option>
                                 <option
                                     value="price_high"
-                                    className="bg-[#141414] text-[#F5F2EB]"
+                                    className="bg-white text-neutral-800 dark:bg-[#141414] dark:text-[#F5F2EB]"
                                 >
                                     Harga: Tertinggi
                                 </option>
                                 <option
                                     value="stock_high"
-                                    className="bg-[#141414] text-[#F5F2EB]"
+                                    className="bg-white text-neutral-800 dark:bg-[#141414] dark:text-[#F5F2EB]"
                                 >
                                     Stok: Terbanyak
                                 </option>
@@ -829,14 +835,14 @@ export default function Explore({
                         </div>
 
                         {/* Source Filter: Semua, Koperasi, Titipan Siswa */}
-                        <div className="flex rounded-full border border-[#262626] bg-[#141414] p-0.5 text-xs">
+                        <div className="flex rounded-full border border-neutral-200 bg-white p-0.5 text-xs dark:border-[#262626] dark:bg-[#141414]">
                             <button
                                 type="button"
                                 onClick={() => applyFilters({ source: 'all' })}
                                 className={`cursor-pointer rounded-full px-2.5 py-1 text-[11px] font-medium transition-colors ${
                                     !filters.source || filters.source === 'all'
-                                        ? 'bg-[#262626] font-semibold text-[#F5F2EB]'
-                                        : 'text-[#737373] hover:text-[#F5F2EB]'
+                                        ? 'bg-neutral-900 font-semibold text-white dark:bg-white dark:text-neutral-900'
+                                        : 'text-neutral-600 hover:text-neutral-900 dark:text-[#A3A3A3] dark:hover:text-[#F5F2EB]'
                                 }`}
                             >
                                 Semua
@@ -848,8 +854,8 @@ export default function Explore({
                                 }
                                 className={`flex cursor-pointer items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-medium transition-colors ${
                                     filters.source === 'cooperative'
-                                        ? 'bg-[#2E795A]/30 font-semibold text-emerald-400'
-                                        : 'text-[#737373] hover:text-emerald-400'
+                                        ? 'bg-[#2E795A] font-semibold text-white dark:bg-[#2E795A]/30 dark:text-emerald-400'
+                                        : 'text-neutral-600 hover:text-[#2E795A] dark:text-[#A3A3A3] dark:hover:text-emerald-400'
                                 }`}
                             >
                                 <Store className="size-3" />
@@ -862,8 +868,8 @@ export default function Explore({
                                 }
                                 className={`flex cursor-pointer items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-medium transition-colors ${
                                     filters.source === 'student'
-                                        ? 'bg-[#D5A84C]/30 font-semibold text-amber-400'
-                                        : 'text-[#737373] hover:text-amber-400'
+                                        ? 'bg-[#a97122] font-semibold text-white dark:bg-[#D5A84C]/30 dark:text-amber-400'
+                                        : 'text-neutral-600 hover:text-[#a97122] dark:text-[#A3A3A3] dark:hover:text-amber-400'
                                 }`}
                             >
                                 <UserCheck className="size-3" />
@@ -884,15 +890,15 @@ export default function Explore({
                             }
                             className={`flex cursor-pointer items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
                                 filters.availability === 'in_stock'
-                                    ? 'border-[#2E795A] bg-[#2E795A]/20 text-emerald-400'
-                                    : 'border-[#262626] bg-[#141414] text-[#737373] hover:text-[#F5F2EB]'
+                                    ? 'border-[#2E795A] bg-[#2E795A]/20 text-emerald-600 dark:text-emerald-400'
+                                    : 'border-neutral-200 bg-white text-neutral-600 hover:text-neutral-900 dark:border-[#262626] dark:bg-[#141414] dark:text-[#A3A3A3] dark:hover:text-[#F5F2EB]'
                             }`}
                         >
                             <span
                                 className={`size-1.5 rounded-full ${
                                     filters.availability === 'in_stock'
-                                        ? 'bg-emerald-400'
-                                        : 'bg-[#525252]'
+                                        ? 'bg-emerald-500'
+                                        : 'bg-neutral-400 dark:bg-[#525252]'
                                 }`}
                             />
                             <span>Hanya Stok Tersedia</span>

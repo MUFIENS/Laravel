@@ -73,24 +73,15 @@ export default function AuthSplitLayout({
                             <span className="font-heading text-sm leading-none font-bold tracking-tight text-[#F5F2EB]">
                                 KOPDIG
                             </span>
-                            <span className="mt-0.5 font-mono text-[9px] tracking-wider text-[#737373] uppercase">
+                            <span className="mt-0.5 font-mono text-[9px] tracking-wider text-neutral-400 uppercase dark:text-[#A3A3A3]">
                                 SMKN 1 Ciomas
                             </span>
                         </div>
                     </Link>
 
-                    {/* Desktop Switcher Action & Theme Toggle */}
-                    <div className="flex items-center gap-3">
-                        <ThemeToggle size="sm" />
-                        <div className="hidden items-center gap-1.5 text-xs text-[#737373] sm:flex">
-                            <span>{switchText}</span>
-                            <Link
-                                href={switchLinkHref}
-                                className="font-medium text-[#F5F2EB] underline-offset-4 transition-colors hover:text-[#E34A27] hover:underline"
-                            >
-                                {switchLinkText}
-                            </Link>
-                        </div>
+                    {/* Top Right Theme Toggle (Ghost/Icon only, no white box) */}
+                    <div className="flex items-center">
+                        <ThemeToggle size="sm" variant="ghost" className="auth-theme-toggle" />
                     </div>
                 </header>
 
@@ -125,12 +116,12 @@ export default function AuthSplitLayout({
                 </main>
 
                 {/* Bottom Footer Bar */}
-                <footer className="auth-reveal flex items-center justify-between border-t border-[#1C1C1C] pt-6 font-mono text-[11px] text-[#525252]">
+                <footer className="auth-reveal flex items-center justify-between border-t border-[#1C1C1C] pt-6 font-mono text-[11px] text-neutral-400 dark:text-[#A3A3A3]">
                     <span>© 2026 KOPDIG</span>
                     <button
                         type="button"
                         onClick={() => safeNavigateBack('/explore')}
-                        className="group flex cursor-pointer items-center gap-1 text-[#737373] transition-colors hover:text-[#F5F2EB]"
+                        className="group flex cursor-pointer items-center gap-1 text-neutral-400 transition-colors hover:text-neutral-900 dark:text-[#A3A3A3] dark:hover:text-[#F5F2EB]"
                         aria-label="Kembali ke halaman sebelumnya"
                     >
                         <ArrowLeft className="size-3 transition-transform duration-300 group-hover:-translate-x-1" />
@@ -161,11 +152,17 @@ export default function AuthSplitLayout({
                 <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-4 backdrop-blur-xs">
                     <div className="flex items-center gap-2">
                         <span className="size-2 rounded-full bg-[#E34A27]" />
-                        <span className="font-mono text-[10px] tracking-widest text-[#F5F2EB] uppercase">
+                        <span
+                            className="font-mono text-[10px] tracking-widest text-[#F5F2EB] uppercase"
+                            style={{ color: '#F5F2EB' }}
+                        >
                             {visualTag}
                         </span>
                     </div>
-                    <span className="font-mono text-[10px] tracking-wider text-[#A3A3A3] uppercase">
+                    <span
+                        className="font-mono text-[10px] tracking-wider text-[#A3A3A3] uppercase"
+                        style={{ color: '#A3A3A3' }}
+                    >
                         EDISI PLATFORM 2026.1
                     </span>
                 </div>
@@ -174,20 +171,37 @@ export default function AuthSplitLayout({
                 <div className="relative z-10 mt-auto max-w-lg border border-[#262626]/90 bg-[#0A0A0A]/85 p-7 backdrop-blur-md xl:p-8">
                     <div className="mb-4 flex items-center gap-2">
                         <span className="h-0.5 w-6 bg-[#E34A27]" />
-                        <span className="font-mono text-[10px] tracking-widest text-[#E34A27] uppercase">
+                        <span
+                            className="manifesto-tag font-mono text-[10px] font-bold tracking-widest text-[#E34A27] uppercase"
+                            style={{ color: '#E34A27' }}
+                        >
                             Manifesto Niaga Sekolah
                         </span>
                     </div>
-                    <h2 className="font-heading text-xl leading-tight font-black tracking-tight text-[#F5F2EB] uppercase xl:text-2xl">
+                    <h2
+                        className="font-heading text-xl leading-tight font-black tracking-tight text-[#F5F2EB] uppercase xl:text-2xl"
+                        style={{ color: '#F5F2EB' }}
+                    >
                         {visualHeadline}
                     </h2>
-                    <p className="mt-3 text-xs leading-relaxed text-[#A3A3A3] xl:text-sm">
+                    <p
+                        className="mt-3 text-xs leading-relaxed text-[#A3A3A3] xl:text-sm"
+                        style={{ color: '#A3A3A3' }}
+                    >
                         {visualSubtext}
                     </p>
-                    <div className="mt-5 flex items-center justify-between border-t border-[#262626] pt-4 font-mono text-[10px] text-[#737373]">
-                        <span>{visualAnnotation}</span>
-                        <span className="flex items-center gap-1.5 text-[#E34A27]">
-                            <ShieldCheck className="size-3.5" /> Terverifikasi
+                    <div className="mt-5 flex items-center justify-between border-t border-[#262626] pt-4 font-mono text-[10px]">
+                        <span
+                            className="annotation-text text-[#A3A3A3]"
+                            style={{ color: '#A3A3A3' }}
+                        >
+                            {visualAnnotation}
+                        </span>
+                        <span
+                            className="flex items-center gap-1.5 font-bold text-[#E34A27]"
+                            style={{ color: '#E34A27' }}
+                        >
+                            <ShieldCheck className="size-3.5 text-[#E34A27]" /> Terverifikasi
                         </span>
                     </div>
                 </div>

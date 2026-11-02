@@ -359,7 +359,10 @@ export default function Profile({
                             {/* Name, Email, Identifier */}
                             <div className="min-w-0 flex-1">
                                 <div className="flex flex-wrap items-center gap-2">
-                                    <span className="rounded-md border border-[#262626] bg-[#0A0A0A] px-2 py-0.5 font-mono text-[10px] font-semibold tracking-wider text-[#A3A3A3] uppercase">
+                                    <span
+                                        className="profile-role-badge rounded-md border border-[#262626] bg-[#0A0A0A] px-2 py-0.5 font-mono text-[10px] font-semibold tracking-wider text-white uppercase"
+                                        style={{ color: '#FFFFFF' }}
+                                    >
                                         {roleLabel}
                                     </span>
                                     {displayIdentifier && (
@@ -369,21 +372,21 @@ export default function Profile({
                                     )}
                                 </div>
 
-                                <h1 className="mt-1.5 truncate font-heading text-xl font-bold tracking-tight text-[#F5F2EB] sm:text-2xl">
+                                <h1 className="mt-1.5 truncate font-heading text-xl font-bold tracking-tight text-neutral-900 sm:text-2xl dark:text-[#F5F2EB]">
                                     {displayName}
                                 </h1>
 
-                                <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[#A3A3A3]">
+                                <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-600 dark:text-[#A3A3A3]">
                                     <span className="truncate">
                                         {displayEmail}
                                     </span>
                                     <span
                                         aria-hidden="true"
-                                        className="text-[#383838]"
+                                        className="text-neutral-400 dark:text-[#383838]"
                                     >
                                         &bull;
                                     </span>
-                                    <span className="font-mono text-[11px] text-[#737373]">
+                                    <span className="font-mono text-[11px] text-neutral-500 dark:text-[#737373]">
                                         Bergabung {joinedAt}
                                     </span>
                                 </div>
@@ -394,67 +397,89 @@ export default function Profile({
                         <div className="flex flex-wrap items-center gap-2 border-t border-[#262626] pt-4 sm:border-t-0 sm:pt-0">
                             <a
                                 href="#pesanan"
-                                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-3 py-2 text-xs font-medium text-[#A3A3A3] transition-colors hover:border-[#383838] hover:text-[#F5F2EB]"
+                                className="profile-quick-link inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-3 py-2 text-xs font-semibold text-white transition-colors hover:border-[#383838] hover:text-white"
+                                style={{ color: '#FFFFFF' }}
                             >
                                 <ShoppingBag className="size-3.5 text-[#E34A27]" />
-                                <span>Pesanan</span>
-                                <span className="py-0.2 ml-1 rounded-full bg-[#1c1c1c] px-1.5 font-mono text-[10px] text-[#737373]">
+                                <span className="text-white" style={{ color: '#FFFFFF' }}>Pesanan</span>
+                                <span
+                                    className="py-0.2 ml-1 rounded-full bg-[#262626] px-1.5 font-mono text-[10px] text-white"
+                                    style={{ color: '#FFFFFF' }}
+                                >
                                     {totalOrdersCount}
                                 </span>
                             </a>
                             <a
                                 href="#titipan"
-                                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-3 py-2 text-xs font-medium text-[#A3A3A3] transition-colors hover:border-[#383838] hover:text-[#F5F2EB]"
+                                className="profile-quick-link inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-3 py-2 text-xs font-semibold text-white transition-colors hover:border-[#383838] hover:text-white"
+                                style={{ color: '#FFFFFF' }}
                             >
                                 <Store className="size-3.5 text-[#E34A27]" />
-                                <span>Titipan</span>
-                                <span className="py-0.2 ml-1 rounded-full bg-[#1c1c1c] px-1.5 font-mono text-[10px] text-[#737373]">
+                                <span className="text-white" style={{ color: '#FFFFFF' }}>Titipan</span>
+                                <span
+                                    className="py-0.2 ml-1 rounded-full bg-[#262626] px-1.5 font-mono text-[10px] text-white"
+                                    style={{ color: '#FFFFFF' }}
+                                >
                                     {totalSubmissionsCount}
                                 </span>
                             </a>
                             <a
                                 href="#pengaturan"
-                                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-3 py-2 text-xs font-medium text-[#A3A3A3] transition-colors hover:border-[#383838] hover:text-[#F5F2EB]"
+                                className="profile-quick-link inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-3 py-2 text-xs font-semibold text-white transition-colors hover:border-[#383838] hover:text-white"
+                                style={{ color: '#FFFFFF' }}
                             >
-                                <UserIcon className="size-3.5" />
-                                <span>Pengaturan</span>
+                                <UserIcon className="size-3.5 text-[#E34A27]" />
+                                <span className="text-white" style={{ color: '#FFFFFF' }}>Pengaturan</span>
                             </a>
                             <a
                                 href="#keamanan"
-                                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-3 py-2 text-xs font-medium text-[#A3A3A3] transition-colors hover:border-[#383838] hover:text-[#F5F2EB]"
+                                className="profile-quick-link inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-3 py-2 text-xs font-semibold text-white transition-colors hover:border-[#383838] hover:text-white"
+                                style={{ color: '#FFFFFF' }}
                             >
-                                <Lock className="size-3.5" />
-                                <span>Keamanan</span>
+                                <Lock className="size-3.5 text-[#E34A27]" />
+                                <span className="text-white" style={{ color: '#FFFFFF' }}>Keamanan</span>
                             </a>
                         </div>
                     </div>
 
                     {/* Dual Identity Statement Banner */}
                     <div className="mt-6 grid grid-cols-1 gap-3 border-t border-[#262626] pt-5 sm:grid-cols-2">
-                        <div className="flex items-start gap-3 rounded-xl border border-[#262626]/70 bg-[#0E0E0E] p-3.5">
+                        <div className="profile-identity-card flex items-start gap-3 rounded-xl border border-[#262626]/70 bg-[#0E0E0E] p-3.5">
                             <div className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-[#E34A27]/10 text-[#E34A27]">
                                 <ShoppingBag className="size-3.5" />
                             </div>
                             <div>
-                                <p className="font-heading text-xs font-bold text-[#F5F2EB]">
+                                <p
+                                    className="font-heading text-xs font-bold text-white"
+                                    style={{ color: '#FFFFFF' }}
+                                >
                                     Ini Akun Belanjaku
                                 </p>
-                                <p className="mt-0.5 text-[11px] leading-relaxed text-[#737373]">
+                                <p
+                                    className="mt-0.5 text-[11px] leading-relaxed text-[#D4D4D4]"
+                                    style={{ color: '#D4D4D4' }}
+                                >
                                     Pantau transaksi barang, jadwal antrean
                                     loket koperasi, dan tanda bukti pembelian.
                                 </p>
                             </div>
                         </div>
 
-                        <div className="flex items-start gap-3 rounded-xl border border-[#262626]/70 bg-[#0E0E0E] p-3.5">
+                        <div className="profile-identity-card flex items-start gap-3 rounded-xl border border-[#262626]/70 bg-[#0E0E0E] p-3.5">
                             <div className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-[#E34A27]/10 text-[#E34A27]">
                                 <Store className="size-3.5" />
                             </div>
                             <div>
-                                <p className="font-heading text-xs font-bold text-[#F5F2EB]">
+                                <p
+                                    className="font-heading text-xs font-bold text-white"
+                                    style={{ color: '#FFFFFF' }}
+                                >
                                     Ini Ruang untuk Karyaku
                                 </p>
-                                <p className="mt-0.5 text-[11px] leading-relaxed text-[#737373]">
+                                <p
+                                    className="mt-0.5 text-[11px] leading-relaxed text-[#D4D4D4]"
+                                    style={{ color: '#D4D4D4' }}
+                                >
                                     Titipkan produk kriya atau kulinermu untuk
                                     dijual bersama Koperasi Sekolah.
                                 </p>
@@ -466,17 +491,26 @@ export default function Profile({
                 {/* ======================================================== */}
                 {/* 02. PRIMARY SIGNATURE ACTION: TITIPKAN BARANG KE KOPERASI */}
                 {/* ======================================================== */}
-                <section className="mb-10 overflow-hidden rounded-2xl border border-[#262626] bg-gradient-to-br from-[#181818] via-[#141414] to-[#101010] p-6 shadow-2xl transition-all duration-300 hover:border-[#E34A27]/50 sm:p-8">
+                <section className="profile-consignment-banner mb-10 overflow-hidden rounded-2xl border border-[#262626] bg-gradient-to-br from-[#181818] via-[#141414] to-[#101010] p-6 shadow-2xl transition-all duration-300 hover:border-[#E34A27]/50 sm:p-8">
                     <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                         <div className="max-w-2xl">
-                            <div className="flex items-center gap-2 font-mono text-[10px] tracking-wider text-[#E34A27] uppercase">
+                            <div
+                                className="flex items-center gap-2 font-mono text-[10px] tracking-wider text-[#E34A27] uppercase"
+                                style={{ color: '#E34A27' }}
+                            >
                                 <Sparkles className="size-3" />
                                 <span>Program Konsinyasi Kreatif Siswa</span>
                             </div>
-                            <h2 className="mt-2 font-heading text-xl font-bold tracking-tight text-[#F5F2EB] sm:text-2xl">
+                            <h2
+                                className="mt-2 font-heading text-xl font-bold tracking-tight text-white sm:text-2xl"
+                                style={{ color: '#FFFFFF' }}
+                            >
                                 Titipkan Karyamu ke Koperasi
                             </h2>
-                            <p className="mt-2 text-xs leading-relaxed text-[#A3A3A3] sm:text-sm">
+                            <p
+                                className="mt-2 text-xs leading-relaxed text-[#D4D4D4] sm:text-sm"
+                                style={{ color: '#D4D4D4' }}
+                            >
                                 Ajukan produk buatanmu—kriya tangan, kuliner
                                 higienis, perlengkapan belajar, atau merchandise
                                 kreatif—untuk dikurasi dan dipasarkan resmi
@@ -484,16 +518,25 @@ export default function Profile({
                             </p>
 
                             {/* Value Pillars */}
-                            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-[#737373]">
-                                <span className="inline-flex items-center gap-1.5">
+                            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-white">
+                                <span
+                                    className="inline-flex items-center gap-1.5 text-white"
+                                    style={{ color: '#FFFFFF' }}
+                                >
                                     <CheckCircle2 className="size-3.5 text-emerald-400" />
                                     <span>Kurasi Resmi Sekolah</span>
                                 </span>
-                                <span className="inline-flex items-center gap-1.5">
+                                <span
+                                    className="inline-flex items-center gap-1.5 text-white"
+                                    style={{ color: '#FFFFFF' }}
+                                >
                                     <CheckCircle2 className="size-3.5 text-emerald-400" />
                                     <span>Transaksi Loket Terkelola</span>
                                 </span>
-                                <span className="inline-flex items-center gap-1.5">
+                                <span
+                                    className="inline-flex items-center gap-1.5 text-white"
+                                    style={{ color: '#FFFFFF' }}
+                                >
                                     <CheckCircle2 className="size-3.5 text-emerald-400" />
                                     <span>Hak Kepemilikan Tetap Milikmu</span>
                                 </span>
@@ -558,9 +601,10 @@ export default function Profile({
                                 </p>
                                 <Link
                                     href="/explore"
-                                    className="mt-4 inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-4 py-2 text-xs font-semibold text-[#F5F2EB] transition-colors hover:border-[#383838]"
+                                    className="profile-dark-btn mt-4 inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-4 py-2 text-xs font-semibold text-white transition-colors hover:border-[#383838] hover:text-white"
+                                    style={{ color: '#FFFFFF' }}
                                 >
-                                    Jelajahi Katalog
+                                    <span className="text-white" style={{ color: '#FFFFFF' }}>Jelajahi Katalog</span>
                                 </Link>
                             </div>
                         ) : (
@@ -867,14 +911,23 @@ export default function Profile({
                                 )}
 
                             {/* Read-only NISN info box */}
-                            <div className="rounded-xl border border-[#262626] bg-[#0A0A0A] p-3 text-xs">
-                                <span className="block font-mono text-[10px] tracking-wider text-[#737373] uppercase">
+                            <div className="profile-identity-card rounded-xl border border-[#262626] bg-[#0A0A0A] p-3 text-xs">
+                                <span
+                                    className="block font-mono text-[10px] tracking-wider text-neutral-400 uppercase"
+                                    style={{ color: '#A3A3A3' }}
+                                >
                                     Identitas Pelajar (NISN)
                                 </span>
-                                <span className="mt-0.5 block font-mono font-semibold text-[#F5F2EB]">
+                                <span
+                                    className="mt-0.5 block font-mono font-semibold text-white"
+                                    style={{ color: '#FFFFFF' }}
+                                >
                                     {displayIdentifier || 'Tidak terdaftar'}
                                 </span>
-                                <p className="mt-1 text-[10px] text-[#737373]">
+                                <p
+                                    className="mt-1 text-[10px] text-neutral-400"
+                                    style={{ color: '#A3A3A3' }}
+                                >
                                     NISN terhubung dengan basis data sekolah.
                                     Hubungi operator koperasi sekolah jika
                                     terdapat kekeliruan data.
@@ -1014,10 +1067,11 @@ export default function Profile({
                             <button
                                 type="submit"
                                 disabled={passwordForm.processing}
-                                className="inline-flex min-h-[44px] cursor-pointer items-center justify-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-4 py-2 font-heading text-xs font-bold text-[#F5F2EB] transition-all hover:border-[#383838] hover:bg-[#1a1a1a] disabled:opacity-50"
+                                className="profile-dark-btn inline-flex min-h-[44px] cursor-pointer items-center justify-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-4 py-2 font-heading text-xs font-bold text-white transition-all hover:border-[#383838] hover:bg-[#1a1a1a] hover:text-white disabled:opacity-50"
+                                style={{ color: '#FFFFFF' }}
                             >
                                 <Key className="size-3.5 text-[#E34A27]" />
-                                <span>
+                                <span className="text-white" style={{ color: '#FFFFFF' }}>
                                     {passwordForm.processing
                                         ? 'Menyimpan...'
                                         : 'Perbarui Kata Sandi'}
