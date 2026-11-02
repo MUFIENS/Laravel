@@ -72,8 +72,7 @@ export const COOPERATIVE_NAV_ITEMS: CooperativeNavItem[] = [
         label: 'Laporan',
         href: '/cooperative/reports',
         icon: BarChart3,
-        status: 'upcoming',
-        badge: 'Segera',
+        status: 'active',
         description: 'Rekapitulasi penjualan & pembukuan koperasi',
     },
 ];

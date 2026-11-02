@@ -21,7 +21,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import type { Auth } from '@/types';
 import { useAppearance } from '@/hooks/use-appearance';
-import { ThemeToggle } from '@/components/ThemeToggle';
 import heroEditorialImg from '../../images/campaign/hero-editorial.jpg';
 import studentCraftImg from '../../images/campaign/student-craft.jpg';
 import curationStepImg from '../../images/campaign/curation-step.jpg';
@@ -449,9 +448,6 @@ export default function Welcome() {
                             </Link>
                         )}
 
-                        {/* Theme Toggle Button (Light Mode / Dark Mode) */}
-                        <ThemeToggle size="sm" />
-
                         <Link
                             href={marketplaceRoute}
                             className="group relative inline-flex items-center justify-center overflow-hidden bg-[#E34A27] px-4 py-2 text-xs font-bold tracking-wider text-white uppercase transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#E34A27]/25 active:translate-y-0 active:scale-[0.98] sm:px-5 sm:py-2.5"
@@ -539,14 +535,6 @@ export default function Welcome() {
                                     Masuk Akun
                                 </Link>
                             )}
-
-                            {/* Mobile Theme Toggle Button */}
-                            <div className="flex items-center justify-between border-t border-neutral-200 dark:border-[#262626] pt-4">
-                                <span className="text-[11px] font-semibold tracking-wider text-neutral-500 dark:text-[#737373] uppercase">
-                                    Pilih Tema
-                                </span>
-                                <ThemeToggle size="sm" />
-                            </div>
                         </nav>
                     </div>
                 )}

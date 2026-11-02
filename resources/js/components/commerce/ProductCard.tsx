@@ -175,7 +175,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                         }
                         className={`flex min-h-[40px] w-full items-center justify-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold transition-all duration-150 select-none ${
                             isOutOfStock
-                                ? 'cursor-not-allowed border border-border bg-[#F5F4EE] text-muted'
+                                ? 'btn-out-of-stock cursor-not-allowed border border-white bg-[#F8F9FA] text-[#111111] shadow-xs dark:border-border dark:bg-[#1A1A1A] dark:text-muted dark:shadow-none'
                                 : product.isInCart
                                   ? 'cursor-pointer border border-[#C5DCD0] bg-primary-soft text-primary active:scale-98'
                                   : 'cursor-pointer bg-primary text-white shadow-xs hover:bg-primary-hover active:scale-98'

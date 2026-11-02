@@ -213,7 +213,56 @@ html.light-mode .kopdig-landing .mobile-menu-drawer a {
     color: #374151 !important;
 }
 
-/* Theme Toggle Button Styling */
+/* Floating Action Button Theme Toggle Styling */
+.floating-theme-toggle {
+    position: fixed !important;
+    bottom: 1.5rem !important;
+    right: 1.5rem !important;
+    z-index: 50 !important;
+    border-radius: 9999px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+html:not(.dark) .floating-theme-toggle,
+html.light .floating-theme-toggle,
+html.light-mode .floating-theme-toggle {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E5E7EB !important;
+    color: #1F2937 !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08) !important;
+}
+
+html:not(.dark) .floating-theme-toggle:hover,
+html.light .floating-theme-toggle:hover,
+html.light-mode .floating-theme-toggle:hover {
+    transform: scale(1.05) !important;
+    border-color: #D1D5DB !important;
+    background-color: #F9FAFB !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.16), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+}
+
+html.dark .floating-theme-toggle {
+    background-color: #141414 !important;
+    border: 1px solid #333333 !important;
+    color: #FBBF24 !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.5) !important;
+}
+
+html.dark .floating-theme-toggle:hover {
+    transform: scale(1.05) !important;
+    border-color: #E34A27 !important;
+    background-color: #1A1A1A !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.7), 0 8px 10px -6px rgba(0, 0, 0, 0.6) !important;
+}
+
+.floating-theme-toggle:active {
+    transform: scale(0.95) !important;
+}
+
 .theme-toggle-btn {
     transition: all 0.25s ease;
 }
@@ -227,7 +276,7 @@ html.light-mode .theme-toggle-btn {
     box-shadow: none !important;
 }
 
-/* Remove white box around theme toggle on Auth / Login pages */
+/* Remove white box around theme toggle & header on Auth / Login pages */
 html:not(.dark) .auth-reveal .theme-toggle-btn,
 html.light .auth-reveal .theme-toggle-btn,
 html.light-mode .auth-reveal .theme-toggle-btn,
@@ -240,6 +289,25 @@ html.dark .auth-reveal .theme-toggle-btn,
     border-width: 0 !important;
     box-shadow: none !important;
     outline: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+html:not(.dark) .auth-header,
+html.light .auth-header,
+html.light-mode .auth-header,
+html.dark .auth-header,
+html:not(.dark) header.auth-reveal,
+html.light header.auth-reveal,
+html.light-mode header.auth-reveal,
+html.dark header.auth-reveal,
+.auth-header {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-color: transparent !important;
+    border-width: 0 !important;
+    box-shadow: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
 }
@@ -469,11 +537,11 @@ html.light-mode body {
 }
 
 /* 2. Main Page Background Overrides */
-html:not(.dark) [class*="bg-[#0A0A0A]"]:not(button):not(a):not(.auth-editorial-aside *):not(.explore-hero-banner *),
-html:not(.dark) [class*="bg-[#000000]"]:not(button):not(a):not(.auth-editorial-aside *):not(.explore-hero-banner *),
-html:not(.dark) [class*="bg-[#0D0D0D]"]:not(button):not(a):not(.auth-editorial-aside *):not(.explore-hero-banner *),
-html.light [class*="bg-[#0A0A0A]"]:not(button):not(a):not(.auth-editorial-aside *):not(.explore-hero-banner *),
-html.light-mode [class*="bg-[#0A0A0A]"]:not(button):not(a):not(.auth-editorial-aside *):not(.explore-hero-banner *) {
+html:not(.dark) [class*="bg-[#0A0A0A]"]:not(button):not(a):not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.profile-role-badge),
+html:not(.dark) [class*="bg-[#000000]"]:not(button):not(a):not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.profile-role-badge),
+html:not(.dark) [class*="bg-[#0D0D0D]"]:not(button):not(a):not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.profile-role-badge),
+html.light [class*="bg-[#0A0A0A]"]:not(button):not(a):not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.profile-role-badge),
+html.light-mode [class*="bg-[#0A0A0A]"]:not(button):not(a):not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.profile-role-badge) {
     background-color: #F8F9FA !important;
 }
 
@@ -495,26 +563,26 @@ html.light-mode [class*="bg-[#181818]"]:not(button):not(a):not(.auth-editorial-a
 }
 
 /* 4. Frosted Glass Sticky Headers & Bars */
-html:not(.dark) header,
-html:not(.dark) [class*="bg-[#0A0A0A]/"]:not(.auth-editorial-aside *):not(.explore-hero-banner *),
-html:not(.dark) [class*="bg-[#141414]/"]:not(.auth-editorial-aside *),
-html:not(.dark) [class*="bg-[#121212]/"]:not(.auth-editorial-aside *),
-html.light header,
-html.light-mode header {
+html:not(.dark) header:not(.auth-header):not(.auth-reveal),
+html:not(.dark) [class*="bg-[#0A0A0A]/"]:not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.auth-header):not(.auth-reveal),
+html:not(.dark) [class*="bg-[#141414]/"]:not(.auth-editorial-aside *):not(.auth-header):not(.auth-reveal),
+html:not(.dark) [class*="bg-[#121212]/"]:not(.auth-editorial-aside *):not(.auth-header):not(.auth-reveal),
+html.light header:not(.auth-header):not(.auth-reveal),
+html.light-mode header:not(.auth-header):not(.auth-reveal) {
     background-color: rgba(255, 255, 255, 0.94) !important;
     border-color: #E5E7EB !important;
 }
 
 /* 5. Universal Borders in Light Mode */
-html:not(.dark) [class*="border-[#262626]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.theme-toggle-btn),
-html:not(.dark) [class*="border-[#1F1F1F]"]:not(.auth-editorial-aside *):not(.theme-toggle-btn),
-html:not(.dark) [class*="border-[#1C1C1C]"]:not(.auth-editorial-aside *):not(.theme-toggle-btn),
-html:not(.dark) [class*="border-[#333]"]:not(.auth-editorial-aside *):not(.theme-toggle-btn),
-html:not(.dark) [class*="border-[#383838]"]:not(.auth-editorial-aside *):not(.theme-toggle-btn),
-html:not(.dark) [class*="border-[#181818]"]:not(.auth-editorial-aside *):not(.theme-toggle-btn),
-html:not(.dark) [class*="border-[#141414]"]:not(.auth-editorial-aside *):not(.theme-toggle-btn),
-html.light [class*="border-[#262626]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.theme-toggle-btn),
-html.light-mode [class*="border-[#262626]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.theme-toggle-btn) {
+html:not(.dark) [class*="border-[#262626]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.theme-toggle-btn):not(.profile-role-badge),
+html:not(.dark) [class*="border-[#1F1F1F]"]:not(.auth-editorial-aside *):not(.theme-toggle-btn):not(.profile-role-badge),
+html:not(.dark) [class*="border-[#1C1C1C]"]:not(.auth-editorial-aside *):not(.theme-toggle-btn):not(.profile-role-badge),
+html:not(.dark) [class*="border-[#333]"]:not(.auth-editorial-aside *):not(.theme-toggle-btn):not(.profile-role-badge),
+html:not(.dark) [class*="border-[#383838]"]:not(.auth-editorial-aside *):not(.theme-toggle-btn):not(.profile-role-badge),
+html:not(.dark) [class*="border-[#181818]"]:not(.auth-editorial-aside *):not(.theme-toggle-btn):not(.profile-role-badge),
+html:not(.dark) [class*="border-[#141414]"]:not(.auth-editorial-aside *):not(.theme-toggle-btn):not(.profile-role-badge),
+html.light [class*="border-[#262626]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.theme-toggle-btn):not(.profile-role-badge),
+html.light-mode [class*="border-[#262626]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.theme-toggle-btn):not(.profile-role-badge) {
     border-color: #E5E7EB !important;
 }
 
@@ -603,67 +671,58 @@ html.light-mode [class*="border-[#262626]"][class*="bg-[#141414]"]:not(.auth-edi
     color: #1F2937 !important;
 }
 
-html:not(.dark) [class*="border-[#262626]"][class*="bg-[#141414]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *) span:not(.auth-editorial-aside *):not(.explore-hero-banner *),
-html.light-mode [class*="border-[#262626]"][class*="bg-[#141414]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *) span:not(.auth-editorial-aside *):not(.explore-hero-banner *) {
+html:not(.dark) [class*="border-[#262626]"][class*="bg-[#141414]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *) span:not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.profile-quick-link *):not(.profile-quick-link):not(.profile-role-badge *):not(.profile-role-badge):not(.profile-dark-btn *):not(.profile-dark-btn),
+html.light-mode [class*="border-[#262626]"][class*="bg-[#141414]"]:not(.auth-editorial-aside *):not(.explore-hero-banner *) span:not(.auth-editorial-aside *):not(.explore-hero-banner *):not(.profile-quick-link *):not(.profile-quick-link):not(.profile-role-badge *):not(.profile-role-badge):not(.profile-dark-btn *):not(.profile-dark-btn) {
     color: #1F2937 !important;
 }
 
-/* Any dark pill/badge/button in light mode MUST keep white text */
-html:not(.dark) [class*="bg-[#0A0A0A]"]:is(a, button, [role="button"], .profile-quick-link, .profile-dark-btn),
-html.light [class*="bg-[#0A0A0A]"]:is(a, button, [role="button"], .profile-quick-link, .profile-dark-btn),
-html.light-mode [class*="bg-[#0A0A0A]"]:is(a, button, [role="button"], .profile-quick-link, .profile-dark-btn),
-html:not(.dark) [class*="bg-[#0E0E0E]"],
-html.light [class*="bg-[#0E0E0E]"],
-html.light-mode [class*="bg-[#0E0E0E]"],
-html:not(.dark) .profile-quick-link,
-html.light .profile-quick-link,
-html.light-mode .profile-quick-link,
-html:not(.dark) .profile-dark-btn,
-html.light .profile-dark-btn,
-html.light-mode .profile-dark-btn,
-html:not(.dark) [class*="bg-[#262626]"],
-html.light [class*="bg-[#262626]"],
-html.light-mode [class*="bg-[#262626]"],
-html:not(.dark) [class*="bg-neutral-900"],
-html.light [class*="bg-neutral-900"],
-html.light-mode [class*="bg-neutral-900"],
-html:not(.dark) [class*="bg-black"],
-html.light [class*="bg-black"],
-html.light-mode [class*="bg-black"] {
+/* Any dark pill/badge/button in light mode MUST keep white text (excluding profile page) */
+html:not(.dark) [class*="bg-[#0A0A0A]"]:is(a, button, [role="button"]):not(.profile-page-root *),
+html.light [class*="bg-[#0A0A0A]"]:is(a, button, [role="button"]):not(.profile-page-root *),
+html.light-mode [class*="bg-[#0A0A0A]"]:is(a, button, [role="button"]):not(.profile-page-root *),
+html:not(.dark) [class*="bg-[#0E0E0E]"]:not(.profile-page-root *),
+html.light [class*="bg-[#0E0E0E]"]:not(.profile-page-root *),
+html.light-mode [class*="bg-[#0E0E0E]"]:not(.profile-page-root *),
+html:not(.dark) [class*="bg-[#262626]"]:not(.profile-page-root *),
+html.light [class*="bg-[#262626]"]:not(.profile-page-root *),
+html.light-mode [class*="bg-[#262626]"]:not(.profile-page-root *),
+html:not(.dark) [class*="bg-neutral-900"]:not(.profile-page-root *),
+html.light [class*="bg-neutral-900"]:not(.profile-page-root *),
+html.light-mode [class*="bg-neutral-900"]:not(.profile-page-root *),
+html:not(.dark) [class*="bg-black"]:not(.profile-page-root *),
+html.light [class*="bg-black"]:not(.profile-page-root *),
+html.light-mode [class*="bg-black"]:not(.profile-page-root *) {
     color: #FFFFFF !important;
 }
 
-html:not(.dark) [class*="bg-[#0A0A0A]"]:is(a, button, [role="button"], .profile-quick-link, .profile-dark-btn) span,
-html.light [class*="bg-[#0A0A0A]"]:is(a, button, [role="button"], .profile-quick-link, .profile-dark-btn) span,
-html.light-mode [class*="bg-[#0A0A0A]"]:is(a, button, [role="button"], .profile-quick-link, .profile-dark-btn) span,
-html:not(.dark) [class*="bg-[#0E0E0E]"] span,
-html.light [class*="bg-[#0E0E0E]"] span,
-html.light-mode [class*="bg-[#0E0E0E]"] span,
-html:not(.dark) .profile-quick-link span,
-html.light .profile-quick-link span,
-html.light-mode .profile-quick-link span,
-html:not(.dark) .profile-dark-btn span,
-html.light .profile-dark-btn span,
-html.light-mode .profile-dark-btn span,
-html:not(.dark) [class*="bg-[#262626]"] span,
-html.light [class*="bg-[#262626]"] span,
-html.light-mode [class*="bg-[#262626]"] span,
-html:not(.dark) [class*="bg-neutral-900"] span,
-html.light [class*="bg-neutral-900"] span,
-html.light-mode [class*="bg-neutral-900"] span,
-html:not(.dark) [class*="bg-black"] span,
-html.light [class*="bg-black"] span,
-html.light-mode [class*="bg-black"] span {
+html:not(.dark) [class*="bg-[#0A0A0A]"]:is(a, button, [role="button"]):not(.profile-page-root *) span:not(.profile-page-root *),
+html.light [class*="bg-[#0A0A0A]"]:is(a, button, [role="button"]):not(.profile-page-root *) span:not(.profile-page-root *),
+html.light-mode [class*="bg-[#0A0A0A]"]:is(a, button, [role="button"]):not(.profile-page-root *) span:not(.profile-page-root *),
+html:not(.dark) [class*="bg-[#0E0E0E]"]:not(.profile-page-root *) span:not(.profile-page-root *),
+html.light [class*="bg-[#0E0E0E]"]:not(.profile-page-root *) span:not(.profile-page-root *),
+html.light-mode [class*="bg-[#0E0E0E]"]:not(.profile-page-root *) span:not(.profile-page-root *),
+html:not(.dark) [class*="bg-[#262626]"]:not(.profile-page-root *) span:not(.profile-page-root *),
+html.light [class*="bg-[#262626]"]:not(.profile-page-root *) span:not(.profile-page-root *),
+html.light-mode [class*="bg-[#262626]"]:not(.profile-page-root *) span:not(.profile-page-root *),
+html:not(.dark) [class*="bg-neutral-900"]:not(.profile-page-root *) span:not(.profile-page-root *),
+html.light [class*="bg-neutral-900"]:not(.profile-page-root *) span:not(.profile-page-root *),
+html.light-mode [class*="bg-neutral-900"]:not(.profile-page-root *) span:not(.profile-page-root *),
+html:not(.dark) [class*="bg-black"]:not(.profile-page-root *) span:not(.profile-page-root *),
+html.light [class*="bg-black"]:not(.profile-page-root *) span:not(.profile-page-root *),
+html.light-mode [class*="bg-black"]:not(.profile-page-root *) span:not(.profile-page-root *) {
     color: #FFFFFF !important;
 }
 
 /* Active Category Pill */
-html:not(.dark) button[class~="bg-[#E34A27]"] span,
-html.light-mode button[class~="bg-[#E34A27]"] span {
+html:not(.dark) button[class~="bg-[#E34A27]"]:not(.quick-stock-chip) span,
+html.light button[class~="bg-[#E34A27]"]:not(.quick-stock-chip) span,
+html.light-mode button[class~="bg-[#E34A27]"]:not(.quick-stock-chip) span {
     color: #FFFFFF !important;
 }
 
 /* 11. Explicit Icon Colors & Visibility in Light Mode */
+.floating-theme-toggle svg,
+#floating-theme-toggle svg,
 html:not(.dark) .theme-toggle-btn svg,
 html.light-mode .theme-toggle-btn svg,
 html:not(.dark) #theme-toggle svg,
@@ -673,15 +732,23 @@ html.light-mode #theme-toggle svg {
     display: block !important;
 }
 
+html:not(.dark) .floating-theme-toggle svg,
+html.light .floating-theme-toggle svg,
+html.light-mode .floating-theme-toggle svg,
+html:not(.dark) #floating-theme-toggle svg,
+html.light #floating-theme-toggle svg,
+html.light-mode #floating-theme-toggle svg,
 html:not(.dark) #theme-toggle svg.lucide-moon,
 html.light-mode #theme-toggle svg.lucide-moon {
     color: #1F2937 !important;
     stroke: #1F2937 !important;
 }
 
+html.dark .floating-theme-toggle svg,
+html.dark #floating-theme-toggle svg,
 html.dark #theme-toggle svg.lucide-sun {
-    color: #F59E0B !important;
-    stroke: #F59E0B !important;
+    color: #FBBF24 !important;
+    stroke: #FBBF24 !important;
 }
 
 /* Header Action Icons in Light Mode */
@@ -752,12 +819,12 @@ html.light-mode [class*="bg-blue-950"]:not(.auth-editorial-aside *) {
 }
 
 /* 13. Brand Accent Primary Buttons (White Text & Icons) */
-html:not(.dark) button[class*="bg-[#E34A27]"],
-html:not(.dark) a[class*="bg-[#E34A27]"],
-html.light button[class*="bg-[#E34A27]"],
-html.light a[class*="bg-[#E34A27]"],
-html.light-mode button[class*="bg-[#E34A27]"],
-html.light-mode a[class*="bg-[#E34A27]"] {
+html:not(.dark) button[class*="bg-[#E34A27]"]:not(.quick-stock-chip),
+html:not(.dark) a[class*="bg-[#E34A27]"]:not(.quick-stock-chip),
+html.light button[class*="bg-[#E34A27]"]:not(.quick-stock-chip),
+html.light a[class*="bg-[#E34A27]"]:not(.quick-stock-chip),
+html.light-mode button[class*="bg-[#E34A27]"]:not(.quick-stock-chip),
+html.light-mode a[class*="bg-[#E34A27]"]:not(.quick-stock-chip) {
     color: #FFFFFF !important;
 }
 
@@ -1022,38 +1089,124 @@ html.dark .spotlight-card-blue button {
 /* 20. Profile Page Dark Cards & Controls High Contrast (Light & Dark Modes) */
 html:not(.dark) .profile-role-badge,
 html.light .profile-role-badge,
-html.light-mode .profile-role-badge {
-    background-color: #0A0A0A !important;
-    border-color: #262626 !important;
-    color: #FFFFFF !important;
+html.light-mode .profile-role-badge,
+html:not(.dark) span.profile-role-badge,
+html.light span.profile-role-badge,
+html.light-mode span.profile-role-badge,
+html:not(.dark) [class*="bg-[#141414]"] .profile-role-badge,
+html.light [class*="bg-[#141414]"] .profile-role-badge,
+html.light-mode [class*="bg-[#141414]"] .profile-role-badge {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E3E6EF !important;
+    color: #151D30 !important;
+}
+
+/* 20. Profile Hub Redesign (Light Mode Soft Editorial & Dark Mode Strict Protection) */
+html:not(.dark) .profile-page-root,
+html.light .profile-page-root,
+html.light-mode .profile-page-root {
+    background-color: #FFFFFF !important;
+    color: #151D30 !important;
+}
+
+html:not(.dark) .profile-hero-card {
+    background-color: #FFFFFF !important;
+    border-color: #E3E6EF !important;
+    box-shadow: 0 12px 36px rgba(21, 29, 48, 0.04) !important;
+}
+
+html:not(.dark) .profile-role-badge {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E3E6EF !important;
+    color: #151D30 !important;
 }
 
 html:not(.dark) .profile-quick-link,
 html.light .profile-quick-link,
 html.light-mode .profile-quick-link {
-    background-color: #0A0A0A !important;
-    border-color: #262626 !important;
-    color: #FFFFFF !important;
+    background-color: #FFF0E9 !important;
+    border: 1px solid rgba(234, 72, 40, 0.25) !important;
+    color: #EA4828 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 1px 2px rgba(234, 72, 40, 0.06) !important;
 }
 
 html:not(.dark) .profile-quick-link span,
 html.light .profile-quick-link span,
 html.light-mode .profile-quick-link span {
-    color: #FFFFFF !important;
+    color: #EA4828 !important;
+    font-weight: 700 !important;
+}
+
+html:not(.dark) .profile-quick-link .profile-badge-count,
+html.light .profile-quick-link .profile-badge-count,
+html.light-mode .profile-quick-link .profile-badge-count {
+    background-color: rgba(234, 72, 40, 0.15) !important;
+    color: #EA4828 !important;
+    font-weight: 700 !important;
+}
+
+html:not(.dark) .profile-quick-link svg,
+html.light .profile-quick-link svg,
+html.light-mode .profile-quick-link svg {
+    color: #EA4828 !important;
+    stroke: #EA4828 !important;
 }
 
 html:not(.dark) .profile-quick-link:hover,
 html.light .profile-quick-link:hover,
-html.light-mode .profile-quick-link:hover {
-    border-color: #E34A27 !important;
-    color: #FFFFFF !important;
+html.light-mode .profile-quick-link:hover,
+html:not(.dark) .profile-quick-link:active,
+html.light .profile-quick-link:active,
+html.light-mode .profile-quick-link:active,
+html:not(.dark) .profile-quick-link:focus,
+html.light .profile-quick-link:focus,
+html.light-mode .profile-quick-link:focus {
+    background-color: #FFE5D8 !important;
+    border-color: rgba(234, 72, 40, 0.5) !important;
+    color: #EA4828 !important;
+    font-weight: 700 !important;
+}
+
+html:not(.dark) .profile-quick-link:hover span,
+html.light .profile-quick-link:hover span,
+html.light-mode .profile-quick-link:hover span,
+html:not(.dark) .profile-quick-link:active span,
+html.light .profile-quick-link:active span,
+html.light-mode .profile-quick-link:active span,
+html:not(.dark) .profile-quick-link:focus span,
+html.light .profile-quick-link:focus span,
+html.light-mode .profile-quick-link:focus span {
+    color: #EA4828 !important;
+    font-weight: 700 !important;
+}
+
+html:not(.dark) .profile-quick-link:hover .profile-badge-count,
+html.light .profile-quick-link:hover .profile-badge-count,
+html.light-mode .profile-quick-link:hover .profile-badge-count,
+html:not(.dark) .profile-quick-link:active .profile-badge-count,
+html.light .profile-quick-link:active .profile-badge-count,
+html.light-mode .profile-quick-link:active .profile-badge-count,
+html:not(.dark) .profile-quick-link:focus .profile-badge-count,
+html.light .profile-quick-link:focus .profile-badge-count,
+html.light-mode .profile-quick-link:focus .profile-badge-count {
+    background-color: rgba(234, 72, 40, 0.25) !important;
+    color: #EA4828 !important;
+    font-weight: 700 !important;
 }
 
 html:not(.dark) .profile-identity-card,
 html.light .profile-identity-card,
 html.light-mode .profile-identity-card {
-    background-color: #0E0E0E !important;
-    border-color: #262626 !important;
+    background-color: #F8F9FC !important;
+    border-color: #E3E6EF !important;
+}
+
+html:not(.dark) .profile-identity-card:hover,
+html.light .profile-identity-card:hover,
+html.light-mode .profile-identity-card:hover {
+    background-color: rgba(255, 240, 233, 0.35) !important;
+    border-color: rgba(234, 72, 40, 0.3) !important;
 }
 
 html:not(.dark) .profile-identity-card p:first-of-type,
@@ -1062,38 +1215,39 @@ html.light-mode .profile-identity-card p:first-of-type,
 html:not(.dark) .profile-identity-card .font-heading,
 html.light .profile-identity-card .font-heading,
 html.light-mode .profile-identity-card .font-heading {
-    color: #FFFFFF !important;
+    color: #151D30 !important;
 }
 
 html:not(.dark) .profile-identity-card p:last-of-type,
 html.light .profile-identity-card p:last-of-type,
 html.light-mode .profile-identity-card p:last-of-type {
-    color: #D4D4D4 !important;
+    color: #59647D !important;
 }
 
 html:not(.dark) .profile-consignment-banner,
 html.light .profile-consignment-banner,
 html.light-mode .profile-consignment-banner {
-    background: linear-gradient(135deg, #181818 0%, #141414 50%, #101010 100%) !important;
-    border-color: #262626 !important;
+    background: linear-gradient(to right, #FFFFFF 0%, #FFFFFF 60%, #FFF5F0 100%) !important;
+    border-color: #E3E6EF !important;
+    box-shadow: 0 12px 36px rgba(21, 29, 48, 0.04) !important;
 }
 
 html:not(.dark) .profile-consignment-banner h2,
 html.light .profile-consignment-banner h2,
 html.light-mode .profile-consignment-banner h2 {
-    color: #FFFFFF !important;
+    color: #151D30 !important;
 }
 
 html:not(.dark) .profile-consignment-banner p,
 html.light .profile-consignment-banner p,
 html.light-mode .profile-consignment-banner p {
-    color: #D4D4D4 !important;
+    color: #59647D !important;
 }
 
 html:not(.dark) .profile-consignment-banner span,
 html.light .profile-consignment-banner span,
 html.light-mode .profile-consignment-banner span {
-    color: #FFFFFF !important;
+    color: #151D30 !important;
 }
 
 html:not(.dark) .profile-consignment-banner div:first-child > div:first-child,
@@ -1102,26 +1256,278 @@ html.light-mode .profile-consignment-banner div:first-child > div:first-child,
 html:not(.dark) .profile-consignment-banner div:first-child > div:first-child span,
 html.light .profile-consignment-banner div:first-child > div:first-child span,
 html.light-mode .profile-consignment-banner div:first-child > div:first-child span {
-    color: #E34A27 !important;
+    color: #EA4828 !important;
 }
 
 html:not(.dark) .profile-dark-btn,
 html.light .profile-dark-btn,
-html.light-mode .profile-dark-btn,
+html.light-mode .profile-dark-btn {
+    background-color: #FFF0E9 !important;
+    border: 1px solid rgba(234, 72, 40, 0.25) !important;
+    color: #EA4828 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 1px 2px rgba(234, 72, 40, 0.06) !important;
+}
+
 html:not(.dark) .profile-dark-btn span,
 html.light .profile-dark-btn span,
 html.light-mode .profile-dark-btn span {
-    background-color: #0A0A0A !important;
-    border-color: #262626 !important;
-    color: #FFFFFF !important;
+    color: #EA4828 !important;
+    font-weight: 700 !important;
+}
+
+html:not(.dark) .profile-dark-btn svg,
+html.light .profile-dark-btn svg,
+html.light-mode .profile-dark-btn svg {
+    color: #EA4828 !important;
+    stroke: #EA4828 !important;
 }
 
 html:not(.dark) .profile-dark-btn:hover,
 html.light .profile-dark-btn:hover,
-html.light-mode .profile-dark-btn:hover {
-    border-color: #E34A27 !important;
-    color: #FFFFFF !important;
+html.light-mode .profile-dark-btn:hover,
+html:not(.dark) .profile-dark-btn:active,
+html.light .profile-dark-btn:active,
+html.light-mode .profile-dark-btn:active,
+html:not(.dark) .profile-dark-btn:focus,
+html.light .profile-dark-btn:focus,
+html.light-mode .profile-dark-btn:focus {
+    border-color: rgba(234, 72, 40, 0.5) !important;
+    color: #EA4828 !important;
+    background-color: #FFE5D8 !important;
+    font-weight: 700 !important;
 }
+
+html:not(.dark) .profile-dark-btn:hover span,
+html.light .profile-dark-btn:hover span,
+html.light-mode .profile-dark-btn:hover span,
+html:not(.dark) .profile-dark-btn:active span,
+html.light .profile-dark-btn:active span,
+html.light-mode .profile-dark-btn:active span,
+html:not(.dark) .profile-dark-btn:focus span,
+html.light .profile-dark-btn:focus span,
+html.light-mode .profile-dark-btn:focus span {
+    color: #EA4828 !important;
+    font-weight: 700 !important;
+}
+
+/* Global Consistent Typography for Profile Page Buttons in Light Mode */
+html:not(.dark) .profile-page-root button,
+html:not(.dark) .profile-page-root .profile-quick-link,
+html:not(.dark) .profile-page-root .profile-dark-btn,
+html.light .profile-page-root button,
+html.light .profile-page-root .profile-quick-link,
+html.light .profile-page-root .profile-dark-btn,
+html.light-mode .profile-page-root button,
+html.light-mode .profile-page-root .profile-quick-link,
+html.light-mode .profile-page-root .profile-dark-btn {
+    font-weight: 700 !important;
+}
+
+html:not(.dark) .profile-page-root button span,
+html:not(.dark) .profile-page-root .profile-quick-link span,
+html:not(.dark) .profile-page-root .profile-dark-btn span,
+html.light .profile-page-root button span,
+html.light .profile-page-root .profile-quick-link span,
+html.light .profile-page-root .profile-dark-btn span,
+html.light-mode .profile-page-root button span,
+html.light-mode .profile-page-root .profile-quick-link span,
+html.light-mode .profile-page-root .profile-dark-btn span {
+    font-weight: 700 !important;
+}
+
+/* Ensure Profile Action & Navigation Buttons have Orange Text by Default in Light Mode */
+html:not(.dark) .profile-page-root .profile-quick-link,
+html:not(.dark) .profile-page-root .profile-quick-link span,
+html:not(.dark) .profile-page-root .profile-quick-link .profile-badge-count,
+html:not(.dark) .profile-page-root .profile-dark-btn,
+html:not(.dark) .profile-page-root .profile-dark-btn span,
+html.light .profile-page-root .profile-quick-link,
+html.light .profile-page-root .profile-quick-link span,
+html.light .profile-page-root .profile-quick-link .profile-badge-count,
+html.light .profile-page-root .profile-dark-btn,
+html.light .profile-page-root .profile-dark-btn span,
+html.light-mode .profile-page-root .profile-quick-link,
+html.light-mode .profile-page-root .profile-quick-link span,
+html.light-mode .profile-page-root .profile-quick-link .profile-badge-count,
+html.light-mode .profile-page-root .profile-dark-btn,
+html.light-mode .profile-page-root .profile-dark-btn span {
+    color: #EA4828 !important;
+}
+
+/* 21. Cooperative / Admin Workspace Strict Dark Mode Protection */
+.cooperative-shell,
+.cooperative-shell * {
+    color-scheme: dark !important;
+}
+
+/* 22. Strict Concealment of Floating Theme Toggle on Admin / Cooperative Workspace */
+body:has(.cooperative-shell) #floating-theme-toggle,
+html:has(.cooperative-shell) #floating-theme-toggle,
+body:has([data-page*="cooperative"]) #floating-theme-toggle,
+body:has([data-page*="Cooperative"]) #floating-theme-toggle,
+.cooperative-shell ~ #floating-theme-toggle,
+#app:has(.cooperative-shell) ~ #floating-theme-toggle,
+.cooperative-shell #floating-theme-toggle {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* 23. Custom Category Dropdown & Photo Upload Button (Light Mode: White Border & Styled Text per Gambar 2) */
+html:not(.dark) .custom-select-trigger,
+html.light .custom-select-trigger,
+html.light-mode .custom-select-trigger {
+    background-color: #F8F9FA !important;
+    border: 1px solid #FFFFFF !important;
+    color: #1F2937 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+html:not(.dark) .custom-select-trigger:focus,
+html.light .custom-select-trigger:focus,
+html.light-mode .custom-select-trigger:focus,
+html:not(.dark) .custom-select-trigger[aria-expanded="true"],
+html.light .custom-select-trigger[aria-expanded="true"],
+html.light-mode .custom-select-trigger[aria-expanded="true"] {
+    border-color: #EA580C !important;
+    box-shadow: 0 0 0 1px #EA580C, 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+html:not(.dark) .custom-select-placeholder,
+html.light .custom-select-placeholder,
+html.light-mode .custom-select-placeholder {
+    color: #9CA3AF !important;
+}
+
+html:not(.dark) .custom-select-value,
+html.light .custom-select-value,
+html.light-mode .custom-select-value {
+    color: #1F2937 !important;
+}
+
+html:not(.dark) .custom-select-chevron,
+html.light .custom-select-chevron,
+html.light-mode .custom-select-chevron {
+    color: #9CA3AF !important;
+}
+
+html:not(.dark) .custom-select-dropdown,
+html.light .custom-select-dropdown,
+html.light-mode .custom-select-dropdown {
+    background-color: #FFFFFF !important;
+    border: 1px solid #FFFFFF !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.06) !important;
+}
+
+html:not(.dark) .custom-select-option,
+html.light .custom-select-option,
+html.light-mode .custom-select-option {
+    color: #374151 !important;
+}
+
+html:not(.dark) .custom-select-option:hover,
+html.light .custom-select-option:hover,
+html.light-mode .custom-select-option:hover {
+    background-color: #F3F4F6 !important;
+    color: #111827 !important;
+}
+
+html:not(.dark) .custom-select-option-selected,
+html.light .custom-select-option-selected,
+html.light-mode .custom-select-option-selected {
+    background-color: rgba(234, 88, 12, 0.08) !important;
+    color: #EA580C !important;
+    font-weight: 600 !important;
+}
+
+/* Photo Upload and Change Buttons (Pilih Foto / Ganti) */
+html:not(.dark) .btn-pilih-foto,
+html.light .btn-pilih-foto,
+html.light-mode .btn-pilih-foto {
+    background-color: #F8F9FA !important;
+    border: 1px solid #FFFFFF !important;
+    color: #4B5563 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+}
+
+html:not(.dark) .btn-pilih-foto span,
+html.light .btn-pilih-foto span,
+html.light-mode .btn-pilih-foto span {
+    color: #4B5563 !important;
+}
+
+html:not(.dark) .btn-pilih-foto svg,
+html.light .btn-pilih-foto svg,
+html.light-mode .btn-pilih-foto svg {
+    color: #6B7280 !important;
+}
+
+html:not(.dark) .btn-pilih-foto:hover,
+html.light .btn-pilih-foto:hover,
+html.light-mode .btn-pilih-foto:hover {
+    border-color: #E34A27 !important;
+    color: #E34A27 !important;
+}
+
+html:not(.dark) .btn-pilih-foto:hover span,
+html.light .btn-pilih-foto:hover span,
+html.light-mode .btn-pilih-foto:hover span,
+html:not(.dark) .btn-pilih-foto:hover svg,
+html.light .btn-pilih-foto:hover svg,
+html.light-mode .btn-pilih-foto:hover svg {
+    color: #E34A27 !important;
+}
+
+/* 24. Quick Stock Chips (Pilihan Cepat) in Light Mode */
+html:not(.dark) .quick-stock-chip,
+html.light .quick-stock-chip,
+html.light-mode .quick-stock-chip {
+    background-color: #F8F9FA !important;
+    border: 1px solid #FFFFFF !important;
+    color: #4B5563 !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+html:not(.dark) .quick-stock-chip:hover,
+html.light .quick-stock-chip:hover,
+html.light-mode .quick-stock-chip:hover {
+    border-color: #E34A27 !important;
+    color: #E34A27 !important;
+}
+
+html:not(.dark) .quick-stock-chip.is-active,
+html.light .quick-stock-chip.is-active,
+html.light-mode .quick-stock-chip.is-active {
+    background-color: #FFF2ED !important;
+    border: 1px solid #E34A27 !important;
+    color: #E34A27 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 1px 3px rgba(227, 74, 39, 0.18) !important;
+}
+
+/* 25. Out of Stock Button (Stok Habis) in Light Mode: White Border & Black Text */
+html:not(.dark) .btn-out-of-stock,
+html.light .btn-out-of-stock,
+html.light-mode .btn-out-of-stock {
+    background-color: #F8F9FA !important;
+    border: 1px solid #FFFFFF !important;
+    color: #111111 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    opacity: 1 !important;
+}
+
+html:not(.dark) .btn-out-of-stock span,
+html.light .btn-out-of-stock span,
+html.light-mode .btn-out-of-stock span {
+    color: #111111 !important;
+    font-weight: 600 !important;
+}
+
+
+
+
 
 
 

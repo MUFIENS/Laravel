@@ -29,7 +29,6 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { BottomNavigation } from '@/components/layout/BottomNavigation';
-import { ThemeToggle } from '@/components/ThemeToggle';
 import type { Auth } from '@/types';
 
 export interface CategoryItem {
@@ -465,9 +464,6 @@ export default function Explore({
 
                     {/* Header Action Badges */}
                     <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
-                        {/* Theme Toggle Button */}
-                        <ThemeToggle />
-
                         {/* Cart Button with Count Badge */}
                         <Link
                             href="/cart"
@@ -1177,7 +1173,11 @@ export default function Explore({
                                             previewAdding
                                         }
                                         onClick={handlePreviewAddToCart}
-                                        className="flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#E34A27] text-xs font-bold text-white shadow-lg shadow-[#E34A27]/25 transition-all hover:bg-[#d03f1e] active:scale-95 disabled:cursor-not-allowed disabled:bg-[#262626] disabled:text-[#525252]"
+                                        className={`flex h-11 w-full items-center justify-center gap-2 rounded-xl text-xs font-bold transition-all active:scale-95 ${
+                                            previewProduct.stock <= 0
+                                                ? 'btn-out-of-stock cursor-not-allowed border border-white bg-[#F8F9FA] text-[#111111] shadow-xs dark:border-[#262626] dark:bg-[#262626] dark:text-[#525252] dark:shadow-none'
+                                                : 'cursor-pointer bg-[#E34A27] text-white shadow-lg shadow-[#E34A27]/25 hover:bg-[#d03f1e]'
+                                        }`}
                                     >
                                         {previewAdding ? (
                                             <>
@@ -1395,12 +1395,12 @@ function ProductCardItem({
                     disabled={isOutOfStock || isAdding}
                     onClick={(e) => onAddToCart(e, product, 1)}
                     aria-label={`Tambah ${product.name} ke keranjang`}
-                    className={`flex h-9 w-full cursor-pointer items-center justify-center gap-1.5 rounded-xl text-xs font-semibold tracking-wide transition-all select-none active:scale-95 ${
+                    className={`flex h-9 w-full items-center justify-center gap-1.5 rounded-xl border text-xs font-semibold tracking-wide transition-all select-none active:scale-95 ${
                         isOutOfStock
-                            ? 'cursor-not-allowed border border-[#262626] bg-[#1A1A1A] text-[#525252]'
+                            ? 'btn-out-of-stock cursor-not-allowed border-white bg-[#F8F9FA] text-[#111111] shadow-xs dark:border-[#262626] dark:bg-[#1A1A1A] dark:text-[#525252] dark:shadow-none'
                             : isJustAdded
-                              ? 'border border-emerald-500/40 bg-emerald-950/60 text-emerald-400'
-                              : 'bg-[#E34A27] text-white shadow-md shadow-[#E34A27]/20 hover:bg-[#d03f1e] hover:shadow-lg hover:shadow-[#E34A27]/30'
+                              ? 'cursor-pointer border-emerald-500/40 bg-emerald-950/60 text-emerald-400'
+                              : 'cursor-pointer border-transparent bg-[#E34A27] text-white shadow-md shadow-[#E34A27]/20 hover:bg-[#d03f1e] hover:shadow-lg hover:shadow-[#E34A27]/30'
                     }`}
                 >
                     {isAdding ? (

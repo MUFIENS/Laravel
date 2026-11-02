@@ -3,7 +3,6 @@ import { ArrowLeft, CheckCircle2, ShieldCheck } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { home } from '@/routes';
 import { safeNavigateBack } from '@/lib/navigation';
-import { ThemeToggle } from '@/components/ThemeToggle';
 
 import type { RouteDefinition } from '@/wayfinder';
 
@@ -59,7 +58,10 @@ export default function AuthSplitLayout({
             {/* 1. PRIMARY FORM COLUMN (42% on desktop, 100% on mobile) */}
             <div className="relative z-10 flex min-h-screen w-full flex-col justify-between px-6 py-8 sm:px-12 sm:py-10 lg:w-[45%] lg:px-14 lg:py-12 xl:w-[42%]">
                 {/* Top Navigation Header */}
-                <header className="auth-reveal flex items-center justify-between pb-6">
+                <header
+                    className="auth-header auth-reveal flex items-center justify-between border-0 bg-transparent pb-6"
+                    style={{ backgroundColor: 'transparent', borderColor: 'transparent', border: 'none' }}
+                >
                     <Link
                         href={home()}
                         className="group flex items-center gap-3 transition-opacity hover:opacity-90 active:scale-95"
@@ -78,11 +80,6 @@ export default function AuthSplitLayout({
                             </span>
                         </div>
                     </Link>
-
-                    {/* Top Right Theme Toggle (Ghost/Icon only, no white box) */}
-                    <div className="flex items-center">
-                        <ThemeToggle size="sm" variant="ghost" className="auth-theme-toggle" />
-                    </div>
                 </header>
 
                 {/* Center Form Container */}

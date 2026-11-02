@@ -947,10 +947,10 @@ export default function ProductDetail() {
                             type="button"
                             disabled={isOutOfStock || isSubmitting}
                             onClick={handleAddToCartClick}
-                            className={`flex min-h-[44px] flex-1 items-center justify-center gap-1.5 rounded-full px-4 py-2 font-heading text-xs font-bold text-white shadow-md transition-all select-none ${
+                            className={`flex min-h-[44px] flex-1 items-center justify-center gap-1.5 rounded-full border px-4 py-2 font-heading text-xs font-bold shadow-md transition-all select-none ${
                                 isOutOfStock || isSubmitting
-                                    ? 'cursor-not-allowed border border-[#262626] bg-[#1A1A1A] text-[#737373] opacity-60'
-                                    : 'cursor-pointer bg-[#E34A27] shadow-[#E34A27]/25 hover:bg-[#ff5c38] active:scale-98'
+                                    ? 'btn-out-of-stock cursor-not-allowed border-white bg-[#F8F9FA] text-[#111111] shadow-xs dark:border-[#262626] dark:bg-[#1A1A1A] dark:text-[#737373] dark:shadow-none'
+                                    : 'cursor-pointer border-transparent bg-[#E34A27] text-white shadow-[#E34A27]/25 hover:bg-[#ff5c38] active:scale-98'
                             }`}
                             aria-label={
                                 isOutOfStock

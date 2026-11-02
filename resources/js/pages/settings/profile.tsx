@@ -263,31 +263,31 @@ export default function Profile({
     };
 
     return (
-        <div className="relative min-h-screen w-full overflow-x-hidden bg-[#0A0A0A] font-sans text-[#F5F2EB] antialiased selection:bg-[#E34A27] selection:text-white">
+        <div className="profile-page-root relative min-h-screen w-full overflow-x-hidden bg-white font-sans text-[#151D30] antialiased selection:bg-[#EA4828] selection:text-white dark:bg-[#0A0A0A] dark:text-[#F5F2EB]">
             <Head title={`Akun Saya — ${displayName} | KOPDIG`} />
 
-            {/* ATMOSPHERIC BACKGROUND SYSTEM (Consistent with KOPDIG Brand) */}
+            {/* DARK MODE ATMOSPHERIC BACKGROUND SYSTEM (Unchanged) */}
             <div
                 aria-hidden="true"
-                className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(227,74,39,0.15),transparent)]"
+                className="pointer-events-none fixed inset-0 z-0 hidden bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(227,74,39,0.15),transparent)] dark:block"
             />
             <div
                 aria-hidden="true"
-                className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,#26262612_1px,transparent_1px),linear-gradient(to_bottom,#26262612_1px,transparent_1px)] bg-[size:40px_40px]"
+                className="pointer-events-none fixed inset-0 z-0 hidden bg-[linear-gradient(to_right,#26262612_1px,transparent_1px),linear-gradient(to_bottom,#26262612_1px,transparent_1px)] bg-[size:40px_40px] dark:block"
             />
 
             {/* 1. TOP TRANSACTIONAL / NAVIGATION HEADER */}
-            <header className="sticky top-0 z-40 w-full border-b border-[#262626] bg-[#0A0A0A]/90 backdrop-blur-md">
+            <header className="sticky top-0 z-40 w-full border-b border-[#E3E6EF] bg-white/80 backdrop-blur-md dark:border-[#262626] dark:bg-[#0A0A0A]/90">
                 <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 sm:h-16 sm:px-6">
                     {/* Left: Back to Marketplace */}
                     <button
                         type="button"
                         onClick={() => safeNavigateBack('/explore')}
-                        className="group inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-full border border-[#262626] bg-[#141414] px-3.5 py-1.5 text-xs font-medium text-[#A3A3A3] transition-all hover:border-[#383838] hover:text-[#F5F2EB] active:scale-95"
+                        className="group inline-flex min-h-[40px] cursor-pointer items-center gap-2 rounded-full border border-[#E3E6EF] bg-white px-3.5 py-1.5 font-heading text-xs font-bold text-[#151D30] shadow-xs transition-colors hover:border-[#EA4828]/40 hover:bg-[#FFF0E9] hover:text-[#EA4828] active:scale-95 dark:border-[#262626] dark:bg-[#141414] dark:text-[#A3A3A3] dark:shadow-none dark:hover:border-[#383838] dark:hover:text-[#F5F2EB]"
                         aria-label="Kembali ke katalog"
                     >
                         <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
-                        <span>Katalog</span>
+                        <span className="font-bold">Katalog</span>
                     </button>
 
                     {/* Center: Brand Mark */}
@@ -301,10 +301,10 @@ export default function Profile({
                             className="h-8 w-auto object-contain drop-shadow-xs transition-transform duration-300 hover:scale-105"
                         />
                         <div className="flex flex-col">
-                            <span className="font-heading text-sm leading-none font-bold tracking-tight text-[#F5F2EB]">
+                            <span className="font-heading text-sm leading-none font-bold tracking-tight text-[#151D30] dark:text-[#F5F2EB]">
                                 KOPDIG
                             </span>
-                            <span className="mt-0.5 font-mono text-[9px] tracking-wider text-[#737373] uppercase">
+                            <span className="mt-0.5 font-mono text-[9px] tracking-wider text-[#8992A5] uppercase dark:text-[#737373]">
                                 Hub Akun Siswa
                             </span>
                         </div>
@@ -314,22 +314,22 @@ export default function Profile({
                     <div className="flex items-center gap-2">
                         <Link
                             href="/cart"
-                            className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-[#262626] bg-[#141414] px-3.5 py-1.5 text-xs font-medium text-[#A3A3A3] transition-colors hover:border-[#383838] hover:text-[#F5F2EB]"
+                            className="inline-flex min-h-[40px] items-center gap-1.5 rounded-full border border-[#E3E6EF] bg-white px-3.5 py-1.5 font-heading text-xs font-bold text-[#59647D] shadow-xs transition-colors hover:border-[#EA4828]/40 hover:bg-[#FFF0E9] hover:text-[#EA4828] dark:border-[#262626] dark:bg-[#141414] dark:text-[#A3A3A3] dark:shadow-none dark:hover:border-[#383838] dark:hover:text-[#F5F2EB]"
                             aria-label="Buka Keranjang Belanja"
                         >
-                            <ShoppingBag className="size-3.5 text-[#E34A27]" />
-                            <span className="hidden sm:inline">Keranjang</span>
+                            <ShoppingBag className="size-3.5 text-[#EA4828] dark:text-[#E34A27]" />
+                            <span className="hidden font-bold sm:inline">Keranjang</span>
                         </Link>
 
                         <button
                             type="button"
                             onClick={handleLogout}
-                            className="inline-flex min-h-[44px] cursor-pointer items-center gap-1.5 rounded-full border border-[#262626] bg-[#141414] px-3 py-1.5 text-xs font-medium text-[#A3A3A3] transition-all hover:border-red-900/50 hover:bg-red-950/20 hover:text-red-300 active:scale-95"
+                            className="inline-flex min-h-[40px] cursor-pointer items-center gap-1.5 rounded-full border border-[#E3E6EF] bg-white px-3.5 py-1.5 font-heading text-xs font-bold text-[#59647D] shadow-xs transition-colors hover:border-red-200 hover:bg-red-50 hover:text-red-600 active:scale-95 dark:border-[#262626] dark:bg-[#141414] dark:text-[#A3A3A3] dark:shadow-none dark:hover:border-red-900/50 dark:hover:bg-red-950/20 dark:hover:text-red-400"
                             aria-label="Keluar dari akun"
                             title="Keluar dari akun"
                         >
                             <LogOut className="size-3.5" />
-                            <span className="hidden sm:inline">Keluar</span>
+                            <span className="hidden font-bold sm:inline">Keluar</span>
                         </button>
                     </div>
                 </div>
@@ -340,17 +340,17 @@ export default function Profile({
                 {/* ======================================================== */}
                 {/* 01. PROFILE OVERVIEW / HERO IDENTITY                      */}
                 {/* ======================================================== */}
-                <section className="mb-8 overflow-hidden rounded-2xl border border-[#262626] bg-[#141414] p-5 shadow-2xl sm:p-7">
+                <section className="profile-hero-card mb-8 overflow-hidden rounded-2xl border border-[#E3E6EF] bg-white p-5 shadow-xs sm:p-7 dark:border-[#262626] dark:bg-[#141414] dark:shadow-2xl">
                     <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
                         {/* Avatar & User Details */}
                         <div className="flex items-center gap-4 sm:gap-5">
-                            {/* Avatar Circle with Status Dot */}
+                            {/* Avatar with Status Dot */}
                             <div className="relative shrink-0">
-                                <div className="flex size-16 items-center justify-center rounded-2xl border border-[#262626] bg-[#1c1c1c] font-mono text-xl font-bold text-[#E34A27] shadow-inner sm:size-20 sm:text-2xl">
+                                <div className="flex size-16 items-center justify-center rounded-2xl border border-[#EA4828]/25 bg-[#FFF0E9] font-mono text-xl font-bold text-[#EA4828] shadow-inner sm:size-20 sm:text-2xl dark:border-[#262626] dark:bg-[#1c1c1c] dark:text-[#E34A27]">
                                     {displayName.charAt(0).toUpperCase()}
                                 </div>
                                 <span
-                                    className="absolute -right-1 -bottom-1 size-3.5 rounded-full border-2 border-[#141414] bg-emerald-500 shadow-xs"
+                                    className="absolute -right-1 -bottom-1 size-3.5 rounded-full border-2 border-white bg-[#00B88A] shadow-xs dark:border-[#141414] dark:bg-emerald-500"
                                     title="Sesi Aktif"
                                     aria-label="Sesi Aktif"
                                 />
@@ -359,129 +359,102 @@ export default function Profile({
                             {/* Name, Email, Identifier */}
                             <div className="min-w-0 flex-1">
                                 <div className="flex flex-wrap items-center gap-2">
-                                    <span
-                                        className="profile-role-badge rounded-md border border-[#262626] bg-[#0A0A0A] px-2 py-0.5 font-mono text-[10px] font-semibold tracking-wider text-white uppercase"
-                                        style={{ color: '#FFFFFF' }}
-                                    >
+                                    <span className="profile-role-badge inline-flex items-center rounded-md border border-[#E3E6EF] bg-white px-2 py-0.5 font-mono text-[10px] font-bold tracking-wider text-[#151D30] uppercase shadow-2xs dark:border-black dark:bg-[#0A0A0A] dark:text-white">
                                         {roleLabel}
                                     </span>
                                     {displayIdentifier && (
-                                        <span className="rounded-md border border-[#E34A27]/30 bg-[#E34A27]/10 px-2 py-0.5 font-mono text-[10px] font-semibold text-[#E34A27]">
+                                        <span className="inline-flex items-center rounded-md border border-[#EA4828]/30 bg-[#FFF0E9] px-2 py-0.5 font-mono text-[10px] font-bold text-[#EA4828] dark:border-[#E34A27]/30 dark:bg-[#E34A27]/10 dark:text-[#E34A27]">
                                             NISN: {displayIdentifier}
                                         </span>
                                     )}
                                 </div>
 
-                                <h1 className="mt-1.5 truncate font-heading text-xl font-bold tracking-tight text-neutral-900 sm:text-2xl dark:text-[#F5F2EB]">
+                                <h1 className="mt-1.5 truncate font-heading text-xl font-bold tracking-tight text-[#151D30] sm:text-2xl dark:text-[#F5F2EB]">
                                     {displayName}
                                 </h1>
 
-                                <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-600 dark:text-[#A3A3A3]">
+                                <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium text-[#59647D] dark:text-[#A3A3A3]">
                                     <span className="truncate">
                                         {displayEmail}
                                     </span>
                                     <span
                                         aria-hidden="true"
-                                        className="text-neutral-400 dark:text-[#383838]"
+                                        className="text-[#8992A5] dark:text-[#383838]"
                                     >
                                         &bull;
                                     </span>
-                                    <span className="font-mono text-[11px] text-neutral-500 dark:text-[#737373]">
+                                    <span className="font-mono text-[11px] text-[#8992A5] dark:text-[#737373]">
                                         Bergabung {joinedAt}
                                     </span>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Fast Anchors / Quick Jumps */}
-                        <div className="flex flex-wrap items-center gap-2 border-t border-[#262626] pt-4 sm:border-t-0 sm:pt-0">
+                        {/* Navigation Buttons */}
+                        <div className="flex flex-wrap items-center gap-2 border-t border-[#E3E6EF] pt-4 sm:border-t-0 sm:pt-0 dark:border-[#262626]">
                             <a
                                 href="#pesanan"
-                                className="profile-quick-link inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-3 py-2 text-xs font-semibold text-white transition-colors hover:border-[#383838] hover:text-white"
-                                style={{ color: '#FFFFFF' }}
+                                className="profile-quick-link inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#EA4828]/25 bg-[#FFF0E9] px-3 py-2 font-heading text-xs font-bold text-[#EA4828] shadow-xs transition-colors hover:border-[#EA4828]/50 hover:bg-[#FFE5D8] active:scale-95 dark:border-[#262626] dark:bg-[#0A0A0A] dark:text-white dark:hover:border-[#383838] dark:hover:text-white"
                             >
-                                <ShoppingBag className="size-3.5 text-[#E34A27]" />
-                                <span className="text-white" style={{ color: '#FFFFFF' }}>Pesanan</span>
-                                <span
-                                    className="py-0.2 ml-1 rounded-full bg-[#262626] px-1.5 font-mono text-[10px] text-white"
-                                    style={{ color: '#FFFFFF' }}
-                                >
+                                <ShoppingBag className="size-3.5 text-[#EA4828] dark:text-[#E34A27]" />
+                                <span className="font-bold text-[#EA4828] dark:text-white">Pesanan</span>
+                                <span className="profile-badge-count ml-1 rounded-full bg-[#EA4828]/15 px-1.5 py-0.5 font-mono text-[10px] font-bold text-[#EA4828] dark:bg-[#262626] dark:text-white">
                                     {totalOrdersCount}
                                 </span>
                             </a>
                             <a
                                 href="#titipan"
-                                className="profile-quick-link inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-3 py-2 text-xs font-semibold text-white transition-colors hover:border-[#383838] hover:text-white"
-                                style={{ color: '#FFFFFF' }}
+                                className="profile-quick-link inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#EA4828]/25 bg-[#FFF0E9] px-3 py-2 font-heading text-xs font-bold text-[#EA4828] shadow-xs transition-colors hover:border-[#EA4828]/50 hover:bg-[#FFE5D8] active:scale-95 dark:border-[#262626] dark:bg-[#0A0A0A] dark:text-white dark:hover:border-[#383838] dark:hover:text-white"
                             >
-                                <Store className="size-3.5 text-[#E34A27]" />
-                                <span className="text-white" style={{ color: '#FFFFFF' }}>Titipan</span>
-                                <span
-                                    className="py-0.2 ml-1 rounded-full bg-[#262626] px-1.5 font-mono text-[10px] text-white"
-                                    style={{ color: '#FFFFFF' }}
-                                >
+                                <Store className="size-3.5 text-[#EA4828] dark:text-[#E34A27]" />
+                                <span className="font-bold text-[#EA4828] dark:text-white">Titipan</span>
+                                <span className="profile-badge-count ml-1 rounded-full bg-[#EA4828]/15 px-1.5 py-0.5 font-mono text-[10px] font-bold text-[#EA4828] dark:bg-[#262626] dark:text-white">
                                     {totalSubmissionsCount}
                                 </span>
                             </a>
                             <a
                                 href="#pengaturan"
-                                className="profile-quick-link inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-3 py-2 text-xs font-semibold text-white transition-colors hover:border-[#383838] hover:text-white"
-                                style={{ color: '#FFFFFF' }}
+                                className="profile-quick-link inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#EA4828]/25 bg-[#FFF0E9] px-3 py-2 font-heading text-xs font-bold text-[#EA4828] shadow-xs transition-colors hover:border-[#EA4828]/50 hover:bg-[#FFE5D8] active:scale-95 dark:border-[#262626] dark:bg-[#0A0A0A] dark:text-white dark:hover:border-[#383838] dark:hover:text-white"
                             >
-                                <UserIcon className="size-3.5 text-[#E34A27]" />
-                                <span className="text-white" style={{ color: '#FFFFFF' }}>Pengaturan</span>
+                                <UserIcon className="size-3.5 text-[#EA4828] dark:text-[#E34A27]" />
+                                <span className="font-bold text-[#EA4828] dark:text-white">Pengaturan</span>
                             </a>
                             <a
                                 href="#keamanan"
-                                className="profile-quick-link inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-3 py-2 text-xs font-semibold text-white transition-colors hover:border-[#383838] hover:text-white"
-                                style={{ color: '#FFFFFF' }}
+                                className="profile-quick-link inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#EA4828]/25 bg-[#FFF0E9] px-3 py-2 font-heading text-xs font-bold text-[#EA4828] shadow-xs transition-colors hover:border-[#EA4828]/50 hover:bg-[#FFE5D8] active:scale-95 dark:border-[#262626] dark:bg-[#0A0A0A] dark:text-white dark:hover:border-[#383838] dark:hover:text-white"
                             >
-                                <Lock className="size-3.5 text-[#E34A27]" />
-                                <span className="text-white" style={{ color: '#FFFFFF' }}>Keamanan</span>
+                                <Lock className="size-3.5 text-[#EA4828] dark:text-[#E34A27]" />
+                                <span className="font-bold text-[#EA4828] dark:text-white">Keamanan</span>
                             </a>
                         </div>
                     </div>
 
-                    {/* Dual Identity Statement Banner */}
-                    <div className="mt-6 grid grid-cols-1 gap-3 border-t border-[#262626] pt-5 sm:grid-cols-2">
-                        <div className="profile-identity-card flex items-start gap-3 rounded-xl border border-[#262626]/70 bg-[#0E0E0E] p-3.5">
-                            <div className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-[#E34A27]/10 text-[#E34A27]">
+                    {/* Dual Identity Statement Cards */}
+                    <div className="mt-6 grid grid-cols-1 gap-3 border-t border-[#E3E6EF] pt-5 sm:grid-cols-2 dark:border-[#262626]">
+                        <div className="profile-identity-card flex items-start gap-3 rounded-xl border border-[#E3E6EF] bg-[#F8F9FC] p-3.5 transition-colors hover:border-[#EA4828]/40 hover:bg-[#FFF0E9]/30 dark:border-[#262626]/70 dark:bg-[#0E0E0E] dark:hover:border-[#383838]">
+                            <div className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-[#FFF0E9] text-[#EA4828] dark:bg-[#E34A27]/10 dark:text-[#E34A27]">
                                 <ShoppingBag className="size-3.5" />
                             </div>
                             <div>
-                                <p
-                                    className="font-heading text-xs font-bold text-white"
-                                    style={{ color: '#FFFFFF' }}
-                                >
+                                <p className="font-heading text-xs font-bold text-[#151D30] dark:text-white">
                                     Ini Akun Belanjaku
                                 </p>
-                                <p
-                                    className="mt-0.5 text-[11px] leading-relaxed text-[#D4D4D4]"
-                                    style={{ color: '#D4D4D4' }}
-                                >
-                                    Pantau transaksi barang, jadwal antrean
-                                    loket koperasi, dan tanda bukti pembelian.
+                                <p className="mt-0.5 text-[11px] leading-relaxed text-[#59647D] dark:text-[#D4D4D4]">
+                                    Pantau transaksi barang, jadwal antrean loket koperasi, dan tanda bukti pembelian.
                                 </p>
                             </div>
                         </div>
 
-                        <div className="profile-identity-card flex items-start gap-3 rounded-xl border border-[#262626]/70 bg-[#0E0E0E] p-3.5">
-                            <div className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-[#E34A27]/10 text-[#E34A27]">
+                        <div className="profile-identity-card flex items-start gap-3 rounded-xl border border-[#E3E6EF] bg-[#F8F9FC] p-3.5 transition-colors hover:border-[#EA4828]/40 hover:bg-[#FFF0E9]/30 dark:border-[#262626]/70 dark:bg-[#0E0E0E] dark:hover:border-[#383838]">
+                            <div className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-[#FFF0E9] text-[#EA4828] dark:bg-[#E34A27]/10 dark:text-[#E34A27]">
                                 <Store className="size-3.5" />
                             </div>
                             <div>
-                                <p
-                                    className="font-heading text-xs font-bold text-white"
-                                    style={{ color: '#FFFFFF' }}
-                                >
+                                <p className="font-heading text-xs font-bold text-[#151D30] dark:text-white">
                                     Ini Ruang untuk Karyaku
                                 </p>
-                                <p
-                                    className="mt-0.5 text-[11px] leading-relaxed text-[#D4D4D4]"
-                                    style={{ color: '#D4D4D4' }}
-                                >
-                                    Titipkan produk kriya atau kulinermu untuk
-                                    dijual bersama Koperasi Sekolah.
+                                <p className="mt-0.5 text-[11px] leading-relaxed text-[#59647D] dark:text-[#D4D4D4]">
+                                    Titipkan produk kriya atau kulinermu untuk dijual bersama Koperasi Sekolah.
                                 </p>
                             </div>
                         </div>
@@ -491,26 +464,17 @@ export default function Profile({
                 {/* ======================================================== */}
                 {/* 02. PRIMARY SIGNATURE ACTION: TITIPKAN BARANG KE KOPERASI */}
                 {/* ======================================================== */}
-                <section className="profile-consignment-banner mb-10 overflow-hidden rounded-2xl border border-[#262626] bg-gradient-to-br from-[#181818] via-[#141414] to-[#101010] p-6 shadow-2xl transition-all duration-300 hover:border-[#E34A27]/50 sm:p-8">
+                <section className="profile-consignment-banner mb-10 overflow-hidden rounded-2xl border border-[#E3E6EF] bg-gradient-to-r from-white via-white to-[#FFF5F0] p-6 shadow-xs transition-all duration-300 hover:border-[#EA4828]/40 sm:p-8 dark:border-[#262626] dark:bg-gradient-to-br dark:from-[#181818] dark:via-[#141414] dark:to-[#101010] dark:shadow-2xl dark:hover:border-[#E34A27]/50">
                     <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                         <div className="max-w-2xl">
-                            <div
-                                className="flex items-center gap-2 font-mono text-[10px] tracking-wider text-[#E34A27] uppercase"
-                                style={{ color: '#E34A27' }}
-                            >
+                            <div className="flex items-center gap-2 font-mono text-[10px] font-bold tracking-wider text-[#EA4828] uppercase dark:text-[#E34A27]">
                                 <Sparkles className="size-3" />
                                 <span>Program Konsinyasi Kreatif Siswa</span>
                             </div>
-                            <h2
-                                className="mt-2 font-heading text-xl font-bold tracking-tight text-white sm:text-2xl"
-                                style={{ color: '#FFFFFF' }}
-                            >
+                            <h2 className="mt-2 font-heading text-xl font-bold tracking-tight text-[#151D30] sm:text-2xl dark:text-white">
                                 Titipkan Karyamu ke Koperasi
                             </h2>
-                            <p
-                                className="mt-2 text-xs leading-relaxed text-[#D4D4D4] sm:text-sm"
-                                style={{ color: '#D4D4D4' }}
-                            >
+                            <p className="mt-2 text-xs leading-relaxed text-[#59647D] sm:text-sm dark:text-[#D4D4D4]">
                                 Ajukan produk buatanmu—kriya tangan, kuliner
                                 higienis, perlengkapan belajar, atau merchandise
                                 kreatif—untuk dikurasi dan dipasarkan resmi
@@ -518,26 +482,17 @@ export default function Profile({
                             </p>
 
                             {/* Value Pillars */}
-                            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-white">
-                                <span
-                                    className="inline-flex items-center gap-1.5 text-white"
-                                    style={{ color: '#FFFFFF' }}
-                                >
-                                    <CheckCircle2 className="size-3.5 text-emerald-400" />
+                            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-bold text-[#151D30] dark:text-white">
+                                <span className="inline-flex items-center gap-1.5">
+                                    <CheckCircle2 className="size-3.5 text-[#00B88A] dark:text-emerald-400" />
                                     <span>Kurasi Resmi Sekolah</span>
                                 </span>
-                                <span
-                                    className="inline-flex items-center gap-1.5 text-white"
-                                    style={{ color: '#FFFFFF' }}
-                                >
-                                    <CheckCircle2 className="size-3.5 text-emerald-400" />
+                                <span className="inline-flex items-center gap-1.5">
+                                    <CheckCircle2 className="size-3.5 text-[#00B88A] dark:text-emerald-400" />
                                     <span>Transaksi Loket Terkelola</span>
                                 </span>
-                                <span
-                                    className="inline-flex items-center gap-1.5 text-white"
-                                    style={{ color: '#FFFFFF' }}
-                                >
-                                    <CheckCircle2 className="size-3.5 text-emerald-400" />
+                                <span className="inline-flex items-center gap-1.5">
+                                    <CheckCircle2 className="size-3.5 text-[#00B88A] dark:text-emerald-400" />
                                     <span>Hak Kepemilikan Tetap Milikmu</span>
                                 </span>
                             </div>
@@ -547,9 +502,9 @@ export default function Profile({
                         <div className="shrink-0">
                             <Link
                                 href="/student/consignments/create"
-                                className="group inline-flex min-h-[48px] w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#E34A27] px-6 py-3 font-heading text-sm font-bold text-white shadow-lg shadow-[#E34A27]/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#d03f1e] hover:shadow-[#E34A27]/40 active:translate-y-0 sm:w-auto"
+                                className="group inline-flex min-h-[48px] w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#EA4828] px-6 py-3 font-heading text-sm font-bold text-white shadow-lg shadow-[#EA4828]/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#d03f1e] hover:shadow-[#EA4828]/40 active:translate-y-0 sm:w-auto"
                             >
-                                <span>Mulai Pengajuan Produk</span>
+                                <span className="font-bold">Mulai Pengajuan Produk</span>
                                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
                             </Link>
                         </div>
@@ -564,14 +519,14 @@ export default function Profile({
                     <section id="pesanan" className="flex flex-col">
                         <div className="mb-4 flex items-center justify-between">
                             <div className="flex items-center gap-2">
-                                <div className="flex size-7 items-center justify-center rounded-lg bg-[#E34A27]/10 text-[#E34A27]">
+                                <div className="flex size-7 items-center justify-center rounded-lg bg-[#FFF0E9] text-[#EA4828] dark:bg-[#E34A27]/10 dark:text-[#E34A27]">
                                     <ShoppingBag className="size-4" />
                                 </div>
                                 <div>
-                                    <h2 className="font-heading text-base font-bold text-[#F5F2EB]">
+                                    <h2 className="font-heading text-base font-bold text-[#151D30] dark:text-[#F5F2EB]">
                                         Pesanan Belanja Terbaru
                                     </h2>
-                                    <p className="text-[11px] text-[#737373]">
+                                    <p className="text-[11px] text-[#59647D] dark:text-[#737373]">
                                         Aktivitas pembelian dan pengambilan
                                         barang
                                     </p>
@@ -580,7 +535,7 @@ export default function Profile({
 
                             <Link
                                 href="/orders"
-                                className="group inline-flex min-h-[44px] items-center gap-1 text-xs font-semibold text-[#A3A3A3] transition-colors hover:text-[#E34A27]"
+                                className="group inline-flex min-h-[44px] items-center gap-1 text-xs font-semibold text-[#59647D] transition-colors hover:text-[#EA4828] dark:text-[#A3A3A3] dark:hover:text-[#E34A27]"
                             >
                                 <span>Lihat Semua ({totalOrdersCount})</span>
                                 <ChevronRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -588,23 +543,22 @@ export default function Profile({
                         </div>
 
                         {recentOrders.length === 0 ? (
-                            <div className="flex flex-1 flex-col items-center justify-center rounded-2xl border border-dashed border-[#262626] bg-[#141414] p-8 text-center">
-                                <div className="flex size-12 items-center justify-center rounded-full bg-[#1c1c1c] text-[#737373]">
+                            <div className="flex flex-1 flex-col items-center justify-center rounded-2xl border border-dashed border-[#E3E6EF] bg-white p-8 text-center dark:border-[#262626] dark:bg-[#141414]">
+                                <div className="flex size-12 items-center justify-center rounded-full bg-[#FFF0E9] text-[#EA4828] dark:bg-[#1c1c1c] dark:text-[#737373]">
                                     <ShoppingBag className="size-5" />
                                 </div>
-                                <h3 className="mt-3 font-heading text-sm font-bold text-[#F5F2EB]">
+                                <h3 className="mt-3 font-heading text-sm font-bold text-[#151D30] dark:text-[#F5F2EB]">
                                     Belum Ada Pesanan
                                 </h3>
-                                <p className="mt-1 max-w-xs text-xs text-[#737373]">
+                                <p className="mt-1 max-w-xs text-xs text-[#59647D] dark:text-[#737373]">
                                     Kamu belum pernah melakukan checkout barang
                                     di KOPDIG.
                                 </p>
                                 <Link
                                     href="/explore"
-                                    className="profile-dark-btn mt-4 inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-4 py-2 text-xs font-semibold text-white transition-colors hover:border-[#383838] hover:text-white"
-                                    style={{ color: '#FFFFFF' }}
+                                    className="profile-dark-btn mt-4 inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-[#EA4828]/25 bg-[#FFF0E9] px-4 py-2 font-heading text-xs font-bold text-[#EA4828] shadow-xs transition-colors hover:border-[#EA4828]/50 hover:bg-[#FFE5D8] dark:border-[#262626] dark:bg-[#0A0A0A] dark:text-white dark:hover:border-[#383838]"
                                 >
-                                    <span className="text-white" style={{ color: '#FFFFFF' }}>Jelajahi Katalog</span>
+                                    <span className="font-bold text-[#EA4828] dark:text-white">Jelajahi Katalog</span>
                                 </Link>
                             </div>
                         ) : (
@@ -613,24 +567,24 @@ export default function Profile({
                                     <Link
                                         key={order.id}
                                         href={`/orders/${order.id}`}
-                                        className="group block rounded-2xl border border-[#262626] bg-[#141414] p-4 transition-all duration-200 hover:border-[#383838] hover:bg-[#181818]"
+                                        className="group block rounded-2xl border border-[#E3E6EF] bg-white p-4 shadow-xs transition-all duration-200 hover:border-[#EA4828]/30 hover:bg-[#FFF0E9]/20 dark:border-[#262626] dark:bg-[#141414] dark:hover:border-[#383838] dark:hover:bg-[#181818]"
                                     >
                                         <div className="flex items-start justify-between gap-3">
                                             <div>
                                                 <div className="flex items-center gap-2">
-                                                    <span className="font-mono text-xs font-bold text-[#F5F2EB]">
+                                                    <span className="font-mono text-xs font-bold text-[#151D30] dark:text-[#F5F2EB]">
                                                         {order.order_number}
                                                     </span>
                                                     {order.queue_code && (
-                                                        <span className="rounded bg-[#E34A27]/10 px-1.5 py-0.5 font-mono text-[9px] font-bold text-[#E34A27]">
+                                                        <span className="rounded bg-[#FFF0E9] px-1.5 py-0.5 font-mono text-[9px] font-bold text-[#EA4828] dark:bg-[#E34A27]/10 dark:text-[#E34A27]">
                                                             {order.queue_code}
                                                         </span>
                                                     )}
                                                 </div>
-                                                <p className="mt-1 font-heading text-xs font-semibold text-[#A3A3A3] group-hover:text-[#F5F2EB]">
+                                                <p className="mt-1 font-heading text-xs font-semibold text-[#59647D] group-hover:text-[#151D30] dark:text-[#A3A3A3] dark:group-hover:text-[#F5F2EB]">
                                                     {order.first_item_name}
                                                     {order.items_count > 1 && (
-                                                        <span className="font-normal text-[#737373]">
+                                                        <span className="font-normal text-[#8992A5] dark:text-[#737373]">
                                                             {' '}
                                                             +
                                                             {order.items_count -
@@ -642,17 +596,17 @@ export default function Profile({
                                             </div>
 
                                             <div className="text-right">
-                                                <p className="font-mono text-xs font-bold text-[#F5F2EB]">
+                                                <p className="font-mono text-xs font-bold text-[#151D30] dark:text-[#F5F2EB]">
                                                     {formatRupiah(order.total)}
                                                 </p>
-                                                <p className="mt-0.5 font-mono text-[10px] text-[#737373]">
+                                                <p className="mt-0.5 font-mono text-[10px] text-[#8992A5] dark:text-[#737373]">
                                                     {order.formatted_created_at}
                                                 </p>
                                             </div>
                                         </div>
 
                                         {/* Status Row */}
-                                        <div className="mt-3 flex items-center justify-between border-t border-[#262626]/80 pt-2.5 text-xs">
+                                        <div className="mt-3 flex items-center justify-between border-t border-[#E3E6EF] pt-2.5 text-xs dark:border-[#262626]/80">
                                             <div className="flex flex-wrap items-center gap-1.5">
                                                 {getPaymentBadge(
                                                     order.payment_status,
@@ -664,7 +618,7 @@ export default function Profile({
                                                 )}
                                             </div>
 
-                                            <span className="inline-flex items-center gap-0.5 text-[11px] font-medium text-[#A3A3A3] group-hover:text-[#E34A27]">
+                                            <span className="inline-flex items-center gap-0.5 text-[11px] font-medium text-[#59647D] group-hover:text-[#EA4828] dark:text-[#A3A3A3] dark:group-hover:text-[#E34A27]">
                                                 <span>Detail</span>
                                                 <ChevronRight className="size-3" />
                                             </span>
@@ -679,14 +633,14 @@ export default function Profile({
                     <section id="titipan" className="flex flex-col">
                         <div className="mb-4 flex items-center justify-between">
                             <div className="flex items-center gap-2">
-                                <div className="flex size-7 items-center justify-center rounded-lg bg-[#E34A27]/10 text-[#E34A27]">
+                                <div className="flex size-7 items-center justify-center rounded-lg bg-[#FFF0E9] text-[#EA4828] dark:bg-[#E34A27]/10 dark:text-[#E34A27]">
                                     <Store className="size-4" />
                                 </div>
                                 <div>
-                                    <h2 className="font-heading text-base font-bold text-[#F5F2EB]">
+                                    <h2 className="font-heading text-base font-bold text-[#151D30] dark:text-[#F5F2EB]">
                                         Titipan Produk Saya
                                     </h2>
-                                    <p className="text-[11px] text-[#737373]">
+                                    <p className="text-[11px] text-[#59647D] dark:text-[#737373]">
                                         Status kurasi dan persetujuan koperasi
                                     </p>
                                 </div>
@@ -694,7 +648,7 @@ export default function Profile({
 
                             <Link
                                 href="/student/consignments"
-                                className="group inline-flex min-h-[44px] items-center gap-1 text-xs font-semibold text-[#A3A3A3] transition-colors hover:text-[#E34A27]"
+                                className="group inline-flex min-h-[44px] items-center gap-1 text-xs font-semibold text-[#59647D] transition-colors hover:text-[#EA4828] dark:text-[#A3A3A3] dark:hover:text-[#E34A27]"
                             >
                                 <span>
                                     Lihat Semua ({totalSubmissionsCount})
@@ -704,23 +658,23 @@ export default function Profile({
                         </div>
 
                         {recentSubmissions.length === 0 ? (
-                            <div className="flex flex-1 flex-col items-center justify-center rounded-2xl border border-dashed border-[#262626] bg-[#141414] p-8 text-center">
-                                <div className="flex size-12 items-center justify-center rounded-full bg-[#1c1c1c] text-[#737373]">
+                            <div className="flex flex-1 flex-col items-center justify-center rounded-2xl border border-dashed border-[#E3E6EF] bg-white p-8 text-center dark:border-[#262626] dark:bg-[#141414]">
+                                <div className="flex size-12 items-center justify-center rounded-full bg-[#FFF0E9] text-[#EA4828] dark:bg-[#1c1c1c] dark:text-[#737373]">
                                     <Package className="size-5" />
                                 </div>
-                                <h3 className="mt-3 font-heading text-sm font-bold text-[#F5F2EB]">
+                                <h3 className="mt-3 font-heading text-sm font-bold text-[#151D30] dark:text-[#F5F2EB]">
                                     Belum Ada Titipan Produk
                                 </h3>
-                                <p className="mt-1 max-w-xs text-xs text-[#737373]">
+                                <p className="mt-1 max-w-xs text-xs text-[#59647D] dark:text-[#737373]">
                                     Mulai langkah wirausahamu dengan mengajukan
                                     produk ke koperasi sekolah.
                                 </p>
                                 <Link
                                     href="/student/consignments/create"
-                                    className="mt-4 inline-flex min-h-[44px] items-center gap-1.5 rounded-xl bg-[#E34A27] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#d03f1e]"
+                                    className="mt-4 inline-flex min-h-[44px] items-center gap-1.5 rounded-xl bg-[#EA4828] px-4 py-2 font-heading text-xs font-bold text-white shadow-xs transition-colors hover:bg-[#d63d1e]"
                                 >
                                     <Plus className="size-3.5" />
-                                    <span>Ajukan Produk Pertama</span>
+                                    <span className="font-bold">Ajukan Produk Pertama</span>
                                 </Link>
                             </div>
                         ) : (
@@ -728,12 +682,12 @@ export default function Profile({
                                 {recentSubmissions.map((sub) => (
                                     <div
                                         key={sub.id}
-                                        className="rounded-2xl border border-[#262626] bg-[#141414] p-4 transition-all duration-200 hover:border-[#383838]"
+                                        className="rounded-2xl border border-[#E3E6EF] bg-white p-4 shadow-xs transition-all duration-200 hover:border-[#EA4828]/30 hover:bg-[#FFF0E9]/20 dark:border-[#262626] dark:bg-[#141414] dark:hover:border-[#383838]"
                                     >
                                         <div className="flex items-start justify-between gap-3">
                                             <div className="min-w-0 flex-1">
                                                 <div className="flex items-center gap-2">
-                                                    <span className="font-mono text-[10px] tracking-wider text-[#737373] uppercase">
+                                                    <span className="font-mono text-[10px] tracking-wider text-[#8992A5] uppercase dark:text-[#737373]">
                                                         {sub.category_name}
                                                     </span>
                                                     {getSubmissionBadge(
@@ -741,25 +695,25 @@ export default function Profile({
                                                         sub.status_label,
                                                     )}
                                                 </div>
-                                                <h3 className="mt-1 truncate font-heading text-xs font-bold text-[#F5F2EB]">
+                                                <h3 className="mt-1 truncate font-heading text-xs font-bold text-[#151D30] dark:text-[#F5F2EB]">
                                                     {sub.name}
                                                 </h3>
-                                                <p className="mt-0.5 text-[11px] text-[#A3A3A3]">
+                                                <p className="mt-0.5 text-[11px] text-[#59647D] dark:text-[#A3A3A3]">
                                                     Harga modal:{' '}
-                                                    <span className="font-mono font-medium text-[#F5F2EB]">
+                                                    <span className="font-mono font-medium text-[#151D30] dark:text-[#F5F2EB]">
                                                         {formatRupiah(
                                                             sub.base_price,
                                                         )}
                                                     </span>{' '}
                                                     &bull; Diajukan:{' '}
-                                                    <span className="font-mono">
+                                                    <span className="font-mono font-medium text-[#151D30] dark:text-white">
                                                         {sub.proposed_stock} pcs
                                                     </span>
                                                 </p>
                                             </div>
 
                                             <div className="text-right">
-                                                <span className="font-mono text-[10px] text-[#737373]">
+                                                <span className="font-mono text-[10px] text-[#8992A5] dark:text-[#737373]">
                                                     {sub.formatted_created_at}
                                                 </span>
                                             </div>
@@ -768,7 +722,7 @@ export default function Profile({
                                         {/* Rejection Note if Rejected */}
                                         {sub.status === 'rejected' &&
                                             sub.rejection_reason && (
-                                                <div className="mt-2.5 rounded-lg border border-rose-900/40 bg-rose-950/20 p-2 text-[11px] text-rose-300">
+                                                <div className="mt-2.5 rounded-lg border border-rose-200 bg-rose-50 p-2 text-[11px] text-rose-700 dark:border-rose-900/40 dark:bg-rose-950/20 dark:text-rose-300">
                                                     <span className="font-semibold">
                                                         Catatan Koperasi:{' '}
                                                     </span>
@@ -777,10 +731,10 @@ export default function Profile({
                                             )}
 
                                         {/* Actions Row */}
-                                        <div className="mt-3 flex items-center justify-between border-t border-[#262626]/80 pt-2.5 text-xs">
+                                        <div className="mt-3 flex items-center justify-between border-t border-[#E3E6EF] pt-2.5 text-xs dark:border-[#262626]/80">
                                             <Link
                                                 href={`/student/consignments/${sub.id}`}
-                                                className="inline-flex min-h-[44px] items-center gap-1 text-[11px] font-medium text-[#A3A3A3] hover:text-[#F5F2EB]"
+                                                className="inline-flex min-h-[44px] items-center gap-1 text-[11px] font-medium text-[#59647D] hover:text-[#151D30] dark:text-[#A3A3A3] dark:hover:text-[#F5F2EB]"
                                             >
                                                 <span>Status Pengajuan</span>
                                                 <ChevronRight className="size-3" />
@@ -790,7 +744,7 @@ export default function Profile({
                                                 sub.product_slug && (
                                                     <Link
                                                         href={`/products/${sub.product_slug}`}
-                                                        className="inline-flex min-h-[44px] items-center gap-1 text-[11px] font-semibold text-[#E34A27] hover:underline"
+                                                        className="inline-flex min-h-[44px] items-center gap-1 text-[11px] font-semibold text-[#EA4828] hover:underline dark:text-[#E34A27]"
                                                     >
                                                         <span>
                                                             Lihat di Katalog
@@ -813,25 +767,25 @@ export default function Profile({
                     {/* SECTION 05: PROFILE SETTINGS */}
                     <section
                         id="pengaturan"
-                        className="rounded-2xl border border-[#262626] bg-[#141414] p-5 shadow-xl sm:p-7"
+                        className="rounded-2xl border border-[#E3E6EF] bg-white p-5 shadow-xs sm:p-7 dark:border-[#262626] dark:bg-[#141414] dark:shadow-xl"
                     >
-                        <div className="mb-5 flex items-center gap-2 border-b border-[#262626] pb-4">
-                            <div className="flex size-7 items-center justify-center rounded-lg bg-[#E34A27]/10 text-[#E34A27]">
+                        <div className="mb-5 flex items-center gap-2 border-b border-[#E3E6EF] pb-4 dark:border-[#262626]">
+                            <div className="flex size-7 items-center justify-center rounded-lg bg-[#FFF0E9] text-[#EA4828] dark:bg-[#E34A27]/10 dark:text-[#E34A27]">
                                 <UserIcon className="size-4" />
                             </div>
                             <div>
-                                <h2 className="font-heading text-base font-bold text-[#F5F2EB]">
+                                <h2 className="font-heading text-base font-bold text-[#151D30] dark:text-[#F5F2EB]">
                                     Pengaturan Profil
                                 </h2>
-                                <p className="text-[11px] text-[#737373]">
+                                <p className="text-[11px] text-[#59647D] dark:text-[#737373]">
                                     Perbarui nama tampilan dan alamat surel akun
                                 </p>
                             </div>
                         </div>
 
                         {profileSaved && (
-                            <div className="mb-4 flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-950/30 p-3 text-xs text-emerald-300">
-                                <CheckCircle2 className="size-4 shrink-0 text-emerald-400" />
+                            <div className="mb-4 flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-xs text-emerald-800 dark:border-emerald-500/30 dark:bg-emerald-950/30 dark:text-emerald-300">
+                                <CheckCircle2 className="size-4 shrink-0 text-[#00B88A] dark:text-emerald-400" />
                                 <span>Profil berhasil diperbarui.</span>
                             </div>
                         )}
@@ -844,7 +798,7 @@ export default function Profile({
                             <div>
                                 <label
                                     htmlFor="profile-name"
-                                    className="block font-heading text-xs font-semibold text-[#A3A3A3]"
+                                    className="block font-heading text-xs font-semibold text-[#59647D] dark:text-[#A3A3A3]"
                                 >
                                     Nama Lengkap
                                 </label>
@@ -859,7 +813,7 @@ export default function Profile({
                                             e.target.value,
                                         )
                                     }
-                                    className="mt-1.5 h-10 w-full rounded-xl border border-[#262626] bg-[#0A0A0A] px-3.5 text-xs text-[#F5F2EB] placeholder:text-[#525252] focus:border-[#E34A27] focus:ring-1 focus:ring-[#E34A27] focus:outline-none"
+                                    className="mt-1.5 h-10 w-full rounded-xl border border-[#E3E6EF] bg-[#F8F9FC] px-3.5 text-xs text-[#151D30] placeholder:text-[#8992A5] focus:border-[#EA4828] focus:ring-1 focus:ring-[#EA4828] focus:outline-none dark:border-[#262626] dark:bg-[#0A0A0A] dark:text-[#F5F2EB] dark:placeholder:text-[#525252]"
                                     placeholder="Nama Lengkap Siswa"
                                 />
                                 <InputError
@@ -872,7 +826,7 @@ export default function Profile({
                             <div>
                                 <label
                                     htmlFor="profile-email"
-                                    className="block font-heading text-xs font-semibold text-[#A3A3A3]"
+                                    className="block font-heading text-xs font-semibold text-[#59647D] dark:text-[#A3A3A3]"
                                 >
                                     Alamat Surel (Email)
                                 </label>
@@ -887,7 +841,7 @@ export default function Profile({
                                             e.target.value,
                                         )
                                     }
-                                    className="mt-1.5 h-10 w-full rounded-xl border border-[#262626] bg-[#0A0A0A] px-3.5 text-xs text-[#F5F2EB] placeholder:text-[#525252] focus:border-[#E34A27] focus:ring-1 focus:ring-[#E34A27] focus:outline-none"
+                                    className="mt-1.5 h-10 w-full rounded-xl border border-[#E3E6EF] bg-[#F8F9FC] px-3.5 text-xs text-[#151D30] placeholder:text-[#8992A5] focus:border-[#EA4828] focus:ring-1 focus:ring-[#EA4828] focus:outline-none dark:border-[#262626] dark:bg-[#0A0A0A] dark:text-[#F5F2EB] dark:placeholder:text-[#525252]"
                                     placeholder="alamat.email@sekolah.sch.id"
                                 />
                                 <InputError
@@ -898,11 +852,11 @@ export default function Profile({
 
                             {mustVerifyEmail &&
                                 currentUser.email_verified_at === null && (
-                                    <div className="rounded-xl border border-amber-500/20 bg-amber-950/30 p-3 text-xs text-amber-300">
+                                    <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs text-amber-800 dark:border-amber-500/20 dark:bg-amber-950/30 dark:text-amber-300">
                                         <p>Alamat email belum diverifikasi.</p>
                                         {status ===
                                             'verification-link-sent' && (
-                                            <p className="mt-1 text-emerald-400">
+                                            <p className="mt-1 text-emerald-600 dark:text-emerald-400">
                                                 Tautan verifikasi baru telah
                                                 dikirim ke alamat email Anda.
                                             </p>
@@ -911,23 +865,14 @@ export default function Profile({
                                 )}
 
                             {/* Read-only NISN info box */}
-                            <div className="profile-identity-card rounded-xl border border-[#262626] bg-[#0A0A0A] p-3 text-xs">
-                                <span
-                                    className="block font-mono text-[10px] tracking-wider text-neutral-400 uppercase"
-                                    style={{ color: '#A3A3A3' }}
-                                >
+                            <div className="profile-identity-card rounded-xl border border-[#E3E6EF] bg-[#F8F9FC] p-3 text-xs dark:border-[#262626] dark:bg-[#0A0A0A]">
+                                <span className="block font-mono text-[10px] tracking-wider text-[#8992A5] uppercase dark:text-[#A3A3A3]">
                                     Identitas Pelajar (NISN)
                                 </span>
-                                <span
-                                    className="mt-0.5 block font-mono font-semibold text-white"
-                                    style={{ color: '#FFFFFF' }}
-                                >
+                                <span className="mt-0.5 block font-mono font-semibold text-[#151D30] dark:text-white">
                                     {displayIdentifier || 'Tidak terdaftar'}
                                 </span>
-                                <p
-                                    className="mt-1 text-[10px] text-neutral-400"
-                                    style={{ color: '#A3A3A3' }}
-                                >
+                                <p className="mt-1 text-[10px] text-[#59647D] dark:text-[#A3A3A3]">
                                     NISN terhubung dengan basis data sekolah.
                                     Hubungi operator koperasi sekolah jika
                                     terdapat kekeliruan data.
@@ -937,11 +882,13 @@ export default function Profile({
                             <button
                                 type="submit"
                                 disabled={profileForm.processing}
-                                className="inline-flex min-h-[44px] cursor-pointer items-center justify-center rounded-xl bg-[#E34A27] px-4 py-2 font-heading text-xs font-bold text-white transition-all hover:bg-[#d03f1e] disabled:opacity-50"
+                                className="inline-flex min-h-[44px] cursor-pointer items-center justify-center rounded-xl bg-[#EA4828] px-4 py-2 font-heading text-xs font-bold text-white shadow-xs transition-colors hover:bg-[#d63d1e] disabled:opacity-50"
                             >
-                                {profileForm.processing
-                                    ? 'Menyimpan...'
-                                    : 'Simpan Perubahan'}
+                                <span className="font-bold">
+                                    {profileForm.processing
+                                        ? 'Menyimpan...'
+                                        : 'Simpan Perubahan'}
+                                </span>
                             </button>
                         </form>
                     </section>
@@ -949,25 +896,25 @@ export default function Profile({
                     {/* SECTION 06: SECURITY & PASSWORD */}
                     <section
                         id="keamanan"
-                        className="rounded-2xl border border-[#262626] bg-[#141414] p-5 shadow-xl sm:p-7"
+                        className="rounded-2xl border border-[#E3E6EF] bg-white p-5 shadow-xs sm:p-7 dark:border-[#262626] dark:bg-[#141414] dark:shadow-xl"
                     >
-                        <div className="mb-5 flex items-center gap-2 border-b border-[#262626] pb-4">
-                            <div className="flex size-7 items-center justify-center rounded-lg bg-[#E34A27]/10 text-[#E34A27]">
+                        <div className="mb-5 flex items-center gap-2 border-b border-[#E3E6EF] pb-4 dark:border-[#262626]">
+                            <div className="flex size-7 items-center justify-center rounded-lg bg-[#FFF0E9] text-[#EA4828] dark:bg-[#E34A27]/10 dark:text-[#E34A27]">
                                 <Lock className="size-4" />
                             </div>
                             <div>
-                                <h2 className="font-heading text-base font-bold text-[#F5F2EB]">
+                                <h2 className="font-heading text-base font-bold text-[#151D30] dark:text-[#F5F2EB]">
                                     Keamanan & Kata Sandi
                                 </h2>
-                                <p className="text-[11px] text-[#737373]">
+                                <p className="text-[11px] text-[#59647D] dark:text-[#737373]">
                                     Jaga kerahasiaan akses akun Anda
                                 </p>
                             </div>
                         </div>
 
                         {passwordSaved && (
-                            <div className="mb-4 flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-950/30 p-3 text-xs text-emerald-300">
-                                <CheckCircle2 className="size-4 shrink-0 text-emerald-400" />
+                            <div className="mb-4 flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-xs text-emerald-800 dark:border-emerald-500/30 dark:bg-emerald-950/30 dark:text-emerald-300">
+                                <CheckCircle2 className="size-4 shrink-0 text-[#00B88A] dark:text-emerald-400" />
                                 <span>Kata sandi berhasil diperbarui.</span>
                             </div>
                         )}
@@ -980,7 +927,7 @@ export default function Profile({
                             <div>
                                 <label
                                     htmlFor="current-password"
-                                    className="block font-heading text-xs font-semibold text-[#A3A3A3]"
+                                    className="block font-heading text-xs font-semibold text-[#59647D] dark:text-[#A3A3A3]"
                                 >
                                     Kata Sandi Saat Ini
                                 </label>
@@ -994,7 +941,7 @@ export default function Profile({
                                             e.target.value,
                                         )
                                     }
-                                    className="mt-1.5 h-10 rounded-xl border border-[#262626] bg-[#0A0A0A] text-xs text-[#F5F2EB] focus:border-[#E34A27] focus:ring-[#E34A27]"
+                                    className="mt-1.5 h-10 rounded-xl border border-[#E3E6EF] bg-[#F8F9FC] text-xs text-[#151D30] focus:border-[#EA4828] focus:ring-[#EA4828] dark:border-[#262626] dark:bg-[#0A0A0A] dark:text-[#F5F2EB]"
                                     placeholder="Masukkan kata sandi saat ini"
                                 />
                                 <InputError
@@ -1009,7 +956,7 @@ export default function Profile({
                             <div>
                                 <label
                                     htmlFor="new-password"
-                                    className="block font-heading text-xs font-semibold text-[#A3A3A3]"
+                                    className="block font-heading text-xs font-semibold text-[#59647D] dark:text-[#A3A3A3]"
                                 >
                                     Kata Sandi Baru
                                 </label>
@@ -1023,7 +970,7 @@ export default function Profile({
                                             e.target.value,
                                         )
                                     }
-                                    className="mt-1.5 h-10 rounded-xl border border-[#262626] bg-[#0A0A0A] text-xs text-[#F5F2EB] focus:border-[#E34A27] focus:ring-[#E34A27]"
+                                    className="mt-1.5 h-10 rounded-xl border border-[#E3E6EF] bg-[#F8F9FC] text-xs text-[#151D30] focus:border-[#EA4828] focus:ring-[#EA4828] dark:border-[#262626] dark:bg-[#0A0A0A] dark:text-[#F5F2EB]"
                                     placeholder="Minimal 8 karakter"
                                 />
                                 <InputError
@@ -1036,7 +983,7 @@ export default function Profile({
                             <div>
                                 <label
                                     htmlFor="password-confirmation"
-                                    className="block font-heading text-xs font-semibold text-[#A3A3A3]"
+                                    className="block font-heading text-xs font-semibold text-[#59647D] dark:text-[#A3A3A3]"
                                 >
                                     Konfirmasi Kata Sandi Baru
                                 </label>
@@ -1052,7 +999,7 @@ export default function Profile({
                                             e.target.value,
                                         )
                                     }
-                                    className="mt-1.5 h-10 rounded-xl border border-[#262626] bg-[#0A0A0A] text-xs text-[#F5F2EB] focus:border-[#E34A27] focus:ring-[#E34A27]"
+                                    className="mt-1.5 h-10 rounded-xl border border-[#E3E6EF] bg-[#F8F9FC] text-xs text-[#151D30] focus:border-[#EA4828] focus:ring-[#EA4828] dark:border-[#262626] dark:bg-[#0A0A0A] dark:text-[#F5F2EB]"
                                     placeholder="Ulangi kata sandi baru"
                                 />
                                 <InputError
@@ -1067,11 +1014,10 @@ export default function Profile({
                             <button
                                 type="submit"
                                 disabled={passwordForm.processing}
-                                className="profile-dark-btn inline-flex min-h-[44px] cursor-pointer items-center justify-center gap-1.5 rounded-xl border border-[#262626] bg-[#0A0A0A] px-4 py-2 font-heading text-xs font-bold text-white transition-all hover:border-[#383838] hover:bg-[#1a1a1a] hover:text-white disabled:opacity-50"
-                                style={{ color: '#FFFFFF' }}
+                                className="profile-dark-btn inline-flex min-h-[44px] cursor-pointer items-center justify-center gap-1.5 rounded-xl border border-[#EA4828]/25 bg-[#FFF0E9] px-4 py-2 font-heading text-xs font-bold text-[#EA4828] shadow-xs transition-colors hover:border-[#EA4828]/50 hover:bg-[#FFE5D8] dark:border-[#262626] dark:bg-[#0A0A0A] dark:text-white dark:hover:border-[#383838] dark:hover:bg-[#1a1a1a] disabled:opacity-50"
                             >
-                                <Key className="size-3.5 text-[#E34A27]" />
-                                <span className="text-white" style={{ color: '#FFFFFF' }}>
+                                <Key className="size-3.5 text-[#EA4828] dark:text-[#E34A27]" />
+                                <span className="font-bold text-[#EA4828] dark:text-white">
                                     {passwordForm.processing
                                         ? 'Menyimpan...'
                                         : 'Perbarui Kata Sandi'}
@@ -1084,13 +1030,13 @@ export default function Profile({
                 {/* ======================================================== */}
                 {/* 07 & 08. SESSION & LOGOUT MANAGEMENT                     */}
                 {/* ======================================================== */}
-                <section className="rounded-2xl border border-[#262626] bg-[#141414] p-5 shadow-xl sm:p-7">
+                <section className="rounded-2xl border border-[#E3E6EF] bg-white p-5 shadow-xs sm:p-7 dark:border-[#262626] dark:bg-[#141414] dark:shadow-xl">
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                         <div>
-                            <h3 className="font-heading text-sm font-bold text-[#F5F2EB]">
+                            <h3 className="font-heading text-sm font-bold text-[#151D30] dark:text-[#F5F2EB]">
                                 Sesi Akun & Keamanan Perangkat
                             </h3>
-                            <p className="mt-0.5 max-w-xl text-xs text-[#737373]">
+                            <p className="mt-0.5 max-w-xl text-xs text-[#59647D] dark:text-[#737373]">
                                 Selalu keluar dari akun KOPDIG setelah
                                 bertransaksi jika Anda menggunakan komputer
                                 bersama di laboratorium sekolah atau
@@ -1102,16 +1048,16 @@ export default function Profile({
                             <button
                                 type="button"
                                 onClick={handleLogout}
-                                className="inline-flex min-h-[44px] w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-red-900/40 bg-red-950/20 px-5 py-2.5 font-heading text-xs font-bold text-red-300 transition-all hover:border-red-800 hover:bg-red-950/40 active:scale-[0.99] sm:w-auto"
+                                className="inline-flex min-h-[44px] w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-red-200 bg-red-50 px-5 py-2.5 font-heading text-xs font-bold text-red-600 transition-colors hover:border-red-300 hover:bg-red-100 active:scale-[0.99] sm:w-auto dark:border-red-900/40 dark:bg-red-950/20 dark:text-red-300 dark:hover:border-red-800 dark:hover:bg-red-950/40"
                             >
                                 <LogOut className="size-4" />
-                                <span>Keluar dari Akun KOPDIG</span>
+                                <span className="font-bold">Keluar dari Akun KOPDIG</span>
                             </button>
                         </div>
                     </div>
 
                     {/* Preserved Account Deletion Capability */}
-                    <div className="mt-6 border-t border-[#262626] pt-5">
+                    <div className="mt-6 border-t border-[#E3E6EF] pt-5 dark:border-[#262626]">
                         <DeleteUser />
                     </div>
                 </section>

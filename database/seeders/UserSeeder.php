@@ -14,13 +14,26 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Cooperative Operator Account
+        // 1. Cooperative Admin & Operator Accounts
+        User::updateOrCreate(
+            ['email' => 'admin@kopdig.id'],
+            [
+                'name' => 'Admin Koperasi',
+                'password' => Hash::make('password'),
+                'role' => UserRole::Cooperative,
+                'email_verified_at' => now(),
+                'student_identifier' => null,
+                'avatar_path' => null,
+            ]
+        );
+
         User::updateOrCreate(
             ['email' => 'koperasi@kopdig.id'],
             [
                 'name' => 'Pengurus Koperasi Sekolah',
                 'password' => Hash::make('password'),
                 'role' => UserRole::Cooperative,
+                'email_verified_at' => now(),
                 'student_identifier' => null,
                 'avatar_path' => null,
             ]

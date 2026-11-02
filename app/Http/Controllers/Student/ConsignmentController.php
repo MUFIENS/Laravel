@@ -48,6 +48,10 @@ class ConsignmentController extends Controller
     {
         $this->authorize('create', ProductSubmission::class);
 
+        if (Category::query()->active()->count() === 0) {
+            (new \Database\Seeders\CategorySeeder())->run();
+        }
+
         $categories = Category::query()
             ->active()
             ->orderBy('display_order')
@@ -126,6 +130,10 @@ class ConsignmentController extends Controller
     public function edit(ProductSubmission $submission): Response
     {
         $this->authorize('update', $submission);
+
+        if (Category::query()->active()->count() === 0) {
+            (new \Database\Seeders\CategorySeeder())->run();
+        }
 
         $categories = Category::query()
             ->active()

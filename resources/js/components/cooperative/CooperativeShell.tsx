@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Head } from '@inertiajs/react';
 import { CooperativeSidebarContent } from './CooperativeSidebarContent';
 import { CooperativeHeader } from './CooperativeHeader';
@@ -29,9 +29,29 @@ export const CooperativeShell: React.FC<Props> = ({
 }) => {
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
+    useEffect(() => {
+        // Enforce strict dark mode for admin / cooperative workspace
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light', 'light-mode');
+        document.documentElement.style.colorScheme = 'dark';
+
+        // Explicitly conceal floating theme toggle on admin / cooperative workspace
+        const toggleBtn = document.getElementById('floating-theme-toggle');
+        if (toggleBtn) {
+            toggleBtn.style.setProperty('display', 'none', 'important');
+        }
+
+        return () => {
+            const btn = document.getElementById('floating-theme-toggle');
+            if (btn) {
+                btn.style.removeProperty('display');
+            }
+        };
+    }, []);
+
     return (
         <div
-            className="dark relative min-h-screen bg-[#0A0A0A] font-sans text-[#F5F2EB] antialiased selection:bg-[#E34A27] selection:text-white"
+            className="cooperative-shell dark relative min-h-screen bg-[#0A0A0A] font-sans text-[#F5F2EB] antialiased selection:bg-[#E34A27] selection:text-white"
             style={
                 {
                     '--color-canvas': '#0A0A0A',
